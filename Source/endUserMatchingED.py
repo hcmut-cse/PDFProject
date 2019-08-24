@@ -49,8 +49,6 @@ def triggerWarning(path,file,template,configString,s,CONFIG,lineList,ans,standar
 	sourceFolder=path+'/mummy'
 	sourceFile=sourceFolder+file[startFilenamePos:]
 	copyfile(file,sourceFile)
-	# import pdb
-	# pdb.set_trace()
 	if (len(missingKws)):
 		for key in missingKws:
 			drawTextboxMissingKws(sourceFile,modifiedFile,key,configString,s,CONFIG,ans,standardFolder)
