@@ -159,6 +159,11 @@ def templateMatch(inputPath,resultPath,jsonDir,standardFolder):
 			modifiedFile=resultPath+'/warning/'+file[startFilenamePos:]
 			copyfile(file,modifiedFile)
 
+		if os.path.isdir(inputPath+'/'+'warning'):
+			files=glob.glob(inputPath+'/'+'warning/*pdf') 
+			for file in files: os.remove(file)
+			os.rmdir(inputPath+'/'+'warning')
+
 	return return_dict
 			
 
