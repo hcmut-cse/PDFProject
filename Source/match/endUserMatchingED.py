@@ -28,7 +28,7 @@ def triggerWarning(path,file,template,configString,s,CONFIG,lineList,ans,standar
 	mishandledKws=[]
 	checked={}
 	l=len(s)
-	for key in configString: 
+	for key in configString:
 		keywordRank[key]=configString.index(key)
 		checked[key]=0
 	for key in s:
@@ -62,7 +62,7 @@ def triggerWarning(path,file,template,configString,s,CONFIG,lineList,ans,standar
 			for key in mishandledKws:
 				if (lineList[i].find(key)!=-1): count[key]+=1
 
-		for key in mishandledKws: 
+		for key in mishandledKws:
 			drawTextboxMishandled(key,sourceFile,modifiedFile,count,CONFIG)
 
 def findTemplateBetaVersion(path,file,jsonDir,standardFolder):
@@ -88,17 +88,17 @@ def findTemplateBetaVersion(path,file,jsonDir,standardFolder):
 			# print('=========================================================================')
 			# Testing==========================================================================
 
-			if (minDistance>dis): 
+			if (minDistance>dis):
 				minDistance=dis
 				ans=jsonFile[starPos:-5]
 				# print(ans)
 				targetConfigString=configString
 				targetS=s
 				targetCONFIG=CONFIG
-		
+
 	# print(file)
 	if (minDistance>5): return -1,-1
-	if (minDistance!=0): 	
+	if (minDistance!=0):
 		triggerWarning(path,file,ans,targetConfigString,targetS,targetCONFIG,lineList,ans,standardFolder)
 	return ans,minDistance
 
@@ -111,7 +111,7 @@ def endUserSolve(resultFile,path,matchingFolder,jsonDir,standardFolder):
 		ans,minDistance=findTemplateBetaVersion(path,file,jsonDir,standardFolder)
 
 		# print(file,ans)
-		
+
 		if (ans==-1): resultFile.write(file[9:]+' unknown template\n')
 		else:
 			pos=re.search(path+'/',file).span()
@@ -130,11 +130,11 @@ def endUserSolve(resultFile,path,matchingFolder,jsonDir,standardFolder):
 def templateMatch(inputPath,resultPath,jsonDir,standardFolder):
 	with open(resultPath+'/result.txt','w',encoding='utf8') as resultFile:
 		if os.path.isdir(inputPath+'/'+'warning'):
-			files=glob.glob(inputPath+'/'+'warning/*pdf') 
+			files=glob.glob(inputPath+'/'+'warning/*pdf')
 			for file in files: os.remove(file)
 			os.rmdir(inputPath+'/'+'warning')
-		if os.path.isdir(inputPath+'/'+'mummy'): 
-			files=glob.glob(inputPath+'/'+'mummy/*pdf') 
+		if os.path.isdir(inputPath+'/'+'mummy'):
+			files=glob.glob(inputPath+'/'+'mummy/*pdf')
 			for file in files: os.remove(file)
 			os.rmdir(inputPath+'/'+'mummy')
 		os.makedirs(inputPath+'/'+'warning')
@@ -147,7 +147,7 @@ def templateMatch(inputPath,resultPath,jsonDir,standardFolder):
 		rmtree(inputPath+'/mummy')
 
 		if os.path.isdir(resultPath+'/'+'warning'):
-			files=glob.glob(resultPath+'/'+'warning/*pdf') 
+			files=glob.glob(resultPath+'/'+'warning/*pdf')
 			for file in files: os.remove(file)
 			os.rmdir(resultPath+'/'+'warning')
 		os.makedirs(resultPath+'/'+'warning')
@@ -160,20 +160,19 @@ def templateMatch(inputPath,resultPath,jsonDir,standardFolder):
 			copyfile(file,modifiedFile)
 
 		if os.path.isdir(inputPath+'/'+'warning'):
-			files=glob.glob(inputPath+'/'+'warning/*pdf') 
+			files=glob.glob(inputPath+'/'+'warning/*pdf')
 			for file in files: os.remove(file)
 			os.rmdir(inputPath+'/'+'warning')
 
 	return return_dict
-			
+
 
 
 
 def TemplateMatching():
 	jsonDir='../Template/*json'
 	standardFolder='../Sample/'
-	inputPath='../Test'
+	inputPath='../PdfToExtract'
 	resultPath='../Result'
 	return_dict = templateMatch(inputPath,resultPath,jsonDir,standardFolder)
 	return return_dict
-

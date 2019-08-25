@@ -10,7 +10,7 @@ from match.separateMatching import *
 
 if __name__ == '__main__':
 
-	fileName = list(filter(lambda pdf: pdf[-3:].lower() == 'pdf' ,os.listdir('../Test')))
+	fileName = list(filter(lambda pdf: pdf[-3:].lower() == 'pdf' ,os.listdir('../PdfToExtract')))
 
 	# Maching process + generate a warning file (missing kw)
 	template = TemplateMatching()
@@ -27,9 +27,6 @@ if __name__ == '__main__':
 		# # Matching process
 		# PDF_TYPE = findTemplateBetaVersion(path,file,jsonDir,standardFolder)
 		# print(PDF_TYPE)
-		
+
 		# Extractor
 		extractingData(file, PDF_TYPE)
-
-
-	
