@@ -17,7 +17,7 @@ def extractingData(file, PDF_TYPE):
     CONFIG = ORIGINAL_CONFIG[0].copy()
     HF_CONFIG = ORIGINAL_CONFIG[1].copy()
     CURR_CONFIG = {}
-    with open('../Test/' + file, "rb") as f:
+    with open('../PdfToExtract/' + file, "rb") as f:
         pdf = pdftotext.PDF(f)
 
     if (PDF_TYPE == "15"):
@@ -40,7 +40,7 @@ def extractingData(file, PDF_TYPE):
         CURR_CONFIG[key]['column'] = CONFIG[key]['column'].copy()
 
     # Preproces PDF
-    fullPdf, removed = preProcessPdf('../Test/' + file, HF_CONFIG)
+    fullPdf, removed = preProcessPdf('../PdfToExtract/' + file, HF_CONFIG)
     # for line in fullPdf:
     #     print(line)
     # Extract data from PDF
