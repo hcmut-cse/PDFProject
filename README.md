@@ -2,7 +2,9 @@
 
 ## Result
 
-Matching result
+Extracting result
+
+Matching result in result.txt, and warning pdf in warning folder
 
 ## Sample
 
@@ -19,5 +21,9 @@ Comprises template files
 ## Test
 
 Is made of pdf files
+
+## Using: 
+
+Put pdf files into Test folder, open terminal in Source folder, run "python3 run.py" (or python run.py). Extracted file will be created in Result folder, warning pdf in Result/warning folder.
 
 ^.^ Midas touch
