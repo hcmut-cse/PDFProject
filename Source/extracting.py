@@ -3,10 +3,10 @@ import argparse
 import os
 import json
 import numpy as np
-from extractor.preProcess import preProcessPdf
-from extractor.processData import extractData
-from extractor.posProcess import posProcessData
-from extractor.connectContent import connectContent
+from PdfExtractor.Source.preProcess import preProcessPdf
+from PdfExtractor.Source.processData import extractData
+from PdfExtractor.Source.posProcess import posProcessData
+from PdfExtractor.Source.connectContent import connectContent
 import pdftotext
 
 
