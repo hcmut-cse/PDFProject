@@ -22,7 +22,7 @@ Comprises template files
 
 Is made of pdf files
 
-## Using
+## Using: 
 
 Put pdf files into Test folder, open terminal in Source folder, run "python3 run.py" (or python run.py). Extracted file will be created in Result folder, warning pdf in Result/warning folder.
 
