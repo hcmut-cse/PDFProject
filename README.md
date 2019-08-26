@@ -18,12 +18,12 @@ Includes source codes
 
 Comprises template files
 
-## Test
+## PdfToExtract
 
 Is made of pdf files
 
 ## Using: 
 
-Put pdf files into Test folder, open terminal in Source folder, run "python3 run.py" (or python run.py). Extracted file will be created in Result folder, warning pdf in Result/warning folder.
+Put pdf files into PdfToExtract folder, open terminal in Source folder, run "python3 run.py" (or python run.py). Extracted file will be created in Result folder, warning pdf in Result/warning folder.
 
 ^.^ Midas touch
