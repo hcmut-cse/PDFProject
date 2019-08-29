@@ -1,5 +1,16 @@
 [
     {
+        "HeaderDATA": {
+            "row": [0, 7],
+            "column": [0, null],
+            "isFlex": 1,
+            "endObject": {
+                "top": -1,
+                "bottom": "From",
+                "left": -1,
+                "right": -1
+            }
+        },
         "From": {
             "row": [7, 8],
             "column": [29, 92],
@@ -13,7 +24,7 @@
         },
         "To": {
             "row": [7, 8],
-            "column": [113, null],
+            "column": [92, null],
             "isFlex": 1,
             "endObject": {
                 "top": "same_left",
@@ -156,7 +167,7 @@
         },
         "Container/Seal No.": {
             "row": [24, 28],
-            "column": [0, 49],
+            "column": [0,50],
             "isFlex": 1,
             "endObject": {
                 "top": "Container/Seal No.",
@@ -167,7 +178,7 @@
         },
         "Packages": {
             "row": [24, 28],
-            "column": [49, 73],
+            "column": [50, 73],
             "isFlex": 1,
             "endObject": {
                 "top": "Packages",
@@ -211,7 +222,7 @@
         },
         "Total":
         {
-            "row": [26, 27],
+            "row": [25, 26],
             "column": [0, null],
             "isFlex": 1,
             "endObject": {
@@ -222,14 +233,14 @@
             },
             "subfields":
             {
-                "Total type": "([0-9]+)X([0-9]+)(\\´)(DC|RF|HC)",
+                "Total type": "(([0-9]+)X([0-9]+)(\\´)(DC|RF|HC) & )*(([0-9]+)X([0-9]+)(\\´)(DC|RF|HC))",
                 "Total Packages": "[0-9,.]* (CTNS|PKGS|PCS|PACKAGES|PKG)",
                 "Total G.W (KGS)": "[0-9]+(,)[0-9]+(\\.)[0-9]+",
                 "Total CBM": "[0-9.]+"
             }
         },
         "Remarks": {
-            "row": [29, 30],
+            "row": [29, null],
             "column": [20, 106],
             "isFlex": 1,
             "endObject": {
@@ -253,7 +264,7 @@
     },
     {
       "Header": {
-        "row": [0, 7],
+        "row": [0, 0],
         "column": [0, null],
         "pages": "all"
       },
