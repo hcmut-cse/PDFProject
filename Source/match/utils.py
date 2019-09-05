@@ -178,6 +178,7 @@ def drawTextboxMissingKws(sourceFile,modifiedFile,key,configString,s,CONFIG,ans,
 	if (not noApproximation):
 		for page in doc:
 			# Approximation
+			targetSize=findFontSize(sourceFile,key)
 			i=configString.index(key)
 			latestKey=configString[0]
 			nextKey=configString[i]
@@ -199,7 +200,6 @@ def drawTextboxMissingKws(sourceFile,modifiedFile,key,configString,s,CONFIG,ans,
 			else: width=CONFIG[latestKey]['column'][1]-CONFIG[latestKey]['column'][0]
 			latest_text_instances=page.searchFor(latestKey)
 			if (page.searchFor(nextKey)):
-				targetSize=findFontSize(sourceFile,nextKey)
 				next_inst=page.searchFor(nextKey)[0]
 				if (latest_text_instances):
 					for inst in latest_text_instances:
@@ -213,7 +213,7 @@ def drawTextboxMissingKws(sourceFile,modifiedFile,key,configString,s,CONFIG,ans,
 							x1=x0+len(key)*targetSize*0.7
 							y1=y0+targetSize*1.4
 							rect=fitz.Rect(x0,y0,x1,y1)
-							highlight=page.addFreetextAnnot(rect,key,fontsize=targetSize-2, fontname="helv", color=(1, 0, 0), rotate=0)
+							highlight=page.addFreetextAnnot(rect,key,fontsize=targetSize-2, fontname="helv", color=(0, 1, 0), rotate=0)
 				else:
 					x0=next_inst[0]
 					y0=(next_inst[1]-targetSize)
@@ -229,10 +229,14 @@ def drawTextboxMissingKws(sourceFile,modifiedFile,key,configString,s,CONFIG,ans,
 	doc.save(modifiedFile,garbage=4,deflate=True,clean=False)
 	copyfile(modifiedFile,sourceFile)
 
-def drawTextboxMishandled(key,sourceFile,modifiedFile,count,CONFIG):
+def drawTextboxMishandled(key,sourceFile,modifiedFile,count,CONFIG,aliasDict):
 	doc=fitz.open(sourceFile)
 	for page in doc:
 		text_instances=page.searchFor(key)
+		if (not len(text_instances)):
+			for tmpKey in aliasDict[key]:
+				text_instances=page.searchFor(tmpKey)
+				if (len(text_instances)): break
 		for inst in text_instances: 
 			trueInst=1
 			if (count[key]>1):
@@ -252,6 +256,7 @@ def drawTextboxMishandled(key,sourceFile,modifiedFile,count,CONFIG):
 								if (tmpPos[3]<inst[1]):
 									trueInst=0
 									break
+							else: trueInst=0
 						elif (margin=='left'):
 							if (page.searchFor(tmpKey)):
 								tmpPos=page.searchFor(tmpKey)[0]
@@ -269,7 +274,7 @@ def drawTextboxMishandled(key,sourceFile,modifiedFile,count,CONFIG):
 				highlight=page.addHighlightAnnot(inst)
 				highlight.setColors({"stroke": (0,1,0)})
 				break
-					
+
 	doc.save(modifiedFile,garbage=4, deflate=True, clean=False)
 	copyfile(modifiedFile,sourceFile)
 
@@ -292,8 +297,13 @@ def createListOfStringLineList(CONFIG,lineList,configString):
 		for key in CONFIG:
 			pos=lineList[i].find(key)
 			if (pos!=-1):
-				posDict[key]=pos
-				posList.append(key)
+				trueKey=1
+				if (pos+len(key)<len(lineList[i])):
+					if (lineList[i][pos+len(key)]<='Z' and lineList[i][pos+len(key)]>='A' and lineList[i][pos+len(key)-1]<='Z' and lineList[i][pos+len(key)-1]>='A'): trueKey=0
+					if (lineList[i][pos+len(key)]<='z' and lineList[i][pos+len(key)]>='a' and lineList[i][pos+len(key)-1]<='z' and lineList[i][pos+len(key)-1]>='a'): trueKey=0
+				if (trueKey):
+					posDict[key]=pos
+					posList.append(key)
 			for alias in aliasDict[key]:
 				pos=lineList[i].find(alias)
 				if (pos!=-1):
@@ -319,3 +329,148 @@ def createListOfStringLineList(CONFIG,lineList,configString):
 				tmp.append(key)
 				ansList.append(tmp)
 	return ansList,aliasDict
+
+def similar(a, b):
+	return SequenceMatcher(None, a, b).ratio()
+# Create Dictionary of keyword for data
+def countKeyword(CONFIG,CURR_KW):
+	count = 0
+	for key1 in CONFIG:
+		key1 = key1.lower()
+		if (len(CURR_KW) == 0):
+			CURR_KW[key1] = 1
+		else:
+			if key1 in CURR_KW:
+				CURR_KW[key1] = CURR_KW[key1] + 1
+			elif key1 not in CURR_KW:
+				for key2 in list(CURR_KW):
+					ratio = similar(key1,key2)
+					if (ratio >= 0.85):
+						CURR_KW[key2] = CURR_KW[key2] + 1
+						break
+					else:
+						count = count + 1
+						if (count == len(CURR_KW)):
+							CURR_KW[key1] = 1
+							count = 0
+# Create list keyword from other template to make data
+def createData(PDF, keyword,CURR_KW):
+	for PDF_TYPE in PDF:
+		#fileName = list(filter(lambda pdf: pdf[-3:] == 'pdf' ,os.listdir('../' + PDF_TYPE)))
+		with open('../' + 'Template' + '/' + PDF_TYPE + '.json', 'r', encoding='utf8') as json_file:
+			ORIGINAL_CONFIG = json.load(json_file)
+		#for file in fileName:
+		# Reset Current CONFIG
+		CONFIG = ORIGINAL_CONFIG[0].copy()
+		HF_CONFIG = ORIGINAL_CONFIG[1].copy()
+		CURR_CONFIG = {}
+
+		# Sort CONFIG from top to bottom, from left to right
+		configByColumn = dict(sorted(CONFIG.items(), key=lambda kv: kv[1]['column'][0]))
+		CONFIG = dict(sorted(configByColumn.items(), key=lambda kv: kv[1]['row'][0]))
+
+		# Create config for current pdf
+		for key in CONFIG:
+			CURR_CONFIG[key] = {}
+			CURR_CONFIG[key]['row'] = CONFIG[key]['row'].copy()
+			CURR_CONFIG[key]['column'] = CONFIG[key]['column'].copy()
+		countKeyword(CURR_CONFIG,CURR_KW)
+
+# Make data keyword for test template 
+def currDataTemp(str_templateCheck, listCheck):
+	with open('../' + 'Template' + '/' + str_templateCheck + '.json', 'r', encoding='utf8') as json_file:
+		ORIGINAL_CONFIG_CHECK = json.load(json_file)
+	CONFIG_CHECK = ORIGINAL_CONFIG_CHECK[0].copy()
+	# listCheck = []
+	for key in CONFIG_CHECK:
+		# key = key.lower()
+		key = re.sub(r'[0-9]+', '', key)
+		key = key.replace("_","")
+		listCheck.append(key)
+	return listCheck
+# preProcess Text to seperate word with 2 or more space
+def preProcessText(listPdf, fullPdf):
+	for line in fullPdf:
+		# line = line.lower()
+		listLine = []
+		listLine = re.split("\\s \\s+", line)
+		listPdf.append(listLine)
+	return listPdf
+# Check if`keyword in data
+def detectInData(fullPdf, listCheck, CURR_KW, newKw,listPdf):
+	#preProcessText(listPdf, fullPdf)
+	for listLine in listPdf:
+		for key in list(CURR_KW):
+			for ele in listLine:
+				ratio = similar(ele, key)
+				if (ratio >= 0.8):
+					ele = ele.replace(":","")
+					ele = ele.strip()
+
+					if ele not in listCheck:
+						listCheck.append(ele)
+						newKw.append(ele)
+	return newKw
+# Check if keyword first appears in current 
+def detectNotInData(fullPdf, listCheck, CURR_KW, newKw,listPdf):
+	time = 0
+	specialChar = ["!","@","#","$","%","^","&","*","(",")",":",";"]
+	kwInData = True
+	for listLine in listPdf:
+		for ele in listLine:
+			t = re.findall(r'[\d]+ [\d]+:[\d]+', ele)
+			if (len(t) > 0):
+				time = t[0]
+			#result = re.findall(r'[\s\w\\/\\."]+[\s]*[\\:\\#]+', ele)
+			result = re.findall(r'[\s\w\\/\\.\s"]+[\\:\\#]+', ele)
+			for i in result:
+				if len(i) > 3:
+					for spec in specialChar:
+						if spec in i:
+							x = re.search(spec, i)
+							keyword = i[0:x.start()]
+							keyword = keyword.strip()
+							if keyword not in listCheck:
+								if keyword not in list(CURR_KW):
+									if (time != 0):
+										if keyword not in time:
+											newKw.append(keyword)
+	return newKw
+
+def generateListNewKws(file,template,CURR_KW,jsonDir):
+	newKw=[]
+	listPdf = []
+	listCheck = []
+
+	templateFiles=glob.glob(jsonDir)
+	starPos=jsonDir.find('*')
+	PDF=[]
+	for templateFile in templateFiles:
+		jsonPos=templateFile.find('.json')
+		PDF.append(templateFile[starPos:jsonPos])
+
+	fullPdf=preProcessPdf(file)
+	# Data of test template
+	listCheck = currDataTemp(template, listCheck)
+	# Take keyword from others template to make data
+	keyword = []
+	createData(PDF,keyword,CURR_KW)
+	listPdf = preProcessText(listPdf, fullPdf)
+	# for line in listPdf:
+	#     print(line)
+	newKw = detectInData(fullPdf, listCheck, CURR_KW, newKw,listPdf)
+	newKw = detectNotInData(fullPdf, listCheck, CURR_KW, newKw,listPdf)
+	# print(newKw)
+	return newKw
+
+def drawTextboxNewKws(key,sourceFile,modifiedFile,CONFIG):
+	doc=fitz.open(sourceFile)
+	for page in doc:
+		text_instances=page.searchFor(key)
+		for inst in text_instances: 
+			highlight=page.addHighlightAnnot(inst)
+			highlight.setColors({"stroke": (1,0,1)})
+					
+	doc.save(modifiedFile,garbage=4, deflate=True, clean=False)
+	copyfile(modifiedFile,sourceFile)
+
