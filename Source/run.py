@@ -21,17 +21,23 @@ if __name__ == '__main__':
 
 	# Extractor
 	for file in fileName:
-		print(file,template[file])
+		try:
+			print(file,template[file])
 
-		PDF_TYPE = template[file]
-		# jsonDir='../Template/*json'
-		# standardFolder='../Sample/'
-		# inputPath='../Test'
-		# resultPath='../Result'
-		# # Matching process
-		# PDF_TYPE = findTemplateBetaVersion(path,file,jsonDir,standardFolder)
-		# print(PDF_TYPE)
+			PDF_TYPE = template[file]
+			# jsonDir='../Template/*json'
+			# standardFolder='../Sample/'
+			# inputPath='../Test'
+			# resultPath='../Result'
+			# # Matching process
+			# PDF_TYPE = findTemplateBetaVersion(path,file,jsonDir,standardFolder)
+			# print(PDF_TYPE)
 
-		# Extractor
-		if(int(PDF_TYPE) > 0):
-			extractingData(file, PDF_TYPE)
+			# Extractor
+			if(int(PDF_TYPE) > 0):
+				extractingData(file, PDF_TYPE)
+		except:
+			print("-------------------------------------------------------------")
+			print("THIS FILE HAS ERROR IN EXTRACTOR: " + file)
+			print("-------------------------------------------------------------")
+			continue

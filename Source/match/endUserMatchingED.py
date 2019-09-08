@@ -129,13 +129,13 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 				targetNewKwList=newKwList
 
 				# Testing===========================================================================
-				print('=========================================================================')
-				print('Standard string:',configString)
-				print('Target S:',s)
-				print('Distance:',minDistance)
-				print('Template:',jsonFile[starPos:-5])
-				print('New keywords:',newKwList)
-				print('=========================================================================')
+				# print('=========================================================================')
+				# print('Standard string:',configString)
+				# print('Target S:',s)
+				# print('Distance:',minDistance)
+				# print('Template:',jsonFile[starPos:-5])
+				# print('New keywords:',newKwList)
+				# print('=========================================================================')
 				if (minDistance==0 or minDistance>15): break
 				# Testing==========================================================================
 		if (minDistance==0): break
@@ -153,27 +153,34 @@ def endUserSolve(resultFile,inputPath,resultPath,matchingFolder,jsonDir,standard
 	matchingFiles.sort()
 	CURR_KW={}
 	for file in matchingFiles:
-		decorationPrint(resultFile,'-',36)
-		ans,minDistance=findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CURR_KW)
-		if (ans==-1):
-			pos=re.search(inputPath+'/',file).span()
-			resultFile.write(file[pos[1]:]+' unknown template\n')
-		else:
-			pos=re.search(inputPath+'/',file).span()
-			resultFile.write(file[pos[1]:]+' '+ans+'\n')
-			if (minDistance!=0): resultFile.write('Warning: '+file[pos[1]:]+' doesn\'t fully match the template\n')
+		try:
+			#decorationPrint(resultFile,'-',36)
+			ans,minDistance=findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CURR_KW)
+			if (ans==-1):
+				pos=re.search(inputPath+'/',file).span()
+				resultFile.write(file[pos[1]:]+' unknown template\n')
+			else:
+				pos=re.search(inputPath+'/',file).span()
+				resultFile.write(file[pos[1]:]+' '+ans+'\n')
+				if (minDistance!=0): resultFile.write('Warning: '+file[pos[1]:]+' doesn\'t fully match the template\n')
 
-			# New key===============================================
-			# resultFile.write('New keywords: ')
-			# for key in generateListNewKws(file,ans,CURR_KW): resultFile.write(key+'\n')
-			# resultFile.write('\n')
-			# ======================================================
-		startFilenamePos=len(inputPath+'/')
-		return_dict[file[startFilenamePos:]] = ans
-			
-		decorationPrint(resultFile,'-',36)
+				# New key===============================================
+				# resultFile.write('New keywords: ')
+				# for key in generateListNewKws(file,ans,CURR_KW): resultFile.write(key+'\n')
+				# resultFile.write('\n')
+				# ======================================================
+			startFilenamePos=len(inputPath+'/')
+			return_dict[file[startFilenamePos:]] = ans
+				
+			#decorationPrint(resultFile,'-',36)
+		except:
+			print("-------------------------------------------------------------")
+			print("THIS FILE HAS ERROR IN WARNING: " + file)
+			print("-------------------------------------------------------------")
+			continue
 
 	return return_dict
+
 
 def templateMatch(inputPath,resultPath,jsonDir,standardFolder):
 	with open(resultPath+'/result.txt','w',encoding='utf8') as resultFile:

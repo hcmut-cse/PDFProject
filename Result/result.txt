@@ -1,15 +1,11 @@
 ##################################################
 MATCHING
-------------------------------------
-05111+SI.pdf 2_6_12
-------------------------------------
-------------------------------------
-SGNV54411500.pdf unknown template
-------------------------------------
-------------------------------------
-SGNV54912400.pdf unknown template
-------------------------------------
-------------------------------------
-SGNV65274700.pdf unknown template
-------------------------------------
+16.pdf 16
+Warning: 16.pdf doesn't fully match the template
+ONEYHPHV04842700.pdf 16
+Warning: ONEYHPHV04842700.pdf doesn't fully match the template
+ONEYHPHV05308500.pdf 16
+Warning: ONEYHPHV05308500.pdf doesn't fully match the template
+ONEYHPHV06393300.pdf 16
+Warning: ONEYHPHV06393300.pdf doesn't fully match the template
 ##################################################
