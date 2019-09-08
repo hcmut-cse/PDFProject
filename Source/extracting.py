@@ -11,7 +11,7 @@ import pdftotext
 
 
 def extractingData(file, PDF_TYPE):
-    with open('../Template/' + PDF_TYPE + '.json', 'r', encoding='utf8') as json_file:
+    with open('../Template/Temp/' + PDF_TYPE + '.json', 'r', encoding='utf8') as json_file:
         ORIGINAL_CONFIG = json.load(json_file)
 
     CONFIG = ORIGINAL_CONFIG[0].copy()

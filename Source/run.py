@@ -36,7 +36,7 @@ if __name__ == '__main__':
 			# Extractor
 			if(int(PDF_TYPE) > 0):
 				extractingData(file, PDF_TYPE)
-		except:
+		except :
 			print("-------------------------------------------------------------")
 			print("THIS FILE HAS ERROR IN EXTRACTOR: " + file)
 			print("-------------------------------------------------------------")
