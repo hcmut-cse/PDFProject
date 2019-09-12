@@ -336,7 +336,7 @@ def similar(a, b):
 def countKeyword(CONFIG,CURR_KW):
 	count = 0
 	for key1 in CONFIG:
-		key1 = key1.lower()
+		#key1 = key1.lower()
 		if (len(CURR_KW) == 0):
 			CURR_KW[key1] = 1
 		else:
@@ -375,15 +375,21 @@ def createData(PDF, keyword,CURR_KW):
 			CURR_CONFIG[key]['row'] = CONFIG[key]['row'].copy()
 			CURR_CONFIG[key]['column'] = CONFIG[key]['column'].copy()
 		countKeyword(CURR_CONFIG,CURR_KW)
-
-# Make data keyword for test template 
+		for i in CONFIG:
+			#print(i)
+			if ("alias" in CONFIG[i]):
+				#print(dic[i]["alias"])
+				for alias in CONFIG[i]["alias"]:
+			 		CURR_KW[CONFIG[i]["alias"][alias]["name"]] = 0
+		
+# Make data keyword for test template
 def currDataTemp(str_templateCheck, listCheck):
 	with open('../' + 'Template' + '/' + str_templateCheck + '.json', 'r', encoding='utf8') as json_file:
 		ORIGINAL_CONFIG_CHECK = json.load(json_file)
 	CONFIG_CHECK = ORIGINAL_CONFIG_CHECK[0].copy()
 	# listCheck = []
 	for key in CONFIG_CHECK:
-		key = key.lower()
+		# key = key.lower()
 		key = re.sub(r'[0-9]+', '', key)
 		key = key.replace("_","")
 		listCheck.append(key)
@@ -391,51 +397,34 @@ def currDataTemp(str_templateCheck, listCheck):
 # preProcess Text to seperate word with 2 or more space
 def preProcessText(listPdf, fullPdf):
 	for line in fullPdf:
-		line = line.lower()
+		# line = line.lower()
 		listLine = []
 		listLine = re.split("\\s \\s+", line)
 		listPdf.append(listLine)
 	return listPdf
 # Check if`keyword in data
 def detectInData(fullPdf, listCheck, CURR_KW, newKw,listPdf):
-	#preProcessText(listPdf, fullPdf)
+	# for listLine in listPdf:
+	# 	for key in list(CURR_KW):
+	# 		for ele in listLine:
+	# 			ratio = similar(ele, key)
+	# 			if (ratio >= 0.8):
+	# 				ele = ele.replace(":","")
+	# 				ele = ele.strip()
+	# 				if ele not in listCheck:
+	# 					listCheck.append(ele)
+	# 					newKw.append(ele)
+	# return newKw
 	for listLine in listPdf:
 		for key in list(CURR_KW):
 			for ele in listLine:
-				ratio = similar(ele, key)
-				if (ratio >= 0.8):
-					ele = ele.replace(":","")
-					ele = ele.strip()
-
+				ele = ele.replace(":","")
+				ele = ele.strip()
+				if (ele == key):
 					if ele not in listCheck:
 						listCheck.append(ele)
 						newKw.append(ele)
 	return newKw
-# Check if keyword first appears in current 
-# def detectNotInData(fullPdf, listCheck, CURR_KW, newKw,listPdf):
-# 	time = 0
-# 	specialChar = ["!","@","#","$","%","^","&","*","(",")",":",";"]
-# 	kwInData = True
-# 	for listLine in listPdf:
-# 		for ele in listLine:
-# 			t = re.findall(r'[\d]+ [\d]+:[\d]+', ele)
-# 			if (len(t) > 0):
-# 				time = t[0]
-# 			#result = re.findall(r'[\s\w\\/\\."]+[\s]*[\\:\\#]+', ele)
-# 			result = re.findall(r'[\s\w\\/\\.\s"]+[\\:\\#]+', ele)
-# 			for i in result:
-# 				if len(i) > 3:
-# 					for spec in specialChar:
-# 						if spec in i:
-# 							x = re.search(spec, i)
-# 							keyword = i[0:x.start()]
-# 							keyword = keyword.strip()
-# 							if keyword not in listCheck:
-# 								if keyword not in list(CURR_KW):
-# 									if (time != 0):
-# 										if keyword not in time:
-# 											newKw.append(keyword)
-# 	return newKw
 
 def generateListNewKws(file,template,CURR_KW,jsonDir):
 	newKw=[]
