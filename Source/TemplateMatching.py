@@ -1,16 +1,11 @@
 from match.endUserMatchingED import *
 
-
-
-
-
 def TemplateMatching():
 	jsonDir='../Template/*json'
 	standardFolder='../Sample/'
 	inputPath='../PdfToExtract'
 	resultPath='../Result'
 
-	
 	with open(resultPath+'/result.txt','w',encoding='utf8') as resultFile:
 		if os.path.isdir(resultPath+'/'+'warning'):
 			files=glob.glob(resultPath+'/'+'warning/*pdf') 

@@ -9,7 +9,6 @@ from PdfExtractor.Source.posProcess import posProcessData
 from PdfExtractor.Source.connectContent import connectContent
 import pdftotext
 
-
 def extractingData(file, PDF_TYPE):
     with open('../Template/Temp/' + PDF_TYPE + '.json', 'r', encoding='utf8') as json_file:
         ORIGINAL_CONFIG = json.load(json_file)
@@ -44,6 +43,8 @@ def extractingData(file, PDF_TYPE):
     # for line in fullPdf:
     #     print(line)
     # Extract data from PDF
+    # import pdb
+    # pdb.set_trace()
     extractedData = extractData(fullPdf, CONFIG, CURR_CONFIG, removed)
 
     # extractedData = posProcessData(extractedData, CURR_CONFIG, removed)

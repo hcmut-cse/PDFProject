@@ -41,25 +41,11 @@ def triggerWarning(inputPath,resultPath,file,template,configString,s,CONFIG,line
 				checked[key]=checked[checkedKey]=1
 				break
 	lenLineList=len(lineList)
-	# import pdb
-	# pdb.set_trace()
-	# # New keys
-	# newKwList=generateListNewKws(file,ans,CURR_KW)
-	# for key in newKwList:
-	# 	for tmpKey in aliasDict:
-	# 		if key in aliasDict[tmpKey]: 
-	# 			newKwList.remove(key)
-	# 			break
-	# print(missingKws)
-	# print(mishandledKws)
 	if (not (len(missingKws) or len(mishandledKws) or len(newKwList))): return
 	# if (not (len(missingKws) or len(mishandledKws))): return
-
-
 	doc=fitz.open(file)
 	page=doc[0]
 	if (not len(page.searchFor(configString[0]))): missingKws.append(configString[0])
-
 	startFilenamePos=len(inputPath)
 	modifiedFile=resultPath+'/warning'+file[startFilenamePos:]
 	copyfile(file,modifiedFile)
@@ -69,21 +55,36 @@ def triggerWarning(inputPath,resultPath,file,template,configString,s,CONFIG,line
 	if (len(missingKws)):
 		for key in missingKws:
 			drawTextboxMissingKws(sourceFile,modifiedFile,key,configString,s,CONFIG,ans,standardFolder)
+	numKeyProcessing=0
 	if (len(mishandledKws)):
 		count={}
 		for key in mishandledKws: count[key]=0
-
-		# for i in range(lenLineList):
-		# 	for key in mishandledKws:
-		# 		if (lineList[i].find(key)!=-1): count[key]+=1
 		for page in doc:
 			for key in mishandledKws: count[key]+=len(page.searchFor(key))
 
-		for key in mishandledKws: 
+		# Fixing tiny distance keywords
+		realMishandledKws=[]
+		l=len(mishandledKws)
+		for i in range(l-1):
+			if (CONFIG[mishandledKws[i]]['column'][0]): firstCol0=CONFIG[mishandledKws[i]]['column'][0]
+			else: firstCol0=0
+			if (CONFIG[mishandledKws[i+1]]['column'][0]): secondCol0=CONFIG[mishandledKws[i+1]]['column'][0]
+			else: secondCol0=0
+			distance=abs(firstCol0-secondCol0)
+			if (distance<60): realMishandledKws.append(mishandledKws[i])
+		for key in realMishandledKws: 
 			drawTextboxMishandled(key,sourceFile,modifiedFile,count,CONFIG,aliasDict)
+			numKeyProcessing+=1
+		###############################
+
+		# for key in mishandledKws: 
+		# 	drawTextboxMishandled(key,sourceFile,modifiedFile,count,CONFIG,aliasDict)
 	if (len(newKwList)):
 		for key in newKwList: 
 			drawTextboxNewKws(key,sourceFile,modifiedFile,CONFIG)
+			numKeyProcessing+=1
+	if (numKeyProcessing==0): os.remove(modifiedFile)
+
 
 def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CURR_KW):
 	jsonFiles=glob.glob(jsonDir)
@@ -110,7 +111,6 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 		for s in sList:
 			dis=getDamerauDistance(configString,s,aliasDict)
 			dis+=len(newKwList)*0.5
-
 			# Testing===========================================================================
 			# print('=========================================================================')
 			# print('Standard string:',configString)
@@ -127,7 +127,6 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 				targetCONFIG=CONFIG
 				targetAliasDict=aliasDict
 				targetNewKwList=newKwList
-
 				# Testing===========================================================================
 				# print('=========================================================================')
 				# print('Standard string:',configString)
@@ -153,31 +152,22 @@ def endUserSolve(resultFile,inputPath,resultPath,matchingFolder,jsonDir,standard
 	matchingFiles.sort()
 	CURR_KW={}
 	for file in matchingFiles:
-		try:
-			#decorationPrint(resultFile,'-',36)
-			ans,minDistance=findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CURR_KW)
-			if (ans==-1):
-				pos=re.search(inputPath+'/',file).span()
-				resultFile.write(file[pos[1]:]+' unknown template\n')
-			else:
-				pos=re.search(inputPath+'/',file).span()
-				resultFile.write(file[pos[1]:]+' '+ans+'\n')
-				if (minDistance!=0): resultFile.write('Warning: '+file[pos[1]:]+' doesn\'t fully match the template\n')
+		ans,minDistance=findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CURR_KW)
+		if (ans==-1):
+			pos=re.search(inputPath+'/',file).span()
+			resultFile.write(file[pos[1]:]+' unknown template\n')
+		else:
+			pos=re.search(inputPath+'/',file).span()
+			resultFile.write(file[pos[1]:]+' '+ans+'\n')
+			if (minDistance!=0): resultFile.write('Warning: '+file[pos[1]:]+' doesn\'t fully match the template\n')
 
-				# New key===============================================
-				# resultFile.write('New keywords: ')
-				# for key in generateListNewKws(file,ans,CURR_KW): resultFile.write(key+'\n')
-				# resultFile.write('\n')
-				# ======================================================
-			startFilenamePos=len(inputPath+'/')
-			return_dict[file[startFilenamePos:]] = ans
-				
-			#decorationPrint(resultFile,'-',36)
-		except:
-			print("-------------------------------------------------------------")
-			print("THIS FILE HAS ERROR IN WARNING: " + file)
-			print("-------------------------------------------------------------")
-			continue
+			# New key===============================================
+			# resultFile.write('New keywords: ')
+			# for key in generateListNewKws(file,ans,CURR_KW): resultFile.write(key+'\n')
+			# resultFile.write('\n')
+			# ======================================================
+		startFilenamePos=len(inputPath+'/')
+		return_dict[file[startFilenamePos:]] = ans
 
 	return return_dict
 

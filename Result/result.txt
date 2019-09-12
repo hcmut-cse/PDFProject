@@ -1,0 +1,18 @@
+##################################################
+MATCHING
+Type_4_4.pdf 4
+Warning: Type_4_4.pdf doesn't fully match the template
+Type_4_CLTV03011635_SGNV19768700_1_ocps_si@opussmtp.one-line.com_2(ocps20190301081856_2)_1.pdf 4
+Warning: Type_4_CLTV03011635_SGNV19768700_1_ocps_si@opussmtp.one-line.com_2(ocps20190301081856_2)_1.pdf doesn't fully match the template
+Type_4_CLTV03011642_SGNV19756400_1_ocps_si@opussmtp.one-line.com_1(ocps20190301082145_1)_1.pdf 4
+Warning: Type_4_CLTV03011642_SGNV19756400_1_ocps_si@opussmtp.one-line.com_1(ocps20190301082145_1)_1.pdf doesn't fully match the template
+Type_4_CLTV03016245_HANV05057400_1_ocps_si@opussmtp.one-line.com_1(ocps20190301184105_1)_1.pdf 4
+Type_4_SEC19020003.pdf 4
+Type_4_SEC19030012.pdf 4
+Type_4_SGNV42203800_3_SI.pdf 4
+Warning: Type_4_SGNV42203800_3_SI.pdf doesn't fully match the template
+Type_4_SGNV44914500_2_SI.pdf 4
+Warning: Type_4_SGNV44914500_2_SI.pdf doesn't fully match the template
+Type_4_SGNV56782400_1_SI.pdf 4
+Warning: Type_4_SGNV56782400_1_SI.pdf doesn't fully match the template
+##################################################

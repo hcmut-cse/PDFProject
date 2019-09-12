@@ -383,7 +383,7 @@ def currDataTemp(str_templateCheck, listCheck):
 	CONFIG_CHECK = ORIGINAL_CONFIG_CHECK[0].copy()
 	# listCheck = []
 	for key in CONFIG_CHECK:
-		# key = key.lower()
+		key = key.lower()
 		key = re.sub(r'[0-9]+', '', key)
 		key = key.replace("_","")
 		listCheck.append(key)
@@ -391,7 +391,7 @@ def currDataTemp(str_templateCheck, listCheck):
 # preProcess Text to seperate word with 2 or more space
 def preProcessText(listPdf, fullPdf):
 	for line in fullPdf:
-		# line = line.lower()
+		line = line.lower()
 		listLine = []
 		listLine = re.split("\\s \\s+", line)
 		listPdf.append(listLine)
@@ -412,30 +412,30 @@ def detectInData(fullPdf, listCheck, CURR_KW, newKw,listPdf):
 						newKw.append(ele)
 	return newKw
 # Check if keyword first appears in current 
-def detectNotInData(fullPdf, listCheck, CURR_KW, newKw,listPdf):
-	time = 0
-	specialChar = ["!","@","#","$","%","^","&","*","(",")",":",";"]
-	kwInData = True
-	for listLine in listPdf:
-		for ele in listLine:
-			t = re.findall(r'[\d]+ [\d]+:[\d]+', ele)
-			if (len(t) > 0):
-				time = t[0]
-			#result = re.findall(r'[\s\w\\/\\."]+[\s]*[\\:\\#]+', ele)
-			result = re.findall(r'[\s\w\\/\\.\s"]+[\\:\\#]+', ele)
-			for i in result:
-				if len(i) > 3:
-					for spec in specialChar:
-						if spec in i:
-							x = re.search(spec, i)
-							keyword = i[0:x.start()]
-							keyword = keyword.strip()
-							if keyword not in listCheck:
-								if keyword not in list(CURR_KW):
-									if (time != 0):
-										if keyword not in time:
-											newKw.append(keyword)
-	return newKw
+# def detectNotInData(fullPdf, listCheck, CURR_KW, newKw,listPdf):
+# 	time = 0
+# 	specialChar = ["!","@","#","$","%","^","&","*","(",")",":",";"]
+# 	kwInData = True
+# 	for listLine in listPdf:
+# 		for ele in listLine:
+# 			t = re.findall(r'[\d]+ [\d]+:[\d]+', ele)
+# 			if (len(t) > 0):
+# 				time = t[0]
+# 			#result = re.findall(r'[\s\w\\/\\."]+[\s]*[\\:\\#]+', ele)
+# 			result = re.findall(r'[\s\w\\/\\.\s"]+[\\:\\#]+', ele)
+# 			for i in result:
+# 				if len(i) > 3:
+# 					for spec in specialChar:
+# 						if spec in i:
+# 							x = re.search(spec, i)
+# 							keyword = i[0:x.start()]
+# 							keyword = keyword.strip()
+# 							if keyword not in listCheck:
+# 								if keyword not in list(CURR_KW):
+# 									if (time != 0):
+# 										if keyword not in time:
+# 											newKw.append(keyword)
+# 	return newKw
 
 def generateListNewKws(file,template,CURR_KW,jsonDir):
 	newKw=[]
@@ -459,7 +459,7 @@ def generateListNewKws(file,template,CURR_KW,jsonDir):
 	# for line in listPdf:
 	#     print(line)
 	newKw = detectInData(fullPdf, listCheck, CURR_KW, newKw,listPdf)
-	newKw = detectNotInData(fullPdf, listCheck, CURR_KW, newKw,listPdf)
+	#newKw = detectNotInData(fullPdf, listCheck, CURR_KW, newKw,listPdf)
 	# print(newKw)
 	return newKw
 
