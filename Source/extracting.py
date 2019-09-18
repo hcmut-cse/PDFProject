@@ -5,7 +5,7 @@ import json
 import numpy as np
 from PdfExtractor.Source.preProcess import preProcessPdf
 from PdfExtractor.Source.processData import extractData
-from PdfExtractor.Source.posProcess import posProcessData
+from PdfExtractor.Source.posProcess import leftProcess, subfieldProcess
 from PdfExtractor.Source.connectContent import connectContent
 import pdftotext
 
