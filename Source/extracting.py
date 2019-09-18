@@ -9,23 +9,29 @@ from PdfExtractor.Source.posProcess import posProcessData
 from PdfExtractor.Source.connectContent import connectContent
 import pdftotext
 
+PDF_FOLDER = '../PdfToExtract/'
+TEMPLATE_FOLDER = '../Template/Temp/'
+RESULT_FOLDER = '../Result/'
+
 def extractingData(file, PDF_TYPE):
-    with open('../Template/Temp/' + PDF_TYPE + '.json', 'r', encoding='utf8') as json_file:
+
+    with open(TEMPLATE_FOLDER + PDF_TYPE + '.json', 'r', encoding='utf8') as json_file:
         ORIGINAL_CONFIG = json.load(json_file)
 
-    CONFIG = ORIGINAL_CONFIG[0].copy()
-    HF_CONFIG = ORIGINAL_CONFIG[1].copy()
-    CURR_CONFIG = {}
-    with open('../PdfToExtract/' + file, "rb") as f:
-        pdf = pdftotext.PDF(f)
+    print("========================================================")
+    print(file)
+    print("========================================================")
 
-    if (PDF_TYPE == "15"):
-        if (len(pdf) == 2):
-            CONFIG = CONFIG["multi"]
-        elif (len(pdf) == 3):
-            CONFIG = CONFIG["3"]
-        elif (len(pdf) == 1):
-            CONFIG = CONFIG["1"]
+    print("- Pre-processing PDF for extracting...")
+    CURR_CONFIG = {}
+    CONFIG = {}
+    HF_CONFIG = {}
+    PDF_PAGES = 0
+
+    # Preproces PDF
+    fullPdf, removed, CONFIG, HF_CONFIG, PDF_PAGES = preProcessPdf(PDF_FOLDER + file, ORIGINAL_CONFIG)
+    # for line in fullPdf:
+    #     print(line)
 
     # Sort CONFIG from top to bottom, from left to right
     configByColumn = dict(sorted(CONFIG.items(), key=lambda kv: kv[1]['column'][0]))
@@ -38,25 +44,26 @@ def extractingData(file, PDF_TYPE):
         CURR_CONFIG[key]['row'] = CONFIG[key]['row'].copy()
         CURR_CONFIG[key]['column'] = CONFIG[key]['column'].copy()
 
-    # Preproces PDF
-    fullPdf, removed = preProcessPdf('../PdfToExtract/' + file, HF_CONFIG)
-    # for line in fullPdf:
-    #     print(line)
+    print("- Extracting information from PDF...")
     # Extract data from PDF
-    # import pdb
-    # pdb.set_trace()
     extractedData = extractData(fullPdf, CONFIG, CURR_CONFIG, removed)
 
-    # extractedData = posProcessData(extractedData, CURR_CONFIG, removed)
+    print("- Pos-processing extracted data...")
+    # Run pos-processing
+    extractedData = leftProcess(CONFIG, extractedData)
+    extractedData = subfieldProcess(CONFIG, extractedData)
 
-    length = len(pdf)
-    if (length > 1):
-        extractedData = connectContent(length, extractedData)
-    # for word in removed:
-    #     if (removed[word])
+    print("- Connecting similar contents...")
+    # If pdf have multi pages, we will check similar content and connect them
+    if (PDF_PAGES > 1):
+        extractedData = connectContent(PDF_PAGES, extractedData)
+
+    print("- Writting result to file...")
     # Save extracted result to file
-    with open('../Result/' + file[:-3] + 'txt', 'w', encoding='utf8') as resultFile:
+    with open(RESULT_FOLDER + file[:-3] + 'txt', 'w', encoding='utf8') as resultFile:
         for key in extractedData:
             resultFile.write("------------------------------------\n")
             resultFile.write("%s:\n%s\n" % (key, extractedData[key]))
             resultFile.write("------------------------------------\n")
+
+    print("- Done!")
