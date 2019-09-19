@@ -175,8 +175,17 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 	print()
 	#############################
 
+
+	#############################
+	# configString: standard list of keywords
+	# targetS: list of keywords in PDF 
+
+	print(configString)
+	print(targetS)	
+	#############################
+
 	# return ans,minDistance
-	return ans,minDistance,matchingTime,warningTime
+	return ans,minDistance,matchingTime,warningTime,configString,targetS
 
 def endUserSolve(resultFile,inputPath,resultPath,matchingFolder,jsonDir,standardFolder,performanceFile):
 	return_dict = {}
@@ -186,7 +195,7 @@ def endUserSolve(resultFile,inputPath,resultPath,matchingFolder,jsonDir,standard
 	CURR_KW={}
 	for file in matchingFiles:
 		startTime=time.time()
-		ans,minDistance,matchingTime,warningTime=findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CURR_KW,startTime)
+		ans,minDistance,matchingTime,warningTime,configString,targetS=findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CURR_KW,startTime)
 
 		pos=re.search(inputPath+'/',file).span()
 		performanceFile.write(file[pos[1]:]+'\n')
