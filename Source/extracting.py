@@ -10,7 +10,7 @@ from PdfExtractor.Source.connectContent import connectContent
 import pdftotext
 
 PDF_FOLDER = '../PdfToExtract/'
-TEMPLATE_FOLDER = '../Template/Temp/'
+TEMPLATE_FOLDER = '../Template/Merged/'
 RESULT_FOLDER = '../Result/'
 
 def extractingData(file, PDF_TYPE):

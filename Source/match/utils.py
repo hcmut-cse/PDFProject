@@ -241,35 +241,44 @@ def drawTextboxMishandled(key,sourceFile,modifiedFile,count,CONFIG,aliasDict):
 			trueInst=1
 			if (count[key]>1):
 				for margin in CONFIG[key]['endObject']:
-					tmpKey=CONFIG[key]['endObject'][margin]
-					if (tmpKey=='same_left'): tmpKey=CONFIG[key]['endObject']['left']
-					if (tmpKey!=-1):
-						if (margin=='top'):
-							if (page.searchFor(tmpKey)):
-								tmpPos=page.searchFor(tmpKey)[0]
-								if (tmpPos[1]>inst[3]): 
-									trueInst=0
-									break
-						elif (margin=='bottom'):
-							if (page.searchFor(tmpKey)):
-								tmpPos=page.searchFor(tmpKey)[0]
-								if (tmpPos[3]<inst[1]):
-									trueInst=0
-									break
-							else: trueInst=0
-						elif (margin=='left'):
-							if (page.searchFor(tmpKey)):
-								tmpPos=page.searchFor(tmpKey)[0]
-								if (tmpPos[0]>inst[2]):
-									trueInst=0
-									break
-						else:
-							if (page.searchFor(tmpKey)):
-								tmpPos=page.searchFor(tmpKey)[0]
-								if (tmpPos[2]<inst[0]):
-									trueInst=0
-									break
-									
+					tmpKeys=CONFIG[key]['endObject'][margin]
+					if (tmpKeys==-1): continue
+					listTmpKey=[]
+					lastPos=0
+					l=len(tmpKeys)
+					for i in range(l):
+						if (tmpKeys[i]=='|'):
+							listTmpKey.push(tmpKeys[lastPos:i])
+							lastPos=i+1
+					for tmpKey in listTmpKey:
+						tmpKey=CONFIG[key]['endObject'][margin]
+						if (tmpKey=='same_left'): tmpKey=CONFIG[key]['endObject']['left']
+						if (tmpKey!=-1):
+							if (margin=='top'):
+								if (page.searchFor(tmpKey)):
+									tmpPos=page.searchFor(tmpKey)[0]
+									if (tmpPos[1]>inst[3]): 
+										trueInst=0
+										break
+							elif (margin=='bottom'):
+								if (page.searchFor(tmpKey)):
+									tmpPos=page.searchFor(tmpKey)[0]
+									if (tmpPos[3]<inst[1]):
+										trueInst=0
+										break
+								else: trueInst=0
+							elif (margin=='left'):
+								if (page.searchFor(tmpKey)):
+									tmpPos=page.searchFor(tmpKey)[0]
+									if (tmpPos[0]>inst[2]):
+										trueInst=0
+										break
+							else:
+								if (page.searchFor(tmpKey)):
+									tmpPos=page.searchFor(tmpKey)[0]
+									if (tmpPos[2]<inst[0]):
+										trueInst=0
+										break
 			if (trueInst):
 				highlight=page.addHighlightAnnot(inst)
 				highlight.setColors({"stroke": (0,1,0)})
