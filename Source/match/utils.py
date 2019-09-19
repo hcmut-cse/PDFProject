@@ -13,6 +13,7 @@ import fitz
 import re
 from difflib import SequenceMatcher
 from shutil import copyfile,rmtree
+import xlrd
 
 def findFontSize(file,key):
 	os.system('pdf2txt.py -o output.html -t html \''+file+'\'')
@@ -241,35 +242,44 @@ def drawTextboxMishandled(key,sourceFile,modifiedFile,count,CONFIG,aliasDict):
 			trueInst=1
 			if (count[key]>1):
 				for margin in CONFIG[key]['endObject']:
-					tmpKey=CONFIG[key]['endObject'][margin]
-					if (tmpKey=='same_left'): tmpKey=CONFIG[key]['endObject']['left']
-					if (tmpKey!=-1):
-						if (margin=='top'):
-							if (page.searchFor(tmpKey)):
-								tmpPos=page.searchFor(tmpKey)[0]
-								if (tmpPos[1]>inst[3]): 
-									trueInst=0
-									break
-						elif (margin=='bottom'):
-							if (page.searchFor(tmpKey)):
-								tmpPos=page.searchFor(tmpKey)[0]
-								if (tmpPos[3]<inst[1]):
-									trueInst=0
-									break
-							else: trueInst=0
-						elif (margin=='left'):
-							if (page.searchFor(tmpKey)):
-								tmpPos=page.searchFor(tmpKey)[0]
-								if (tmpPos[0]>inst[2]):
-									trueInst=0
-									break
-						else:
-							if (page.searchFor(tmpKey)):
-								tmpPos=page.searchFor(tmpKey)[0]
-								if (tmpPos[2]<inst[0]):
-									trueInst=0
-									break
-									
+					tmpKeys=CONFIG[key]['endObject'][margin]
+					if (tmpKeys==-1): continue
+					listTmpKey=[]
+					lastPos=0
+					l=len(tmpKeys)
+					for i in range(l):
+						if (tmpKeys[i]=='|'):
+							listTmpKey.push(tmpKeys[lastPos:i])
+							lastPos=i+1
+					for tmpKey in listTmpKey:
+						tmpKey=CONFIG[key]['endObject'][margin]
+						if (tmpKey=='same_left'): tmpKey=CONFIG[key]['endObject']['left']
+						if (tmpKey!=-1):
+							if (margin=='top'):
+								if (page.searchFor(tmpKey)):
+									tmpPos=page.searchFor(tmpKey)[0]
+									if (tmpPos[1]>inst[3]): 
+										trueInst=0
+										break
+							elif (margin=='bottom'):
+								if (page.searchFor(tmpKey)):
+									tmpPos=page.searchFor(tmpKey)[0]
+									if (tmpPos[3]<inst[1]):
+										trueInst=0
+										break
+								else: trueInst=0
+							elif (margin=='left'):
+								if (page.searchFor(tmpKey)):
+									tmpPos=page.searchFor(tmpKey)[0]
+									if (tmpPos[0]>inst[2]):
+										trueInst=0
+										break
+							else:
+								if (page.searchFor(tmpKey)):
+									tmpPos=page.searchFor(tmpKey)[0]
+									if (tmpPos[2]<inst[0]):
+										trueInst=0
+										break
 			if (trueInst):
 				highlight=page.addHighlightAnnot(inst)
 				highlight.setColors({"stroke": (0,1,0)})
@@ -330,61 +340,18 @@ def createListOfStringLineList(CONFIG,lineList,configString):
 				ansList.append(tmp)
 	return ansList,aliasDict
 
-def similar(a, b):
-	return SequenceMatcher(None, a, b).ratio()
-# Create Dictionary of keyword for data
-def countKeyword(CONFIG,CURR_KW):
-	count = 0
-	for key1 in CONFIG:
-		#key1 = key1.lower()
-		if (len(CURR_KW) == 0):
-			CURR_KW[key1] = 1
-		else:
-			if key1 in CURR_KW:
-				CURR_KW[key1] = CURR_KW[key1] + 1
-			elif key1 not in CURR_KW:
-				for key2 in list(CURR_KW):
-					ratio = similar(key1,key2)
-					if (ratio >= 0.85):
-						CURR_KW[key2] = CURR_KW[key2] + 1
-						break
-					else:
-						count = count + 1
-						if (count == len(CURR_KW)):
-							CURR_KW[key1] = 1
-							count = 0
 # Create list keyword from other template to make data
 def createData(PDF, keyword,CURR_KW):
-	for PDF_TYPE in PDF:
-		#fileName = list(filter(lambda pdf: pdf[-3:] == 'pdf' ,os.listdir('../' + PDF_TYPE)))
-		with open('../' + 'Template' + '/' + PDF_TYPE + '.json', 'r', encoding='utf8') as json_file:
-			ORIGINAL_CONFIG = json.load(json_file)
-		#for file in fileName:
-		# Reset Current CONFIG
-		CONFIG = ORIGINAL_CONFIG[0].copy()
-		HF_CONFIG = ORIGINAL_CONFIG[1].copy()
-		CURR_CONFIG = {}
-
-		# Sort CONFIG from top to bottom, from left to right
-		configByColumn = dict(sorted(CONFIG.items(), key=lambda kv: kv[1]['column'][0]))
-		CONFIG = dict(sorted(configByColumn.items(), key=lambda kv: kv[1]['row'][0]))
-
-		# Create config for current pdf
-		for key in CONFIG:
-			CURR_CONFIG[key] = {}
-			CURR_CONFIG[key]['row'] = CONFIG[key]['row'].copy()
-			CURR_CONFIG[key]['column'] = CONFIG[key]['column'].copy()
-		countKeyword(CURR_CONFIG,CURR_KW)
-		for i in CONFIG:
-			#print(i)
-			if ("alias" in CONFIG[i]):
-				#print(dic[i]["alias"])
-				for alias in CONFIG[i]["alias"]:
-			 		CURR_KW[CONFIG[i]["alias"][alias]["name"]] = 0
-		
+	workbook = xlrd.open_workbook('alias.xlsx')
+	sheet = workbook.sheet_by_index(0)
+	for i in range (1,18):
+		for j in range (0,7):
+			if (sheet.cell(i, j).value == ''):
+				continue
+			CURR_KW[sheet.cell(i, j).value] = 1
 # Make data keyword for test template
 def currDataTemp(str_templateCheck, listCheck):
-	with open('../' + 'Template' + '/' + str_templateCheck + '.json', 'r', encoding='utf8') as json_file:
+	with open('../' + 'Template' + '/' + 'Merged' + '/' + str_templateCheck + '.json', 'r', encoding='utf8') as json_file:
 		ORIGINAL_CONFIG_CHECK = json.load(json_file)
 	CONFIG_CHECK = ORIGINAL_CONFIG_CHECK[0].copy()
 	# listCheck = []
@@ -402,7 +369,7 @@ def preProcessText(listPdf, fullPdf):
 		listLine = re.split("\\s \\s+", line)
 		listPdf.append(listLine)
 	return listPdf
-# Check if`keyword in data
+# Check if keyword in data
 def detectInData(fullPdf, listCheck, CURR_KW, newKw,listPdf):
 	# for listLine in listPdf:
 	# 	for key in list(CURR_KW):
@@ -415,11 +382,21 @@ def detectInData(fullPdf, listCheck, CURR_KW, newKw,listPdf):
 	# 					listCheck.append(ele)
 	# 					newKw.append(ele)
 	# return newKw
+	# for listLine in listPdf:
+	# 	for key in list(CURR_KW):
+	# 		for ele in listLine:
+	# 			ele = ele.replace(":","")
+	# 			ele = ele.strip()
+	# 			if (ele == key):
+	# 				if ele not in listCheck:
+	# 					listCheck.append(ele)
+	# 					newKw.append(ele)
+	# return newKw
 	for listLine in listPdf:
-		for key in list(CURR_KW):
-			for ele in listLine:
-				ele = ele.replace(":","")
-				ele = ele.strip()
+		for ele in listLine:
+			ele = ele.replace(":","")
+			ele = ele.strip()
+			for key in CURR_KW:
 				if (ele == key):
 					if ele not in listCheck:
 						listCheck.append(ele)

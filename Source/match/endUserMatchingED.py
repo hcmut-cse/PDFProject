@@ -18,6 +18,7 @@ from reportlab.lib.colors import red
 from reportlab.lib.pagesizes import letter
 from shutil import copyfile,rmtree
 from bs4 import BeautifulSoup
+import time
 
 def triggerWarning(inputPath,resultPath,file,template,configString,s,CONFIG,lineList,ans,standardFolder,CURR_KW,aliasDict,newKwList):
 	# Find missing keywords
@@ -52,10 +53,17 @@ def triggerWarning(inputPath,resultPath,file,template,configString,s,CONFIG,line
 	sourceFolder=resultPath+'/mummy'
 	sourceFile=sourceFolder+file[startFilenamePos:]
 	copyfile(file,sourceFile)
-	if (len(missingKws)):
-		for key in missingKws:
-			drawTextboxMissingKws(sourceFile,modifiedFile,key,configString,s,CONFIG,ans,standardFolder)
 	numKeyProcessing=0
+
+	realMissingKws=[]
+	for key in missingKws:
+		if key.find('DATA')!=-1: continue
+		realMissingKws.append(key)
+	if (len(realMissingKws)):
+		for key in realMissingKws:
+			drawTextboxMissingKws(sourceFile,modifiedFile,key,configString,s,CONFIG,ans,standardFolder)
+			numKeyProcessing+=1
+
 	if (len(mishandledKws)):
 		count={}
 		for key in mishandledKws: count[key]=0
@@ -86,7 +94,7 @@ def triggerWarning(inputPath,resultPath,file,template,configString,s,CONFIG,line
 	if (numKeyProcessing==0): os.remove(modifiedFile)
 
 
-def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CURR_KW):
+def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CURR_KW,startTime):
 	jsonFiles=glob.glob(jsonDir)
 	minDistance=100000
 	starPos=jsonDir.find('*')
@@ -139,28 +147,66 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 				# Testing==========================================================================
 		if (minDistance==0): break
 
+	# Calculate matching time
+	for i in range(50): print('#',end='')
+	print()
+	pathPos=re.search(inputPath,file).span()
+	print(file[pathPos[1]+1:])
+	endMatchingTime=time.time()
+	matchingTime=endMatchingTime-startTime
+	# print('Matching time:',endTime-startTime,'seconds')
+	#############################################################
+
 	# print(file)
 	if (minDistance>8): return -1,-1
 	if (minDistance!=0): 	
 		triggerWarning(inputPath,resultPath,file,ans,targetConfigString,targetS,targetCONFIG,lineList,ans,standardFolder,CURR_KW,targetAliasDict,targetNewKwList)
-	return ans,minDistance
+		
+		# Calculate matching time
+		endWarningTime=time.time()
+		warningTime=endWarningTime-endMatchingTime		
+	else: warningTime=0
+		# print('Warning time:',endTime-startTime,'seconds')
+		#############################################################
 
-def endUserSolve(resultFile,inputPath,resultPath,matchingFolder,jsonDir,standardFolder):
+
+	# Terminate outputing overall time of a file
+	for i in range(50): print('#',end='')
+	print()
+	#############################
+
+
+	#############################
+	# configString: standard list of keywords
+	# targetS: list of keywords in PDF 
+
+	print(configString)
+	print(targetS)	
+	#############################
+
+	# return ans,minDistance
+	return ans,minDistance,matchingTime,warningTime,configString,targetS
+
+def endUserSolve(resultFile,inputPath,resultPath,matchingFolder,jsonDir,standardFolder,performanceFile):
 	return_dict = {}
 
 	matchingFiles=glob.glob(matchingFolder)
 	matchingFiles.sort()
 	CURR_KW={}
 	for file in matchingFiles:
-		ans,minDistance=findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CURR_KW)
+		startTime=time.time()
+		ans,minDistance,matchingTime,warningTime,configString,targetS=findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CURR_KW,startTime)
+
+		pos=re.search(inputPath+'/',file).span()
+		performanceFile.write(file[pos[1]:]+'\n')
+		performanceFile.write('Matching Time: '+str(matchingTime)+' seconds\n')
+		performanceFile.write('Warning Time: '+str(warningTime)+' seconds\n')
+
 		if (ans==-1):
-			pos=re.search(inputPath+'/',file).span()
 			resultFile.write(file[pos[1]:]+' unknown template\n')
 		else:
-			pos=re.search(inputPath+'/',file).span()
 			resultFile.write(file[pos[1]:]+' '+ans+'\n')
 			if (minDistance!=0): resultFile.write('Warning: '+file[pos[1]:]+' doesn\'t fully match the template\n')
-
 			# New key===============================================
 			# resultFile.write('New keywords: ')
 			# for key in generateListNewKws(file,ans,CURR_KW): resultFile.write(key+'\n')
@@ -168,28 +214,34 @@ def endUserSolve(resultFile,inputPath,resultPath,matchingFolder,jsonDir,standard
 			# ======================================================
 		startFilenamePos=len(inputPath+'/')
 		return_dict[file[startFilenamePos:]] = ans
+		decorationPrint(resultFile,'#',50)
+		decorationPrint(performanceFile,'#',50)
+
 
 	return return_dict
 
 
 def templateMatch(inputPath,resultPath,jsonDir,standardFolder):
 	with open(resultPath+'/result.txt','w',encoding='utf8') as resultFile:
-		if os.path.isdir(resultPath+'/'+'warning'):
-			files=glob.glob(resultPath+'/'+'warning/*pdf') 
-			for file in files: os.remove(file)
-			os.rmdir(resultPath+'/'+'warning')
-		if os.path.isdir(resultPath+'/'+'mummy'): 
-			files=glob.glob(resultPath+'/'+'mummy/*pdf') 
-			for file in files: os.remove(file)
-			os.rmdir(resultPath+'/'+'mummy')
-		os.makedirs(resultPath+'/'+'warning')
-		os.makedirs(resultPath+'/'+'mummy')
-		matchingPath=inputPath+'/*pdf'
-		decorationPrint(resultFile,'#',50)
-		resultFile.write('MATCHING\n')
-		endUserSolve(resultFile,inputPath,resultPath,matchingPath,jsonDir,standardFolder)
-		decorationPrint(resultFile,'#',50)
-		rmtree(resultPath+'/mummy')
+		with open(resultPath+'/performance.txt','w',encoding='utf8') as performanceFile:
+			if os.path.isdir(resultPath+'/'+'warning'):
+				files=glob.glob(resultPath+'/'+'warning/*pdf') 
+				for file in files: os.remove(file)
+				os.rmdir(resultPath+'/'+'warning')
+			if os.path.isdir(resultPath+'/'+'mummy'): 
+				files=glob.glob(resultPath+'/'+'mummy/*pdf') 
+				for file in files: os.remove(file)
+				os.rmdir(resultPath+'/'+'mummy')
+			os.makedirs(resultPath+'/'+'warning')
+			os.makedirs(resultPath+'/'+'mummy')
+			matchingPath=inputPath+'/*pdf'
+			decorationPrint(resultFile,'#',50)
+			decorationPrint(performanceFile,'#',50)
+			resultFile.write('MATCHING\n')
+			endUserSolve(resultFile,inputPath,resultPath,matchingPath,jsonDir,standardFolder,performanceFile)
+			decorationPrint(resultFile,'#',50)
+			decorationPrint(performanceFile,'#',50)
+			rmtree(resultPath+'/mummy')
 
 
 

@@ -21,7 +21,6 @@ if __name__ == '__main__':
 
 	# Extractor
 	for file in fileName:
-		try:
 			print(file,template[file])
 
 			PDF_TYPE = template[file]
@@ -36,8 +35,4 @@ if __name__ == '__main__':
 			# Extractor
 			if(int(PDF_TYPE) > 0):
 				extractingData(file, PDF_TYPE)
-		except :
-			print("-------------------------------------------------------------")
-			print("THIS FILE HAS ERROR IN EXTRACTOR: " + file)
-			print("-------------------------------------------------------------")
-			continue
+
