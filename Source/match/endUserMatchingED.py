@@ -179,28 +179,33 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 	#############################
 	# configString: standard list of keywords
 	# targetS: list of keywords in PDF 
-
-	print(configString)
-	print(targetS)	
+	# print(configString)
+	# print(targetS)	
 	#############################
 
 	# return ans,minDistance
 	return ans,minDistance,matchingTime,warningTime,configString,targetS
 
-def endUserSolve(resultFile,inputPath,resultPath,matchingFolder,jsonDir,standardFolder,performanceFile):
+def endUserSolve(resultFile,inputPath,resultPath,matchingFolder,jsonDir,standardFolder):
 	return_dict = {}
 
 	matchingFiles=glob.glob(matchingFolder)
 	matchingFiles.sort()
 	CURR_KW={}
+
+	# Performance Tracking
+	performanceResults={}
+	############################
+
 	for file in matchingFiles:
+		pos=re.search(inputPath+'/',file).span()
+		performanceResults[file[pos[1]:]]=[]
 		startTime=time.time()
 		ans,minDistance,matchingTime,warningTime,configString,targetS=findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CURR_KW,startTime)
 
-		pos=re.search(inputPath+'/',file).span()
-		performanceFile.write(file[pos[1]:]+'\n')
-		performanceFile.write('Matching Time: '+str(matchingTime)+' seconds\n')
-		performanceFile.write('Warning Time: '+str(warningTime)+' seconds\n')
+		# print(file[pos[1]:])
+		performanceResults[file[pos[1]:]].append(matchingTime)
+		performanceResults[file[pos[1]:]].append(warningTime)
 
 		if (ans==-1):
 			resultFile.write(file[pos[1]:]+' unknown template\n')
@@ -215,33 +220,28 @@ def endUserSolve(resultFile,inputPath,resultPath,matchingFolder,jsonDir,standard
 		startFilenamePos=len(inputPath+'/')
 		return_dict[file[startFilenamePos:]] = ans
 		decorationPrint(resultFile,'#',50)
-		decorationPrint(performanceFile,'#',50)
 
-
-	return return_dict
+	return return_dict,performanceResults
 
 
 def templateMatch(inputPath,resultPath,jsonDir,standardFolder):
 	with open(resultPath+'/result.txt','w',encoding='utf8') as resultFile:
-		with open(resultPath+'/performance.txt','w',encoding='utf8') as performanceFile:
-			if os.path.isdir(resultPath+'/'+'warning'):
-				files=glob.glob(resultPath+'/'+'warning/*pdf') 
-				for file in files: os.remove(file)
-				os.rmdir(resultPath+'/'+'warning')
-			if os.path.isdir(resultPath+'/'+'mummy'): 
-				files=glob.glob(resultPath+'/'+'mummy/*pdf') 
-				for file in files: os.remove(file)
-				os.rmdir(resultPath+'/'+'mummy')
-			os.makedirs(resultPath+'/'+'warning')
-			os.makedirs(resultPath+'/'+'mummy')
-			matchingPath=inputPath+'/*pdf'
-			decorationPrint(resultFile,'#',50)
-			decorationPrint(performanceFile,'#',50)
-			resultFile.write('MATCHING\n')
-			endUserSolve(resultFile,inputPath,resultPath,matchingPath,jsonDir,standardFolder,performanceFile)
-			decorationPrint(resultFile,'#',50)
-			decorationPrint(performanceFile,'#',50)
-			rmtree(resultPath+'/mummy')
+		if os.path.isdir(resultPath+'/'+'warning'):
+			files=glob.glob(resultPath+'/'+'warning/*pdf') 
+			for file in files: os.remove(file)
+			os.rmdir(resultPath+'/'+'warning')
+		if os.path.isdir(resultPath+'/'+'mummy'): 
+			files=glob.glob(resultPath+'/'+'mummy/*pdf') 
+			for file in files: os.remove(file)
+			os.rmdir(resultPath+'/'+'mummy')
+		os.makedirs(resultPath+'/'+'warning')
+		os.makedirs(resultPath+'/'+'mummy')
+		matchingPath=inputPath+'/*pdf'
+		decorationPrint(resultFile,'#',50)
+		resultFile.write('MATCHING\n')
+		endUserSolve(resultFile,inputPath,resultPath,matchingPath,jsonDir,standardFolder)
+		decorationPrint(resultFile,'#',50)
+		rmtree(resultPath+'/mummy')
 
 
 
