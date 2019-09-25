@@ -344,8 +344,8 @@ def createListOfStringLineList(CONFIG,lineList,configString):
 def createData(PDF, keyword,CURR_KW):
 	workbook = xlrd.open_workbook('alias.xlsx')
 	sheet = workbook.sheet_by_index(0)
-	for i in range (1,18):
-		for j in range (0,7):
+	for i in range (sheet.nrows):
+		for j in range (sheet.ncols):
 			if (sheet.cell(i, j).value == ''):
 				continue
 			CURR_KW[sheet.cell(i, j).value] = 1
@@ -372,39 +372,44 @@ def preProcessText(listPdf, fullPdf):
 # Check if keyword in data
 def detectInData(fullPdf, listCheck, CURR_KW, newKw,listPdf):
 	# for listLine in listPdf:
-	# 	for key in list(CURR_KW):
-	# 		for ele in listLine:
-	# 			ratio = similar(ele, key)
-	# 			if (ratio >= 0.8):
-	# 				ele = ele.replace(":","")
-	# 				ele = ele.strip()
-	# 				if ele not in listCheck:
-	# 					listCheck.append(ele)
-	# 					newKw.append(ele)
-	# return newKw
-	# for listLine in listPdf:
-	# 	for key in list(CURR_KW):
-	# 		for ele in listLine:
-	# 			ele = ele.replace(":","")
-	# 			ele = ele.strip()
+	# 	for ele in listLine:
+	# 		ele = ele.replace(":","")
+	# 		ele = ele.strip()
+	# 		for key in CURR_KW:
 	# 			if (ele == key):
 	# 				if ele not in listCheck:
 	# 					listCheck.append(ele)
 	# 					newKw.append(ele)
 	# return newKw
+
 	for listLine in listPdf:
 		for ele in listLine:
-			ele = ele.replace(":","")
-			ele = ele.strip()
-			for key in CURR_KW:
-				if (ele == key):
-					if ele not in listCheck:
-						listCheck.append(ele)
-						newKw.append(ele)
+			if (":" in ele):
+				ele = ele.replace(":","")
+				ele = ele.replace(r'[0-9]+',"")
+				ele = ele.strip()
+				for key in CURR_KW:
+					if (key in ele):
+						if ele not in listCheck:
+							#listCheck.append(ele)
+							newKw.append(ele)
 	return newKw
-
+def proNewKey(newKw, CURR_KW, listCheck):
+	# for key in CURR_KW:
+	# 	print(key)
+	# for key in newKw:
+	# 	print(key)
+	newList = []
+	for new in newKw:
+		for key in CURR_KW:
+			if key in new:
+				#print(key)
+				if key not in listCheck:
+					newList.append(key)
+	newKw = newList
+	return newKw
 def generateListNewKws(file,template,CURR_KW,jsonDir):
-	newKw=[]
+	newKw = []
 	listPdf = []
 	listCheck = []
 
@@ -425,6 +430,7 @@ def generateListNewKws(file,template,CURR_KW,jsonDir):
 	# for line in listPdf:
 	#     print(line)
 	newKw = detectInData(fullPdf, listCheck, CURR_KW, newKw,listPdf)
+	newKw = proNewKey(newKw, CURR_KW, listCheck)
 	#newKw = detectNotInData(fullPdf, listCheck, CURR_KW, newKw,listPdf)
 	# print(newKw)
 	return newKw
