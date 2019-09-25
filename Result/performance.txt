@@ -1,20 +1,20 @@
 PERFORMANCE RECORDS
 
 ##################################################
-SGNV65274700.pdf
-Matching time: 0.06779742240905762 seconds
-Warning time: 0.01407623291015625 seconds
-Extracting time: 0.2552664279937744 seconds
+SGNV61263800_1_itl_rptmblinstruction.pdf
+Matching time: 0.05874013900756836 seconds
+Warning time: 0.021059274673461914 seconds
+Extracting time: 0.2128126621246338 seconds
 ##################################################
 ##################################################
-SGNV54912400.pdf
-Matching time: 0.07554483413696289 seconds
-Warning time: 0.041715145111083984 seconds
-Extracting time: 0.3232133388519287 seconds
+SGNV61261600_3_ITL_RptMBLInstruction.pdf
+Matching time: 0.06744146347045898 seconds
+Warning time: 0.021768808364868164 seconds
+Extracting time: 0.22313141822814941 seconds
 ##################################################
 ##################################################
-SGNV54411500.pdf
-Matching time: 0.07013869285583496 seconds
-Warning time: 0.01275181770324707 seconds
-Extracting time: 0.23949933052062988 seconds
+SGNV66228700_2_itl_rptmblinstruction.pdf
+Matching time: 0.026465177536010742 seconds
+Warning time: 0 seconds
+Extracting time: 0.22463059425354004 seconds
 ##################################################
