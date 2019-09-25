@@ -1,21 +1,12 @@
 ##################################################
 MATCHING
-9.pdf 9
-Warning: 9.pdf doesn't fully match the template
+SGNV54411500.pdf 17
+Warning: SGNV54411500.pdf doesn't fully match the template
 ##################################################
-SI+-+BKG_SGNV30759700.pdf 9
-Warning: SI+-+BKG_SGNV30759700.pdf doesn't fully match the template
+SGNV54912400.pdf 17
+Warning: SGNV54912400.pdf doesn't fully match the template
 ##################################################
-VN104890_2.pdf 9
-Warning: VN104890_2.pdf doesn't fully match the template
-##################################################
-VN104890_3.pdf 9
-Warning: VN104890_3.pdf doesn't fully match the template
-##################################################
-VN104890_5.pdf 9
-Warning: VN104890_5.pdf doesn't fully match the template
-##################################################
-VN104890_6.pdf 9
-Warning: VN104890_6.pdf doesn't fully match the template
+SGNV65274700.pdf 17
+Warning: SGNV65274700.pdf doesn't fully match the template
 ##################################################
 ##################################################

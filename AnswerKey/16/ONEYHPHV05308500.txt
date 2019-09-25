@@ -72,7 +72,7 @@ AMS FEE SHOULD BE PREPAID
 
 ------------------------------------
 ------------------------------------
-Notify Party:
+Notify Party (complete name and address):
 E. BESLER & CO.
 115 MARTIN LANE
 ELK GROVE VILLAGE, IL 60007-1309
@@ -94,7 +94,7 @@ Feeder vessel:
 
 ------------------------------------
 ------------------------------------
-Place of Receipt:
+Pace of Receipt:
 HAIPHONG, VIETNAM
 ------------------------------------
 ------------------------------------
@@ -195,7 +195,7 @@ TOTAL::
 3658         16,209.00         195.01
 ------------------------------------
 ------------------------------------
-Kind of Packages:
+Packages:
 
 3658
 

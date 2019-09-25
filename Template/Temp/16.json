@@ -143,7 +143,7 @@
                 "right": -1
             }
         },
-        "Notify Party": {
+        "Notify Party (complete name and address)": {
             "row": [19, 25],
             "column": [0, 86],
             "isFlex": 1,
@@ -177,7 +177,7 @@
                 "right": "Place of Receipt"
             }
         },
-        "Place of Receipt": {
+        "Pace of Receipt": {
             "row": [26, 27],
             "column": [52, 86],
             "isFlex": 1,
@@ -243,8 +243,6 @@
                 "right": "Place of Delivery"
             }
         },
-
-
         "Place of Delivery": {
             "row": [28, 29],
             "column": [52, 86],
@@ -256,8 +254,18 @@
                 "right": "Final destination"
             }
         },
-
-
+        "Description of goods": {
+            "row": [34, 43],
+            "column": [86, 154],
+            "isFlex": 1,
+            "isCenter": 1,
+            "endObject": {
+                "top": "HS CODE/ HTS/ NCM:",
+                "bottom": "TOTAL:",
+                "left": "Shipping Marks",
+                "right": "Packages"
+            }
+        },
         "Container/Seal No": {
             "row": [34, 43],
             "column": [0, 32],
@@ -294,19 +302,8 @@
                 "right": "HS CODE/ HTS/ NCM:"
             }
         },
-        "Description of goods": {
-            "row": [34, 43],
-            "column": [86, 154],
-            "isFlex": 1,
-            "isCenter": 1,
-            "endObject": {
-                "top": "HS CODE/ HTS/ NCM:",
-                "bottom": "TOTAL:",
-                "left": "Shipping Marks",
-                "right": "Packages"
-            }
-        },
-        "Kind of Packages": {
+        
+        "Packages": {
             "row": [34, 43],
             "column": [154, 162],
             "isFlex": 1,

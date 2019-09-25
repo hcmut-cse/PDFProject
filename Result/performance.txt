@@ -1,38 +1,20 @@
 PERFORMANCE RECORDS
 
 ##################################################
-VN104890_5.pdf
-Matching time: 0.07757377624511719 seconds
-Warning time: 0.025785446166992188 seconds
-Extracting time: 0.3805410861968994 seconds
+SGNV65274700.pdf
+Matching time: 0.06779742240905762 seconds
+Warning time: 0.01407623291015625 seconds
+Extracting time: 0.2552664279937744 seconds
 ##################################################
 ##################################################
-VN104890_2.pdf
-Matching time: 0.06659936904907227 seconds
-Warning time: 0.01361989974975586 seconds
-Extracting time: 0.31117987632751465 seconds
+SGNV54912400.pdf
+Matching time: 0.07554483413696289 seconds
+Warning time: 0.041715145111083984 seconds
+Extracting time: 0.3232133388519287 seconds
 ##################################################
 ##################################################
-9.pdf
-Matching time: 0.06763577461242676 seconds
-Warning time: 0.01704263687133789 seconds
-Extracting time: 0.30887699127197266 seconds
-##################################################
-##################################################
-VN104890_6.pdf
-Matching time: 0.06519794464111328 seconds
-Warning time: 0.01491689682006836 seconds
-Extracting time: 0.3351755142211914 seconds
-##################################################
-##################################################
-SI+-+BKG_SGNV30759700.pdf
-Matching time: 0.0593562126159668 seconds
-Warning time: 0.01659560203552246 seconds
-Extracting time: 0.2945117950439453 seconds
-##################################################
-##################################################
-VN104890_3.pdf
-Matching time: 0.06355452537536621 seconds
-Warning time: 0.01822638511657715 seconds
-Extracting time: 0.3070652484893799 seconds
+SGNV54411500.pdf
+Matching time: 0.07013869285583496 seconds
+Warning time: 0.01275181770324707 seconds
+Extracting time: 0.23949933052062988 seconds
 ##################################################
