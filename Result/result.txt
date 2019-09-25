@@ -1,18 +1,21 @@
 ##################################################
 MATCHING
-CLTV01083984_HPHV00219800_1_ocps_si@opussmtp.one-line.com_1(ocps20190108160626_1)_1.pdf 1
-Warning: CLTV01083984_HPHV00219800_1_ocps_si@opussmtp.one-line.com_1(ocps20190108160626_1)_1.pdf doesn't fully match the template
+9.pdf 9
+Warning: 9.pdf doesn't fully match the template
 ##################################################
-HANV08376400.pdf 1
-Warning: HANV08376400.pdf doesn't fully match the template
+SI+-+BKG_SGNV30759700.pdf 9
+Warning: SI+-+BKG_SGNV30759700.pdf doesn't fully match the template
 ##################################################
-VN100944_2.pdf 1
-Warning: VN100944_2.pdf doesn't fully match the template
+VN104890_2.pdf 9
+Warning: VN104890_2.pdf doesn't fully match the template
 ##################################################
-VN102347_10.pdf 1
-Warning: VN102347_10.pdf doesn't fully match the template
+VN104890_3.pdf 9
+Warning: VN104890_3.pdf doesn't fully match the template
 ##################################################
-VN102347_25.pdf 1
-Warning: VN102347_25.pdf doesn't fully match the template
+VN104890_5.pdf 9
+Warning: VN104890_5.pdf doesn't fully match the template
+##################################################
+VN104890_6.pdf 9
+Warning: VN104890_6.pdf doesn't fully match the template
 ##################################################
 ##################################################

@@ -1,22 +1,38 @@
+PERFORMANCE RECORDS
+
 ##################################################
-CLTV01083984_HPHV00219800_1_ocps_si@opussmtp.one-line.com_1(ocps20190108160626_1)_1.pdf
-Matching Time: 0.14387154579162598 seconds
-Warning Time: 0.2019028663635254 seconds
+VN104890_5.pdf
+Matching time: 0.07757377624511719 seconds
+Warning time: 0.025785446166992188 seconds
+Extracting time: 0.3805410861968994 seconds
 ##################################################
-HANV08376400.pdf
-Matching Time: 0.22323012351989746 seconds
-Warning Time: 0.12505626678466797 seconds
 ##################################################
-VN100944_2.pdf
-Matching Time: 0.21024346351623535 seconds
-Warning Time: 0.12491583824157715 seconds
+VN104890_2.pdf
+Matching time: 0.06659936904907227 seconds
+Warning time: 0.01361989974975586 seconds
+Extracting time: 0.31117987632751465 seconds
 ##################################################
-VN102347_10.pdf
-Matching Time: 0.21675825119018555 seconds
-Warning Time: 0.1276075839996338 seconds
 ##################################################
-VN102347_25.pdf
-Matching Time: 0.22534608840942383 seconds
-Warning Time: 0.13073229789733887 seconds
+9.pdf
+Matching time: 0.06763577461242676 seconds
+Warning time: 0.01704263687133789 seconds
+Extracting time: 0.30887699127197266 seconds
 ##################################################
+##################################################
+VN104890_6.pdf
+Matching time: 0.06519794464111328 seconds
+Warning time: 0.01491689682006836 seconds
+Extracting time: 0.3351755142211914 seconds
+##################################################
+##################################################
+SI+-+BKG_SGNV30759700.pdf
+Matching time: 0.0593562126159668 seconds
+Warning time: 0.01659560203552246 seconds
+Extracting time: 0.2945117950439453 seconds
+##################################################
+##################################################
+VN104890_3.pdf
+Matching time: 0.06355452537536621 seconds
+Warning time: 0.01822638511657715 seconds
+Extracting time: 0.3070652484893799 seconds
 ##################################################
