@@ -21,8 +21,6 @@ if __name__ == '__main__':
 	with open(resultPath+'/performance.txt','w',encoding='utf8') as performanceFile:
 		performanceFile.write('PERFORMANCE RECORDS\n\n')
 		template,performanceResults = TemplateMatching(performanceFile)
-		# import pdb
-		# pdb.set_trace()
 		# Extractor
 		for file in fileName:
 			print(file,template[file])

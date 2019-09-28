@@ -79,25 +79,32 @@ def fixSpaceColonString(line):
 def createStringList(CONFIG):
 	s=[]
 	checked={}
-	for key in CONFIG:
-		tmpKey=key 
-		barPos=key.find('_')
-		if (barPos!=-1):
-			tmpKey=key[:barPos]
-		checked[tmpKey]=0
+	# for key in CONFIG:
+	# 	tmpKey=key 
+	# 	barPos=key.find('_')
+	# 	if (barPos!=-1):
+	# 		tmpKey=key[:barPos]
+	# 	checked[tmpKey]=0
+
+	# for key in CONFIG: 
+	# 	tmpKey=key
+	# 	if (key.find('_')!=-1): 
+	# 		barPos=key.find('_')
+	# 		tmpKey=key[:barPos]
+	# 	if (not checked[tmpKey]): 
+	# 		s.append(tmpKey)
+	# 		checked[tmpKey]=1
+	for key in CONFIG: checked[key]=0
 
 	for key in CONFIG: 
-		tmpKey=key
-		if (key.find('_')!=-1): 
-			barPos=key.find('_')
-			tmpKey=key[:barPos]
-		if (not checked[tmpKey]): 
-			s.append(tmpKey)
-			checked[tmpKey]=1
+		if (not checked[key]): 
+			s.append(key)
+			checked[key]=1
 	return s
 
 def investigateAnalogy(a,b,aliasDict):
 	if (a==b): return 1
+	# print(a,b)
 	if (a.lower() in aliasDict[b]): return 1
 	if (b.lower() in aliasDict[a]): return 1
 	return 0

@@ -1,11 +1,6 @@
 ##################################################
 MATCHING
-SGNV61261600_3_ITL_RptMBLInstruction.pdf 14
-Warning: SGNV61261600_3_ITL_RptMBLInstruction.pdf doesn't fully match the template
-##################################################
-SGNV61263800_1_itl_rptmblinstruction.pdf 14
-Warning: SGNV61263800_1_itl_rptmblinstruction.pdf doesn't fully match the template
-##################################################
-SGNV66228700_2_itl_rptmblinstruction.pdf 14
+9.pdf 9
+Warning: 9.pdf doesn't fully match the template
 ##################################################
 ##################################################

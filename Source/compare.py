@@ -58,7 +58,7 @@ def compareFolders(resultDir,answerKeyDir):
 
 def main():
 	resultDir='../Result'
-	answerKeyDir='../AnswerKey/17'
+	answerKeyDir='../AnswerKey/2_6_12'
 	compareFolders(resultDir,answerKeyDir)
 
 
