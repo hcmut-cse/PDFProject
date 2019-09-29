@@ -1,8 +1,26 @@
 PERFORMANCE RECORDS
 
 ##################################################
-9.pdf
-Matching time: 0.12975358963012695 seconds
-Warning time: 0.026293277740478516 seconds
-Extracting time: 0.3003847599029541 seconds
+ONEYHPHV05308500.pdf
+Matching time: 0.6401851177215576 seconds
+Warning time: 0.10492968559265137 seconds
+Extracting time: 1.8304100036621094 seconds
+##################################################
+##################################################
+16.pdf
+Matching time: 0.5936489105224609 seconds
+Warning time: 0.11642217636108398 seconds
+Extracting time: 1.4109125137329102 seconds
+##################################################
+##################################################
+ONEYHPHV04842700.pdf
+Matching time: 0.6031174659729004 seconds
+Warning time: 0.1482686996459961 seconds
+Extracting time: 1.1975305080413818 seconds
+##################################################
+##################################################
+ONEYHPHV06393300.pdf
+Matching time: 0.6705296039581299 seconds
+Warning time: 0.19480180740356445 seconds
+Extracting time: 2.174635410308838 seconds
 ##################################################
