@@ -116,30 +116,14 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 						found=1
 						break
 				if (found): break
-		if (jsonFile.find('4.json')!=-1): 
-			for s in sList: 
-				print(s)
-				print()
-		configString=sorted(configString,key=lambda kv: (CONFIG[kv]['row'][0],CONFIG[kv]['column'][0]))
+		# if (jsonFile.find('4.json')!=-1): 
+		# 	for s in sList: 
+		# 		print(s)
+		# 		print()
 		for s in sList:
 			dis=getDamerauDistance(configString,s,aliasDict)
 			dis+=len(newKwList)*0.5
-			# Testing===========================================================================
-			# print('=========================================================================')
-			# print('Standard string:',configString)
-			# print('Target S:',s)
-			# print('Distance:',dis)
-			# print('Template:',jsonFile[starPos:-5])
-			# print('=========================================================================')
-			# Testing==========================================================================
 			if (minDistance>dis): 
-				# for i in range(50): print('=',end='')
-				# print()
-				# print('S:',s)
-				# print('Config string:',configString)
-				# for i in range(50): print('=',end='')
-				# print()
-
 				minDistance=dis
 				ans=jsonFile[starPos:-5]
 				targetConfigString=configString
@@ -158,9 +142,9 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 				if (minDistance==0 or minDistance>15): break
 				# Testing==========================================================================
 		if (minDistance==0): break
-	print('Target Config:',targetConfigString)
-	print('Target S:',targetS)
-	# print('Min distance:',minDistance)
+	# print('Target Config:',targetConfigString)
+	# print('Target S:',targetS)
+	print('Min distance:',minDistance)
 	# Calculate matching time
 	for i in range(50): print('#',end='')
 	print()
@@ -172,7 +156,7 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 	#############################################################
 	# print(file)
 	# print('Min distance:',minDistance)
-	if (minDistance>8): return -1,-1,matchingTime,0,configString,targetS
+	if (minDistance>9): return -1,-1,matchingTime,0,configString,targetS
 	if (minDistance!=0): 	
 		triggerWarning(inputPath,resultPath,file,ans,targetConfigString,targetS,targetCONFIG,lineList,ans,standardFolder,CURR_KW,targetAliasDict,targetNewKwList)
 		
