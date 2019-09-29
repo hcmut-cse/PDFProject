@@ -1,26 +1,26 @@
 PERFORMANCE RECORDS
 
 ##################################################
-ONEYHPHV05308500.pdf
-Matching time: 0.6401851177215576 seconds
-Warning time: 0.10492968559265137 seconds
-Extracting time: 1.8304100036621094 seconds
-##################################################
-##################################################
 16.pdf
-Matching time: 0.5936489105224609 seconds
-Warning time: 0.11642217636108398 seconds
-Extracting time: 1.4109125137329102 seconds
+Matching time: 0.49420762062072754 seconds
+Warning time: 0.2896997928619385 seconds
+Extracting time: 1.8930871486663818 seconds
 ##################################################
 ##################################################
 ONEYHPHV04842700.pdf
-Matching time: 0.6031174659729004 seconds
-Warning time: 0.1482686996459961 seconds
-Extracting time: 1.1975305080413818 seconds
+Matching time: 0.6544420719146729 seconds
+Warning time: 0.24808025360107422 seconds
+Extracting time: 1.6887106895446777 seconds
+##################################################
+##################################################
+ONEYHPHV05308500.pdf
+Matching time: 0.6393837928771973 seconds
+Warning time: 0.2230539321899414 seconds
+Extracting time: 1.6667091846466064 seconds
 ##################################################
 ##################################################
 ONEYHPHV06393300.pdf
-Matching time: 0.6705296039581299 seconds
-Warning time: 0.19480180740356445 seconds
-Extracting time: 2.174635410308838 seconds
+Matching time: 0.69091796875 seconds
+Warning time: 0.2684183120727539 seconds
+Extracting time: 1.9075870513916016 seconds
 ##################################################

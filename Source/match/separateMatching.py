@@ -18,7 +18,7 @@ def findTemplateSeparateVersion(path,file,jsonDir):
 			for tmpKey in aliasDict:
 				found=0
 				for element in aliasDict[tmpKey]:
-					if element.find(key)!=-1: 
+					if element.find(key)!=-1:
 						newKwList.remove(key)
 						found=1
 						break
@@ -35,7 +35,7 @@ def findTemplateSeparateVersion(path,file,jsonDir):
 			# print('Template:',jsonFile[starPos:-5])
 			# print('=========================================================================')
 			# Testing==========================================================================
-			if (minDistance>dis): 
+			if (minDistance>dis):
 				minDistance=dis
 				ans=jsonFile[starPos:-5]
 				targetConfigString=configString
@@ -58,7 +58,7 @@ def findTemplateSeparateVersion(path,file,jsonDir):
 
 	# print(file)
 	if (minDistance>8): return -1
-	
+
 	return ans
 
 # def main():
