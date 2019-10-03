@@ -1,15 +1,6 @@
 ##################################################
 MATCHING
-16.pdf 16
-Warning: 16.pdf doesn't fully match the template
-##################################################
-ONEYHPHV04842700.pdf 16
-Warning: ONEYHPHV04842700.pdf doesn't fully match the template
-##################################################
-ONEYHPHV05308500.pdf 16
-Warning: ONEYHPHV05308500.pdf doesn't fully match the template
-##################################################
-ONEYHPHV06393300.pdf 16
-Warning: ONEYHPHV06393300.pdf doesn't fully match the template
+SGNV57088400_1_SI.pdf 7
+Warning: SGNV57088400_1_SI.pdf doesn't fully match the template
 ##################################################
 ##################################################

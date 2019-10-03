@@ -177,7 +177,7 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 	#############################
 	# configString: standard list of keywords
 	# targetS: list of keywords in PDF 
-	# print(configString)
+	# print(targetConfigString)
 	# print(targetS)	
 	#############################
 
@@ -199,7 +199,7 @@ def endUserSolve(resultFile,inputPath,resultPath,matchingFolder,jsonDir,standard
 		pos=re.search(inputPath+'/',file).span()
 		performanceResults[file[pos[1]:]]=[]
 		startTime=time.time()
-		ans,minDistance,matchingTime,warningTime,configString,targetS=findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CURR_KW,startTime)
+		ans,minDistance,matchingTime,warningTime,configS,targetS=findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CURR_KW,startTime)
 
 		# print(file[pos[1]:])
 		performanceResults[file[pos[1]:]].append(matchingTime)
@@ -219,7 +219,7 @@ def endUserSolve(resultFile,inputPath,resultPath,matchingFolder,jsonDir,standard
 		return_dict[file[startFilenamePos:]] = ans
 		decorationPrint(resultFile,'#',50)
 
-	return return_dict,performanceResults
+	return return_dict,performanceResults,configS,targetS
 
 
 def templateMatch(inputPath,resultPath,jsonDir,standardFolder):

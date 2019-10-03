@@ -20,7 +20,7 @@ if __name__ == '__main__':
 	# Maching process + generate a warning file (missing kw)
 	with open(resultPath+'/performance.txt','w',encoding='utf8') as performanceFile:
 		performanceFile.write('PERFORMANCE RECORDS\n\n')
-		template,performanceResults = TemplateMatching(performanceFile)
+		template,performanceResults,configS,targetS = TemplateMatching(performanceFile)
 		# Extractor
 		for file in fileName:
 			print(file,template[file])
@@ -37,7 +37,7 @@ if __name__ == '__main__':
 			# Extractor
 			if(int(PDF_TYPE) > 0):
 				startTime=time.time()
-				extractingData(file, PDF_TYPE)
+				extractingData(file, PDF_TYPE, configS, targetS)
 				endTime=time.time()
 				performanceResults[file].append(endTime-startTime)
 			else: performanceResults[file].append(0)

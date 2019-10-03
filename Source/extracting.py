@@ -9,12 +9,13 @@ from PdfExtractor.Source.posProcess import leftProcess, subfieldProcess
 from PdfExtractor.Source.connectContent import connectContent
 import pdftotext
 import copy
+from SwapKw import *
 
 PDF_FOLDER = '../PdfToExtract/'
 TEMPLATE_FOLDER = '../Template/Merged/'
 RESULT_FOLDER = '../Result/'
 
-def extractProcess(fullPdf, CONFIG, removed):
+def extractProcess(fullPdf, CONFIG, removed, case, keynum, configS):
     # Sort CONFIG from top to bottom, from left to right
     configByColumn = dict(sorted(CONFIG.items(), key=lambda kv: kv[1]['column'][0]))
     CONFIG = dict(sorted(configByColumn.items(), key=lambda kv: kv[1]['row'][0]))
@@ -36,10 +37,16 @@ def extractProcess(fullPdf, CONFIG, removed):
     # Run pos-processing
     extractedData = leftProcess(CONFIG, extractedData)
     extractedData = subfieldProcess(CONFIG, extractedData)
+    if (case == 2):
+        keyA = keynum[0]
+        keyB = keynum[1]
+        temp = extractedData[configS[keyA]]
+        extractedData[configS[keyA]] = extractedData.pop(configS[keyB])
+        extractedData[configS[keyB]] = temp
 
     return extractedData
 
-def extractingData(file, PDF_TYPE):
+def extractingData(file, PDF_TYPE, configS, targetS):
 
     with open(TEMPLATE_FOLDER + PDF_TYPE + '.json', 'r', encoding='utf8') as json_file:
         ORIGINAL_CONFIG = json.load(json_file)
@@ -76,7 +83,10 @@ def extractingData(file, PDF_TYPE):
                 extractedData.update(extractProcess(pdfPage, config, removed))
                 pageNumber += 1
     else:
-        extractedData = extractProcess(fullPdf, CONFIG, removed)
+    	#Auto change CONFIG if missed/swapped
+    	case, CONFIG, keynum = checkForCase(CONFIG, configS, targetS)
+    	#then extract data
+    	extractedData = extractProcess(fullPdf, CONFIG, removed, case, keynum, configS)
 
     print("- Connecting similar contents...")
     # If pdf have multi pages, we will check similar content and connect them

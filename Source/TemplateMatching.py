@@ -20,7 +20,7 @@ def TemplateMatching(performanceFile):
 		matchingPath=inputPath+'/*pdf'
 		decorationPrint(resultFile,'#',50)
 		resultFile.write('MATCHING\n')
-		return_dict,performanceResults = endUserSolve(resultFile,inputPath,resultPath,matchingPath,jsonDir,standardFolder)
+		return_dict,performanceResults,configS,targetS = endUserSolve(resultFile,inputPath,resultPath,matchingPath,jsonDir,standardFolder)
 		decorationPrint(resultFile,'#',50)
 		rmtree(resultPath+'/mummy')
 
@@ -29,5 +29,5 @@ def TemplateMatching(performanceFile):
 			# 	for file in files: os.remove(file)
 			# 	os.rmdir(inputPath+'/'+'warning')
 
-	return return_dict,performanceResults
+	return return_dict,performanceResults,configS,targetS
 
