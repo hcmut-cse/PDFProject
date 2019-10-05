@@ -1,6 +1,44 @@
 ##################################################
 MATCHING
-SGNV57088400_1_SI.pdf 7
-Warning: SGNV57088400_1_SI.pdf doesn't fully match the template
+1.pdf 1
+Warning: 1.pdf doesn't fully match the template
+##################################################
+CLTV01083984_HPHV00219800_1_ocps_si@opussmtp.one-line.com_1(ocps20190108160626_1)_1.pdf 1
+Warning: CLTV01083984_HPHV00219800_1_ocps_si@opussmtp.one-line.com_1(ocps20190108160626_1)_1.pdf doesn't fully match the template
+##################################################
+HANV07023600.pdf 1
+Warning: HANV07023600.pdf doesn't fully match the template
+##################################################
+HANV07397600.pdf 1
+##################################################
+HANV07800900.pdf 1
+##################################################
+HANV08376400.pdf 1
+Warning: HANV08376400.pdf doesn't fully match the template
+##################################################
+VN100944.pdf 1
+##################################################
+VN1009442.pdf 1
+##################################################
+VN100944_1.pdf 1
+Warning: VN100944_1.pdf doesn't fully match the template
+##################################################
+VN100944_2.pdf 1
+Warning: VN100944_2.pdf doesn't fully match the template
+##################################################
+VN100944_3.pdf 1
+Warning: VN100944_3.pdf doesn't fully match the template
+##################################################
+VN100944_4 2.pdf 1
+##################################################
+VN100944_4.pdf 1
+##################################################
+VN100944_5.pdf 1
+##################################################
+VN102347_10.pdf 1
+Warning: VN102347_10.pdf doesn't fully match the template
+##################################################
+VN102347_25.pdf 1
+Warning: VN102347_25.pdf doesn't fully match the template
 ##################################################
 ##################################################

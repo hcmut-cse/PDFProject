@@ -1,3 +1,6 @@
+# The codes below is for auto adjust CONFIG when a case is determined
+# Total of 4 functions
+
 def swapKeywordRow(CONFIG, A,B,C,D):
 	# from A B C D to A C B D
 	# print(A,B,C,D)
@@ -71,22 +74,26 @@ def missKeywordColumn(CONFIG, A,X,B):
 		CONFIG[B]['endObject']['top'] = A
 	return CONFIG
 
+# The codes below is for determining which case can be auto adjust
+# 
+
 def missKeyword(CONFIG, configS, targetS):
 	missed = 0
 	keyX = -1
-	for i in range(len(configS)):
+	for i in range(len(targetS)):
+		# print(len(configS), len(targetS))
 		if (configS[i] == targetS[i]):
 			pass
 		else:
 			if (configS[i+1] != targetS[i]):
-				print("Cannot auto. Not a missing keyword problem.")
+				print("Miss key error: cannot auto")
 				break
 			else:
 				keyX = i # according to configS array
 				break
 	if (keyX == -1):
 		return missed, CONFIG, -1
-	print("Miss key")
+	print("Miss key: auto adjust CONFIG")
 	missed = 1
 	print(configS[keyX-1], configS[keyX], configS[keyX+1])
 	# print(CONFIG)
@@ -108,13 +115,13 @@ def swapKeyword(CONFIG, configS, targetS):
             elif (keyB == -1): 
                 keyB = i
             else:
-                print("Cannot auto. More than 2 configs are wrong.")
+                print("Swap key error: cannot auto, more than 2 kw are swapped")
                 return swapped, CONFIG, -1
     if (configS[keyA] != targetS[keyB] or configS[keyB] != targetS[keyA]):
-        print("Cannot auto. Not a keyword swapping problem.")
+        print("Swap key error: cannot auto")
         return swapped, CONFIG, -1
     elif ((keyA != -1) and (keyB != -1)):
-        print("Swap key")
+        print("Swap key: auto adjust CONFIG")
         swapped = 2
         print(configS[keyA], configS[keyB])
         # print("Before:")
@@ -140,6 +147,8 @@ def checkForCase(CONFIG, configS, targetS):
 	# 	if ("DATA" in targetS[i]):
 	# 		targetS.pop(i)
 	case = 0
+	# print(len(configS), len(targetS))
+	# print(len(configS) > len(targetS))
 	if (len(configS) > len(targetS)):
 		# print("Miss key")
 		print(len(configS), len(targetS))
