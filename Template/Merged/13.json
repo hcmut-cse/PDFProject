@@ -1,7 +1,7 @@
 [
 	{
 	    "SHIPPER": {
-	            "row": [1, 23],
+	            "row": [1, 10],
 	            "column": [0, 67],
 	            "isFlex": 1,
 	            "endObject": {
@@ -13,19 +13,19 @@
 	    },
 
 	    "BOOKING NO.": {
-	            "row": [1, 2],
+	            "row": [2, 3],
 	            "column": [84, null],
 	            "isFlex": 1,
 	            "endObject": {
 	                "top": "same_left",
-	                "bottom": "CONSIGNEE",
+	                "bottom": -1,
 	                "left": "BOOKING NO.",
 	                "right": -1
 	            }
 	    },
 
 	    "CONSIGNEE": {
-	            "row": [10, 16],
+	            "row": [11, 16],
 	            "column": [0, null],
 	            "isFlex": 1,
 	            "endObject": {
@@ -46,7 +46,7 @@
 	                "left": -1,
 	                "right": "ALSO NOTIFY"
 	            }
-	    },    
+	    },
 
 	    "ALSO NOTIFY": {
 	            "row": [17, 18],
@@ -142,8 +142,8 @@
 	                "left": -1,
 	                "right": "NUMBER AND KIND OF PACKAGES"
 	            }
-	    },            
-	    
+	    },
+
 	    "NUMBER AND KIND OF PACKAGES": {
 	            "row": [23, 30],
 	            "column": [23, 51],
@@ -190,7 +190,7 @@
 	                "left": "GROSS WEIGHT",
 	                "right": -1
 	            }
-	    },	    
+	    },
 
 	    "REMARK": {
 	            "row": [31, 33],
@@ -216,7 +216,7 @@
 	            }
 	    }
 	},
-	
+
 	{
 		"Header": {
         	"row": [0, 0],
