@@ -5,6 +5,7 @@ def TemplateMatching(performanceFile):
 	standardFolder='../Sample/'
 	inputPath='../PdfToExtract'
 	resultPath='../Result'
+	aliasFile='alias.xlsx'
 
 	with open(resultPath+'/result.txt','w',encoding='utf8') as resultFile:
 		if os.path.isdir(resultPath+'/'+'warning'):
@@ -20,7 +21,7 @@ def TemplateMatching(performanceFile):
 		matchingPath=inputPath+'/*pdf'
 		decorationPrint(resultFile,'#',50)
 		resultFile.write('MATCHING\n')
-		return_dict,performanceResults,configS,targetS = endUserSolve(resultFile,inputPath,resultPath,matchingPath,jsonDir,standardFolder)
+		return_dict,performanceResults,configS,targetS = endUserSolve(resultFile,inputPath,resultPath,matchingPath,jsonDir,standardFolder,aliasFile)
 		decorationPrint(resultFile,'#',50)
 		rmtree(resultPath+'/mummy')
 

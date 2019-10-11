@@ -43,7 +43,7 @@ def compareFolders(resultDir,answerKeyDir):
 
 def main():
 	resultDir='../../Result'
-	folderChecking='10'
+	folderChecking='3'
 	answerKeyDir='../../AnswerKey/'+folderChecking
 	compareFolders(resultDir,answerKeyDir)
 

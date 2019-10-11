@@ -38,15 +38,11 @@ def remove_at(s, i):
 	return s[:i] + s[i+1:]
 
 def preProcessPdf(filename):
-	# for filename in file:
 	# Covert PDF to string by page
-	# print(filename)
 	with open(filename, "rb") as f:
 		pdf = pdftotext.PDF(f)
 	# Remove header & footer
-	# print(len(pdf))
 	if (len(pdf) > 1):
-		# fullPdf = removeHeaderAndFooter(pdf)
 		fullPdf = []
 		for i in range(len(pdf)):
 			if (pdf[i].strip() != ''):
@@ -94,7 +90,6 @@ def createStringList(CONFIG):
 
 def investigateAnalogy(a,b,aliasDict):
 	if (a==b): return 1
-	# print(a,b)
 	if (a.lower() in aliasDict[b]): return 1
 	if (b.lower() in aliasDict[a]): return 1
 	return 0
@@ -285,23 +280,82 @@ def drawTextboxMishandled(key,sourceFile,modifiedFile,count,CONFIG,aliasDict):
 	doc.save(modifiedFile,garbage=4, deflate=True, clean=False)
 	copyfile(modifiedFile,sourceFile)
 
-def createListOfStringLineList(CONFIG,lineList,configString):
+# def createListOfStringLineList(CONFIG,lineList,configString):
+# 	l=len(lineList)
+# 	checked={}
+# 	ansList=[[configString[0]]]
+# 	for key in CONFIG: checked[key]=0
+# 	checked[configString[0]]=1
+# 	aliasDict={}
+# 	for key in CONFIG:
+# 		aliasDict[key]=[]
+# 		if ('alias' in CONFIG[key]):
+# 			for alias in CONFIG[key]['alias']:
+# 				aliasName=CONFIG[key]['alias'][alias]['name']
+# 				aliasDict[key].append(aliasName)
+# 	for i in range(l):
+# 		posDict={}
+# 		posList=[]
+# 		for key in CONFIG:
+# 			pos=lineList[i].find(key)
+# 			if (pos!=-1):
+# 				trueKey=1
+# 				if (pos+len(key)<len(lineList[i])):
+# 					if (lineList[i][pos+len(key)]<='Z' and lineList[i][pos+len(key)]>='A' and lineList[i][pos+len(key)-1]<='Z' and lineList[i][pos+len(key)-1]>='A'): trueKey=0
+# 					if (lineList[i][pos+len(key)]<='z' and lineList[i][pos+len(key)]>='a' and lineList[i][pos+len(key)-1]<='z' and lineList[i][pos+len(key)-1]>='a'): trueKey=0
+# 				if (trueKey):
+# 					posDict[key]=pos
+# 					posList.append(key)
+# 			for alias in aliasDict[key]:
+# 				pos=lineList[i].find(alias)
+# 				if (pos!=-1):
+# 					posDict[key]=pos
+# 					posList.append(key)
+# 					break
+# 		posDict=dict(sorted(posDict.items(),key=lambda k:k[1]))
+# 		for key in posDict: 
+# 			if not (checked[key]):
+# 				for s in ansList: s.append(key)
+# 				checked[key]=1
+# 			else:
+# 				minDis=10000000000
+# 				for ans in ansList:
+# 					numWords=len(ansList[0])
+# 					tmpConfig=configString[:numWords]
+# 					tmpDis=getEditDistance(ans,tmpConfig,aliasDict)
+# 					if (tmpDis<minDis):
+# 						minDis=tmpDis
+# 						chosenAns=ans
+# 				tmp=chosenAns.copy()
+# 				tmp.remove(key)
+# 				tmp.append(key)
+# 				ansList.append(tmp)
+# 	return ansList,aliasDict
+
+def createListOfStringLineList(CONFIG,lineList,configString,aliasFile):
 	l=len(lineList)
 	checked={}
 	ansList=[[configString[0]]]
+	aliasDict={}
 	for key in CONFIG: checked[key]=0
 	checked[configString[0]]=1
-	aliasDict={}
-	for key in CONFIG:
-		aliasDict[key]=[]
-		if ('alias' in CONFIG[key]):
-			for alias in CONFIG[key]['alias']:
-				aliasName=CONFIG[key]['alias'][alias]['name']
-				aliasDict[key].append(aliasName)
+	for key in configString: aliasDict[key]=[]
+
+	workbook = xlrd.open_workbook(aliasFile)
+	sheet = workbook.sheet_by_index(0)
+	for i in range(1,sheet.nrows):
+		tmp=sheet.row(i)[0].value
+		if tmp in configString:
+			for j in range(1,len(sheet.row(i))): 
+				if sheet.row(i)[j].value!='': aliasDict[tmp].append(sheet.row(i)[j].value)
+	# print(aliasDict)
+	# exit()
+
 	for i in range(l):
 		posDict={}
 		posList=[]
-		for key in CONFIG:
+
+		for key in configString:
 			pos=lineList[i].find(key)
 			if (pos!=-1):
 				trueKey=1
@@ -318,6 +372,50 @@ def createListOfStringLineList(CONFIG,lineList,configString):
 					posList.append(key)
 					break
 		posDict=dict(sorted(posDict.items(),key=lambda k:k[1]))
+
+		# print('Step',i)
+		# print('Initial updating keys:',posDict.keys())
+
+		updateList=[]
+		for key in posDict: updateList.append(key)
+
+		l=len(updateList)
+		for j in range(l-1):
+			for k in range(j+1,l):
+				key0=updateList[j]
+				key1=updateList[k]
+				i0=configString.index(key0)
+				i1=configString.index(key1)
+
+				r0=CONFIG[key0]['row'][0]
+				r1=CONFIG[key1]['row'][0]
+				d0=abs(r0-i)
+				d1=abs(r1-i)
+
+				if i0>i1:
+					# if d0>d1: posDict.pop(key0,None)
+					# else: posDict.pop(key1,None)
+					if d0>=2: posDict.pop(key0,None)
+					if d1>=2: posDict.pop(key1,None)
+				else:
+					if d0>=3 and i<r0: posDict.pop(key0,None)
+					if d1>=3 and i<r1: posDict.pop(key1,None)
+					
+
+		# for key in updateList:
+		# 	barPos=key.find('_')
+		# 	index=updateList.index(key)
+		# 	if barPos!=-1:
+		# 		commonContent=key[:barPos]
+		# 		for sameKey in updateList[index:]:
+		# 			if sameKey!=key:
+		# 				if sameKey.find(commonContent)!=-1: posDict.pop(sameKey,None)
+
+		# print('Final updating keys:',posDict.keys())
+		# for l in ansList: print(l)
+		# for j in range(50): print('=',end='')
+		# print()
+
 		for key in posDict: 
 			if not (checked[key]):
 				for s in ansList: s.append(key)
@@ -335,6 +433,7 @@ def createListOfStringLineList(CONFIG,lineList,configString):
 				tmp.remove(key)
 				tmp.append(key)
 				ansList.append(tmp)
+	# exit()
 	return ansList,aliasDict
 
 # Create list keyword from other template to make data
@@ -368,17 +467,6 @@ def preProcessText(listPdf, fullPdf):
 	return listPdf
 # Check if keyword in data
 def detectInData(fullPdf, listCheck, CURR_KW, newKw,listPdf):
-	# for listLine in listPdf:
-	# 	for ele in listLine:
-	# 		ele = ele.replace(":","")
-	# 		ele = ele.strip()
-	# 		for key in CURR_KW:
-	# 			if (ele == key):
-	# 				if ele not in listCheck:
-	# 					listCheck.append(ele)
-	# 					newKw.append(ele)
-	# return newKw
-
 	for listLine in listPdf:
 		for ele in listLine:
 			if (":" in ele):
@@ -391,11 +479,8 @@ def detectInData(fullPdf, listCheck, CURR_KW, newKw,listPdf):
 							#listCheck.append(ele)
 							newKw.append(ele)
 	return newKw
+
 def proNewKey(newKw, CURR_KW, listCheck):
-	# for key in CURR_KW:
-	# 	print(key)
-	# for key in newKw:
-	# 	print(key)
 	newList = []
 	for new in newKw:
 		for key in CURR_KW:
@@ -424,12 +509,8 @@ def generateListNewKws(file,template,CURR_KW,jsonDir):
 	keyword = []
 	createData(PDF,keyword,CURR_KW)
 	listPdf = preProcessText(listPdf, fullPdf)
-	# for line in listPdf:
-	#     print(line)
 	newKw = detectInData(fullPdf, listCheck, CURR_KW, newKw,listPdf)
 	newKw = proNewKey(newKw, CURR_KW, listCheck)
-	#newKw = detectNotInData(fullPdf, listCheck, CURR_KW, newKw,listPdf)
-	# print(newKw)
 	return newKw
 
 def drawTextboxNewKws(key,sourceFile,modifiedFile,CONFIG):

@@ -93,7 +93,7 @@ def triggerWarning(inputPath,resultPath,file,template,configString,s,CONFIG,line
 	if (numKeyProcessing==0): os.remove(modifiedFile)
 
 
-def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CURR_KW,startTime):
+def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CURR_KW,startTime,aliasFile):
 	jsonFiles=glob.glob(jsonDir)
 	minDistance=100000
 	starPos=jsonDir.find('*')
@@ -103,7 +103,7 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 		lineList=fixScript(lineList)
 		for key in CONFIG: key=fixSpaceColonString(key)
 		configString=createStringList(CONFIG)
-		sList,aliasDict=createListOfStringLineList(CONFIG,lineList,configString)
+		sList,aliasDict=createListOfStringLineList(CONFIG,lineList,configString,aliasFile)
 		# New keys
 		newKwList=generateListNewKws(file,jsonFile[starPos:-5],CURR_KW,jsonDir)
 		for key in newKwList:
@@ -127,20 +127,12 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 				targetCONFIG=CONFIG
 				targetAliasDict=aliasDict
 				targetNewKwList=newKwList
-				# Testing===========================================================================
-				# print('=========================================================================')
-				# print('Standard string:',configString)
-				# print('Target S:',s)
-				# print('Distance:',minDistance)
-				# print('Template:',jsonFile[starPos:-5])
-				# print('New keywords:',newKwList)
-				# print('=========================================================================')
 				if (minDistance==0 or minDistance>15): break
 				# Testing==========================================================================
 		if (minDistance==0): break
-	# print('Target Config:',targetConfigString)
-	# print('Target S:',targetS)
 	print('Min distance:',minDistance)
+
+	print(targetS)
 	# Calculate matching time
 	for i in range(50): print('#',end='')
 	print()
@@ -148,7 +140,6 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 	print(file[pathPos[1]+1:])
 	endMatchingTime=time.time()
 	matchingTime=endMatchingTime-startTime
-	# print('Matching time:',endTime-startTime,'seconds')
 	#############################################################
 	# print(file)
 	# print('Min distance:',minDistance)
@@ -162,7 +153,6 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 	else: warningTime=0
 		# print('Warning time:',endTime-startTime,'seconds')
 		#############################################################
-
 
 	# Terminate outputing overall time of a file
 	for i in range(50): print('#',end='')
@@ -180,13 +170,14 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 	# return ans,minDistance
 	return ans,minDistance,matchingTime,warningTime,targetConfigString,targetS
 
-def endUserSolve(resultFile,inputPath,resultPath,matchingFolder,jsonDir,standardFolder):
+def endUserSolve(resultFile,inputPath,resultPath,matchingFolder,jsonDir,standardFolder,aliasFile):
 	return_dict = {}
 
 	matchingFiles=glob.glob(matchingFolder)
 	matchingFiles.sort()
 	CURR_KW={}
-
+	configS=[]
+	targetS=[]
 	# Performance Tracking
 	performanceResults={}
 	############################
@@ -195,7 +186,7 @@ def endUserSolve(resultFile,inputPath,resultPath,matchingFolder,jsonDir,standard
 		pos=re.search(inputPath+'/',file).span()
 		performanceResults[file[pos[1]:]]=[]
 		startTime=time.time()
-		ans,minDistance,matchingTime,warningTime,configS,targetS=findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CURR_KW,startTime)
+		ans,minDistance,matchingTime,warningTime,configS,targetS=findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CURR_KW,startTime,aliasFile)
 
 		# print(file[pos[1]:])
 		performanceResults[file[pos[1]:]].append(matchingTime)
