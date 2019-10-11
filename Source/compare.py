@@ -29,21 +29,6 @@ def compareFolders(resultDir,answerKeyDir):
 		if (file[-3:]=='txt' and 'performance' not in file and 'result' not in file):
 			for i in range(50): print('#',end='')
 			print()
-
-			# import pdb
-			# pdb.set_trace()
-			# count=0
-			# i=0
-			# for c in file:
-			# 	if (c=='_'): count+=1
-			# 	if (count==2): 
-			# 		answerKeyFile=file[(i+1):]
-			# 		typeName=file[5:i]
-			# 		break
-			# 	i+=1
-				# print(c,count)
-			# answerKeyFiles=os.listdir(answerKeyDir+'/'+typeName)
-			# if (answerKeyFile not in answerKeyFiles): continue
 			resultFile=resultDir+'/'+file
 			answerKeyFile=answerKeyDir+'/'+file
 			print(resultFile)
@@ -58,7 +43,8 @@ def compareFolders(resultDir,answerKeyDir):
 
 def main():
 	resultDir='../Result'
-	answerKeyDir='../AnswerKey/2_6_12'
+	folderChecking='10'
+	answerKeyDir='../AnswerKey/'+folderChecking
 	compareFolders(resultDir,answerKeyDir)
 
 

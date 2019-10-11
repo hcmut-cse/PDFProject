@@ -26,14 +26,6 @@ if __name__ == '__main__':
 			print(file,template[file])
 
 			PDF_TYPE = template[file]
-			# jsonDir='../Template/*json'
-			# standardFolder='../Sample/'
-			# inputPath='../Test'
-			# resultPath='../Result'
-			# # Matching process
-			# PDF_TYPE = findTemplateBetaVersion(path,file,jsonDir,standardFolder)
-			# print(PDF_TYPE)
-
 			# Extractor
 			if(int(PDF_TYPE) > 0):
 				startTime=time.time()

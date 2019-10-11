@@ -182,6 +182,38 @@
 			}
 		},
 
+		"Payment":
+		{
+			"row": [25,26],
+			"column": [0,null],
+			"isFlex": 1,
+			"endObject":
+			{
+				"top": -1,
+				"bottom": -1,
+				"left": -1,
+				"right": -1
+			}
+		},
+
+		"Bill type":
+		{
+			"row": [26,27],
+			"column": [0,null],
+			"isFlex": 1,
+			"endObject":
+			{
+				"top": -1,
+				"bottom": -1,
+				"left": -1,
+				"right": -1
+			},
+			"subfields":
+			{
+				"Bill type": "Please issue [A-Z\\s\\-]*\\n?\\s?"
+			}
+		},
+
 		"DATA":
 		{
 			"row": [27,null],

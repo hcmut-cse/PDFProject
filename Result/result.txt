@@ -1,44 +1,16 @@
 ##################################################
 MATCHING
-1.pdf 1
-Warning: 1.pdf doesn't fully match the template
+10.pdf 10
 ##################################################
-CLTV01083984_HPHV00219800_1_ocps_si@opussmtp.one-line.com_1(ocps20190108160626_1)_1.pdf 1
-Warning: CLTV01083984_HPHV00219800_1_ocps_si@opussmtp.one-line.com_1(ocps20190108160626_1)_1.pdf doesn't fully match the template
+SGN-500108.pdf 10
 ##################################################
-HANV07023600.pdf 1
-Warning: HANV07023600.pdf doesn't fully match the template
+SGN-500108_1.pdf 10
 ##################################################
-HANV07397600.pdf 1
+SGN-505270.pdf 10
 ##################################################
-HANV07800900.pdf 1
+SGN-505698.pdf 10
 ##################################################
-HANV08376400.pdf 1
-Warning: HANV08376400.pdf doesn't fully match the template
-##################################################
-VN100944.pdf 1
-##################################################
-VN1009442.pdf 1
-##################################################
-VN100944_1.pdf 1
-Warning: VN100944_1.pdf doesn't fully match the template
-##################################################
-VN100944_2.pdf 1
-Warning: VN100944_2.pdf doesn't fully match the template
-##################################################
-VN100944_3.pdf 1
-Warning: VN100944_3.pdf doesn't fully match the template
-##################################################
-VN100944_4 2.pdf 1
-##################################################
-VN100944_4.pdf 1
-##################################################
-VN100944_5.pdf 1
-##################################################
-VN102347_10.pdf 1
-Warning: VN102347_10.pdf doesn't fully match the template
-##################################################
-VN102347_25.pdf 1
-Warning: VN102347_25.pdf doesn't fully match the template
+SGN-505791.pdf 10
+Warning: SGN-505791.pdf doesn't fully match the template
 ##################################################
 ##################################################

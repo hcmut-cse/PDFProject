@@ -84,7 +84,6 @@ def triggerWarning(inputPath,resultPath,file,template,configString,s,CONFIG,line
 			drawTextboxMishandled(key,sourceFile,modifiedFile,count,CONFIG,aliasDict)
 			numKeyProcessing+=1
 		###############################
-
 		# for key in mishandledKws: 
 		# 	drawTextboxMishandled(key,sourceFile,modifiedFile,count,CONFIG,aliasDict)
 	if (len(newKwList)):
@@ -116,10 +115,7 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 						found=1
 						break
 				if (found): break
-		# if (jsonFile.find('4.json')!=-1): 
-		# 	for s in sList: 
-		# 		print(s)
-		# 		print()
+
 		for s in sList:
 			dis=getDamerauDistance(configString,s,aliasDict)
 			dis+=len(newKwList)*0.5

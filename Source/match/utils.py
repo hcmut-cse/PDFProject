@@ -64,7 +64,9 @@ def preProcessPdf(filename):
 
 def initCONFIG(jsonFile):
 	with open(jsonFile,'r',encoding='utf8') as json_file: ORIGINAL_CONFIG=json.load(json_file)
-	CONFIG=ORIGINAL_CONFIG[0].copy()
+	if "Multipages" in ORIGINAL_CONFIG[0]:
+		CONFIG=ORIGINAL_CONFIG[0]["1"].copy()
+	else: CONFIG=ORIGINAL_CONFIG[0].copy()
 	HF_CONFIG=ORIGINAL_CONFIG[1].copy()
 	return CONFIG,HF_CONFIG
 
@@ -79,28 +81,16 @@ def fixSpaceColonString(line):
 def createStringList(CONFIG):
 	s=[]
 	checked={}
-	# for key in CONFIG:
-	# 	tmpKey=key 
-	# 	barPos=key.find('_')
-	# 	if (barPos!=-1):
-	# 		tmpKey=key[:barPos]
-	# 	checked[tmpKey]=0
-
-	# for key in CONFIG: 
-	# 	tmpKey=key
-	# 	if (key.find('_')!=-1): 
-	# 		barPos=key.find('_')
-	# 		tmpKey=key[:barPos]
-	# 	if (not checked[tmpKey]): 
-	# 		s.append(tmpKey)
-	# 		checked[tmpKey]=1
 	for key in CONFIG: checked[key]=0
 
 	for key in CONFIG: 
 		if (not checked[key]): 
 			s.append(key)
 			checked[key]=1
-	return s
+	finalS=s.copy()
+	for key in s:
+		if key.find('DATA')!=-1: finalS.remove(key)
+	return finalS
 
 def investigateAnalogy(a,b,aliasDict):
 	if (a==b): return 1
@@ -179,7 +169,7 @@ def drawTextboxMissingKws(sourceFile,modifiedFile,key,configString,s,CONFIG,ans,
 			x1=targetPos[2]+len(key)*4	
 			y1=targetPos[3]+10
 			rect=fitz.Rect(x0,y0,x1,y1)
-			highlight=page.addFreetextAnnot(rect,key,fontsize=12, fontname="helv", fill_color=(1, 0, 0), rotate=0)	
+			highlight=page.addFreetextAnnot(rect,key,fontsize=12, fontname="helv", color=(1,0,0), rotate=0)	
 			break
 		index+=1
 

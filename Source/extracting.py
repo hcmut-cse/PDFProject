@@ -15,6 +15,13 @@ PDF_FOLDER = '../PdfToExtract/'
 TEMPLATE_FOLDER = '../Template/Merged/'
 RESULT_FOLDER = '../Result/'
 
+def constrain(x, min, max):
+    if x < min:
+        return min
+    if x > max:
+        return max
+    return x
+
 def extractProcess(fullPdf, CONFIG, removed, case, keynum, configS):
     # Sort CONFIG from top to bottom, from left to right
     configByColumn = dict(sorted(CONFIG.items(), key=lambda kv: kv[1]['column'][0]))
@@ -71,6 +78,7 @@ def extractingData(file, PDF_TYPE, configS, targetS):
             pageNumber = 0
             while pageNumber < len(fullPdf):
                 pdfPage = fullPdf[pageNumber]
+
                 CONFIG_TO_COPY = CONFIG["multi"][constrain(pageNumber, 0, len(CONFIG["multi"])-1)]
                 config = dict()
 
@@ -80,7 +88,8 @@ def extractingData(file, PDF_TYPE, configS, targetS):
                 else:
                     config = copy.deepcopy(CONFIG_TO_COPY)
 
-                extractedData.update(extractProcess(pdfPage, config, removed))
+                case, config, keynum = checkForCase(config, configS, targetS)
+                extractedData.update(extractProcess(pdfPage, config, removed, case, keynum, configS))
                 pageNumber += 1
     else:
     	#Auto change CONFIG if missed/swapped
