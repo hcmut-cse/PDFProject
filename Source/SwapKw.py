@@ -100,7 +100,7 @@ def missKeyword(CONFIG, configS, targetS):
 	if (CONFIG[configS[keyX-1]]['row'][0] == CONFIG[configS[keyX+1]]['row'][0]):
 		CONFIG = missKeyWordRow(CONFIG, configS[keyX-1], configS[keyX], configS[keyX+1])
 	elif (CONFIG[configS[keyX-1]]['column'][0] == CONFIG[configS[keyX+1]]['column'][0]):
-		CONFIG = missKeywordColumn(CONFIG, configs[keyX-1], configS[keyX], configS[keyX+1])
+		CONFIG = missKeywordColumn(CONFIG, configS[keyX-1], configS[keyX], configS[keyX+1])
 	return missed, CONFIG, keyX
 
 def swapKeyword(CONFIG, configS, targetS):
