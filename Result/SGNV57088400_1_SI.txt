@@ -1,65 +1,81 @@
 ------------------------------------
-BILL OF LADING NO:
-ERROR
+Attn:
+Doc Team
 ------------------------------------
 ------------------------------------
 Shipper:
-THANH HOA FISHERY IMPORT - EXPORT J.S.C
-LOT E, LE MON INDUSTRIAL ZONE, THANH HOA CITY, VIETNAM
+HOANG HAU DRAGON FRUIT FARM CO., LTD
+HAM MY COMMUNE, HAM THUAN NAM DISTRICT,
+BINH THUAN PROVINCE, VIETNAM
+TEL: +84.252.3898616 FAX: +84.252.3898558
 ------------------------------------
 ------------------------------------
 Consignee:
-PANAPESCA SPA.
-VIA MAZZINI, 31-51010 MASSA ECOZZILE PISTOIA - ITALY
-EORI NO IT 00161570478.TEL: 003905727791
+ERROR
 ------------------------------------
 ------------------------------------
-NOFIFY PARTY:
-PANAPESCA SPA.
-VIA MAZZINI, 31-51010 MASSA ECOZZILE PISTOIA - ITALY
-EORI NO IT 00161570478.TEL: 003905727791
+Notify:
+ERROR
 ------------------------------------
 ------------------------------------
-Port of Loading:
-HAI PHONG PORT, VIETNAM
+Shipping Mark:
+ERROR
+------------------------------------
+------------------------------------
+Booking No.:
+ERROR
+------------------------------------
+------------------------------------
+Container/Seal No.:
+ERROR
+------------------------------------
+------------------------------------
+Temperature/Ventilation:
+ERROR
 ------------------------------------
 ------------------------------------
 Port of Discharge:
-LIVORNO PORT, ITALY
+ERROR
+------------------------------------
+------------------------------------
+ETD:
+ERROR
+------------------------------------
+------------------------------------
+Commodity:
+ERROR
+------------------------------------
+------------------------------------
+Volume:
+ERROR
+------------------------------------
+------------------------------------
+Gross Weight:
+ERROR
 ------------------------------------
 ------------------------------------
 Payment:
-FREIGHT PREPAID
+Freight Prepaid
 ------------------------------------
 ------------------------------------
-TÊN HÀNG HÓA:
-FROZEN COOKED WHOLE CLAM SHELL ON (MERETRIX LYRATA)
-NET WEIGHT:                24,000.00 KGS
-FREE 5 DAY DEMURRAGE , FREE 5 DAYS PLUG-IN,
-FREE 5 DAYS DETENTION AT DESTINATION
+Remark:
+SEAWAY BILL
+------------------------------------
+------------------------------------
+Mobile:
+ 081090
+------------------------------------
+------------------------------------
+Leftovers:
+Commodity:
+1. FRESH DRAGON FRUIT – HS:
+1,600 ctns = 16,000.00kg gross weight
+2. FRESH LONGAN – HS: 081090
+400 ctns = 2,160.00kg gross weight
+3. FRESH YOUNG COCONUT – HS: 080119
+300 ctns = 2,490.00kg gross weight
+Total Volume: 1x40’= 2,300ctns
+Gross Weight: 20,650.00 kgs
                
-------------------------------------
-------------------------------------
-GROSS WEIGHT:
-/GROSS WEIGHT:            26,304.00 KGS
-------------------------------------
-------------------------------------
-SỐ KIỆN:
-/ (SỐ KIỆN ) :          2,400       CTNS
-------------------------------------
-------------------------------------
-TÊN TÀU:
-/ (TÊN TÀU) :           BOX ENDEAVOUR 0IU1QS1NC
-------------------------------------
-------------------------------------
-NGÀY CHẠY:
-FEB. 02, 2019
-------------------------------------
-------------------------------------
-CONT NO / SEAL NO:
-/CONT NO / SEAL NO :   SZLU9233773/MOL041141L
-------------------------------------
-------------------------------------
-HS CODE:
-16055
+Please issue SEAWAY BILL
 ------------------------------------

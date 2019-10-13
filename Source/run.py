@@ -25,7 +25,7 @@ if __name__ == '__main__':
 		for file in fileName:
 			print(file,template[file])
 
-			PDF_TYPE = template[file]
+			PDF_TYPE,configS,targetS  = template[file]
 			# Extractor
 			if(int(PDF_TYPE) > 0):
 				startTime=time.time()

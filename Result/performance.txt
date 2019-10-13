@@ -1,80 +1,14 @@
 PERFORMANCE RECORDS
 
 ##################################################
-CLTV01164093_HANV01321800_1_ocps_si@opussmtp.one-line.com_1_1.pdf
-Matching time: 0.012528181076049805 seconds
-Warning time: 0.012857675552368164 seconds
-Extracting time: 0.3086423873901367 seconds
+SGNV57088400_1_SI.pdf
+Matching time: 0.22606158256530762 seconds
+Warning time: 0.13143038749694824 seconds
+Extracting time: 0.26747679710388184 seconds
 ##################################################
 ##################################################
-VN101697_2.pdf
-Matching time: 0.01339101791381836 seconds
-Warning time: 0.01011037826538086 seconds
-Extracting time: 0.2812919616699219 seconds
-##################################################
-##################################################
-CLTV01213105_HANV02266300_1_ocps_si@opussmtp.one-line.com_1_1.pdf
-Matching time: 0.012404680252075195 seconds
-Warning time: 0.010270357131958008 seconds
-Extracting time: 0.28491973876953125 seconds
-##################################################
-##################################################
-VN101697_3.pdf
-Matching time: 0.013665437698364258 seconds
-Warning time: 0.006411552429199219 seconds
-Extracting time: 0.28603672981262207 seconds
-##################################################
-##################################################
-CLTV01213105_HANV02266300_1_ocps_si@opussmtp.one-line.com_1(ocps20190121164953_1)_1.pdf
-Matching time: 0.013594627380371094 seconds
-Warning time: 0.011568069458007812 seconds
-Extracting time: 0.27591657638549805 seconds
-##################################################
-##################################################
-CLTV01303595_HANV03032900_1_ocps_si@opussmtp.one-line.com_1(ocps20190130122641_1)_1.pdf
-Matching time: 0.017506837844848633 seconds
-Warning time: 0.017812252044677734 seconds
-Extracting time: 0.3979671001434326 seconds
-##################################################
-##################################################
-CLTV01303595_HANV03032900_1_ocps_si@opussmtp.one-line.com_1_1.pdf
-Matching time: 0.01591777801513672 seconds
-Warning time: 0.013451576232910156 seconds
-Extracting time: 0.3446536064147949 seconds
-##################################################
-##################################################
-CLTV02192035_HANV04380900_1_ocps_si@opussmtp.one-line.com_1(ocps20190219125904_1)_1.pdf
-Matching time: 0.014208078384399414 seconds
-Warning time: 0.006346464157104492 seconds
-Extracting time: 0.2810065746307373 seconds
-##################################################
-##################################################
-CLTV02192094_HANV03710500_1_ocps_si@opussmtp.one-line.com_1(ocps20190219131724_1)_1.pdf
-Matching time: 0.014666318893432617 seconds
-Warning time: 0.006003856658935547 seconds
-Extracting time: 0.2944827079772949 seconds
-##################################################
-##################################################
-SI+153.pdf
-Matching time: 0.012455463409423828 seconds
-Warning time: 0.009789705276489258 seconds
-Extracting time: 0.4411356449127197 seconds
-##################################################
-##################################################
-CLTV02192094_HANV03710500_1_ocps_si@opussmtp.one-line.com_1_1.pdf
-Matching time: 0.013527631759643555 seconds
-Warning time: 0.00668025016784668 seconds
-Extracting time: 0.5058534145355225 seconds
-##################################################
-##################################################
-CLTV01164093_HANV01321800_1_ocps_si@opussmtp.one-line.com_1(ocps20190116141849_1)_1.pdf
-Matching time: 0.015819311141967773 seconds
-Warning time: 0.010951519012451172 seconds
-Extracting time: 0.45514774322509766 seconds
-##################################################
-##################################################
-CLTV02192035_HANV04380900_1_ocps_si@opussmtp.one-line.com_1_1.pdf
-Matching time: 0.012525081634521484 seconds
-Warning time: 0.006310701370239258 seconds
-Extracting time: 0.4817936420440674 seconds
+SI+BY+SEA.pdf
+Matching time: 0.24689936637878418 seconds
+Warning time: 0.08920478820800781 seconds
+Extracting time: 0.23016977310180664 seconds
 ##################################################

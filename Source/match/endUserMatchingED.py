@@ -163,8 +163,8 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 	#############################
 	# configString: standard list of keywords
 	# targetS: list of keywords in PDF 
-	# print(targetConfigString)
-	# print(targetS)	
+	print(targetConfigString)
+	print(targetS)	
 	#############################
 
 	# return ans,minDistance
@@ -172,6 +172,7 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 
 def endUserSolve(resultFile,inputPath,resultPath,matchingFolder,jsonDir,standardFolder,aliasFile):
 	return_dict = {}
+
 
 	matchingFiles=glob.glob(matchingFolder)
 	matchingFiles.sort()
@@ -203,7 +204,8 @@ def endUserSolve(resultFile,inputPath,resultPath,matchingFolder,jsonDir,standard
 			# resultFile.write('\n')
 			# ======================================================
 		startFilenamePos=len(inputPath+'/')
-		return_dict[file[startFilenamePos:]] = ans
+		return_dict[file[startFilenamePos:]] = [ans,configS,targetS]
+
 		decorationPrint(resultFile,'#',50)
 
 	return return_dict,performanceResults,configS,targetS

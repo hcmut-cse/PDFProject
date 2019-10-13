@@ -1,65 +1,62 @@
 ------------------------------------
-BILL OF LADING NO:
-ERROR
+Attn:
+Doc Team
 ------------------------------------
 ------------------------------------
 Shipper:
-THANH HOA FISHERY IMPORT - EXPORT J.S.C
-LOT E, LE MON INDUSTRIAL ZONE, THANH HOA CITY, VIETNAM
+HOANG HAU DRAGON FRUIT FARM CO., LTD
+HAM MY COMMUNE, HAM THUAN NAM DISTRICT,
+BINH THUAN PROVINCE, VIETNAM
+TEL: +84 252 3898616 FAX: +84 252 3898558
 ------------------------------------
 ------------------------------------
 Consignee:
-PANAPESCA SPA.
-VIA MAZZINI, 31-51010 MASSA ECOZZILE PISTOIA - ITALY
-EORI NO IT 00161570478.TEL: 003905727791
+NATURE’S PRIDE
+HONDERDLAND 611
+2676 LV MAASDIJK, THE NETHERLANDS
+TEL: +31 174 526 588
 ------------------------------------
 ------------------------------------
-NOFIFY PARTY:
-PANAPESCA SPA.
-VIA MAZZINI, 31-51010 MASSA ECOZZILE PISTOIA - ITALY
-EORI NO IT 00161570478.TEL: 003905727791
+Notify:
+SAME AS CONSIGNEE
 ------------------------------------
 ------------------------------------
-Port of Loading:
-HAI PHONG PORT, VIETNAM
+Shipping Mark:
+ERROR
+------------------------------------
+------------------------------------
+Booking No.:
+SGNV30322700
+------------------------------------
+------------------------------------
+Container/Seal No.:
+TRIU 6686734 / VN122478A
+------------------------------------
+------------------------------------
+Temperature/Ventilation:
++3 degrees C-5M3/H
 ------------------------------------
 ------------------------------------
 Port of Discharge:
-LIVORNO PORT, ITALY
+ROTTERDAM-HOLLAND
 ------------------------------------
 ------------------------------------
-Payment:
-FREIGHT PREPAID
+ETD:
+21 / 03 / 2019
 ------------------------------------
 ------------------------------------
-TÊN HÀNG HÓA:
-FROZEN COOKED WHOLE CLAM SHELL ON (MERETRIX LYRATA)
-NET WEIGHT:                24,000.00 KGS
-FREE 5 DAY DEMURRAGE , FREE 5 DAYS PLUG-IN,
-FREE 5 DAYS DETENTION AT DESTINATION
-               
+Commodity:
+FRESH DRAGON FRUIT – HS: 081090
 ------------------------------------
 ------------------------------------
-GROSS WEIGHT:
-/GROSS WEIGHT:            26,304.00 KGS
+Volume:
+1x20’ = 1,566ctns
 ------------------------------------
 ------------------------------------
-SỐ KIỆN:
-/ (SỐ KIỆN ) :          2,400       CTNS
+Gross Weight:
+7,281.90kgs
 ------------------------------------
 ------------------------------------
-TÊN TÀU:
-/ (TÊN TÀU) :           BOX ENDEAVOUR 0IU1QS1NC
-------------------------------------
-------------------------------------
-NGÀY CHẠY:
-FEB. 02, 2019
-------------------------------------
-------------------------------------
-CONT NO / SEAL NO:
-/CONT NO / SEAL NO :   SZLU9233773/MOL041141L
-------------------------------------
-------------------------------------
-HS CODE:
-16055
+Leftovers:
+
 ------------------------------------
