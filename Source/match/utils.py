@@ -343,12 +343,20 @@ def createListOfStringLineList(CONFIG,lineList,configString,aliasFile):
 
 	workbook = xlrd.open_workbook(aliasFile)
 	sheet = workbook.sheet_by_index(0)
+	# for i in range(1,sheet.nrows):
+	# 	tmp=sheet.row(i)[0].value
+	# 	if tmp in configString:
+	# 		for j in range(1,len(sheet.row(i))): 
+	# 			if sheet.row(i)[j].value!='': aliasDict[tmp].append(sheet.row(i)[j].value)
 	for i in range(1,sheet.nrows):
-		tmp=sheet.row(i)[0].value
-		if tmp in configString:
-			for j in range(1,len(sheet.row(i))): 
-				if sheet.row(i)[j].value!='': aliasDict[tmp].append(sheet.row(i)[j].value)
+		for j in range(0,len(sheet.row(i))): 
+			tmp=sheet.row(i)[j].value
+			if tmp in configString:
+				for k in range(0,len(sheet.row(i))):
+					if sheet.row(i)[k].value!='': aliasDict[tmp].append(sheet.row(i)[k].value)
+
 	# print(aliasDict)
+	# for key in aliasDict: print(aliasDict[key])
 	# exit()
 
 	for i in range(l):
