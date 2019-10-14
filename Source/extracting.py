@@ -15,6 +15,22 @@ PDF_FOLDER = '../PdfToExtract/'
 TEMPLATE_FOLDER = '../Template/Merged/'
 RESULT_FOLDER = '../Result/'
 
+def leanWtm(page, wtmList):
+    count = 0
+    for line in page:
+        for i in range (0, len(line)):
+            if (ord(line[i]) > 32 and ord(line[i]) < 127):
+                count = count + 1
+
+        if (count < 4):
+            wtmList.append(line)
+        count = 0
+    return wtmList
+def deleteWtm(wtmList, fullPdf):
+    for line in fullPdf:
+        if line in wtmList:
+            fullPdf.remove(line)
+    return fullPdf
 def constrain(x, min, max):
     if x < min:
         return min
@@ -69,10 +85,16 @@ def extractingData(file, PDF_TYPE, configS, targetS):
 
     # Preproces PDF
     fullPdf, removed, CONFIG, PDF_PAGES = preProcessPdf(PDF_FOLDER + file, ORIGINAL_CONFIG)
-    # for line in fullPdf:
-    #     print(line)
 
     if ("Multipages" in CONFIG):
+        # delete "copy" or lean wtm in multipage
+        for page in fullPdf[1:]:
+            wtmList = []
+            wtmList = leanWtm(page, wtmList)
+            page1 = deleteWtm(wtmList, page)
+            fullPdf.remove(page)
+            fullPdf.append(page1)
+        
         if (CONFIG['Multipages']):
             extractedData = dict()
             pageNumber = 0
@@ -92,10 +114,11 @@ def extractingData(file, PDF_TYPE, configS, targetS):
                 extractedData.update(extractProcess(pdfPage, config, removed, case, keynum, configS))
                 pageNumber += 1
     else:
-    	#Auto change CONFIG if missed/swapped
-    	case, CONFIG, keynum = checkForCase(CONFIG, configS, targetS)
-    	#then extract data
-    	extractedData = extractProcess(fullPdf, CONFIG, removed, case, keynum, configS)
+        #Auto change CONFIG if missed/swapped
+        case, CONFIG, keynum = checkForCase(CONFIG, configS, targetS)
+        #then extract data
+        print(fullPdf)
+        extractedData = extractProcess(fullPdf, CONFIG, removed, case, keynum, configS)
 
     print("- Connecting similar contents...")
     # If pdf have multi pages, we will check similar content and connect them
