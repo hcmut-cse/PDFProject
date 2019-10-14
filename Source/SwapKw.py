@@ -98,7 +98,7 @@ def missKeyword(CONFIG, configS, targetS):
 	print(configS[keyX-1], configS[keyX], configS[keyX+1])
 	# print(CONFIG)
 	if (CONFIG[configS[keyX-1]]['row'][0] == CONFIG[configS[keyX+1]]['row'][0]):
-		CONFIG = missKeyWordRow(CONFIG, configS[keyX-1], configS[keyX], configS[keyX+1])
+		CONFIG = missKeywordRow(CONFIG, configS[keyX-1], configS[keyX], configS[keyX+1])
 	elif (CONFIG[configS[keyX-1]]['column'][0] == CONFIG[configS[keyX+1]]['column'][0]):
 		CONFIG = missKeywordColumn(CONFIG, configS[keyX-1], configS[keyX], configS[keyX+1])
 	return missed, CONFIG, keyX
@@ -132,7 +132,7 @@ def swapKeyword(CONFIG, configS, targetS):
             CONFIG = swapKeywordRow(CONFIG, configS[keyA-1], configS[keyA], configS[keyB], configS[keyB+1])
             
         elif (CONFIG[configS[keyA]]['column'][0] == CONFIG[configS[keyB]]['column'][0]):
-            CONFIG = swapKeywordColumn(CONFIG, configS[keyA-1], configS[keyA], configS[keyA+1], configS[keyB-1], configS[keyB], configS[keyB+1])
+            CONFIG = swapKeywordColumn(CONFIG, configS[keyA-1], configS[keyA], configS[keyB], configS[keyB+1])
         # print("After:")
         # print(configS[keyA],": ",CONFIG[configS[keyA]])
         # print(configS[keyB],": ",CONFIG[configS[keyB]])

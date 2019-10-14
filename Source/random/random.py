@@ -1,13 +1,13 @@
 import json
 
 def main():
-	name0='15_merged.json'
-	name1='15_temp.json'
+	name0='4_merged.json'
+	name1='4_temp.json'
 
 	with open(name0, 'r', encoding='utf8') as json_file_0:
-		config0=json.load(json_file_0)[0]["1"]
+		config0=json.load(json_file_0)[0]
 		with open(name1,'r',encoding='utf8') as json_file_1:
-			config1=json.load(json_file_1)[0]["1"]
+			config1=json.load(json_file_1)[0]
 
 			# list0=[]
 			# list1=[]
@@ -17,10 +17,10 @@ def main():
 			# print(list1)
 			# exit()
 
-			# forgottenList=[]
-			# for key in config1:
-			# 	if key not in config0: forgottenList.append(key)
-			# print(forgottenList)
+			forgottenList=[]
+			for key in config1:
+				if key not in config0: forgottenList.append(key)
+			print(forgottenList)
 
 			mistakenList=[]
 			for key in config1: 

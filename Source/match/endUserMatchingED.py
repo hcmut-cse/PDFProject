@@ -127,6 +127,11 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 				targetCONFIG=CONFIG
 				targetAliasDict=aliasDict
 				targetNewKwList=newKwList
+
+
+				# print(minDistance)
+				# print(ans)
+
 				if (minDistance==0 or minDistance>15): break
 				# Testing==========================================================================
 		if (minDistance==0): break
@@ -163,8 +168,8 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 	#############################
 	# configString: standard list of keywords
 	# targetS: list of keywords in PDF 
-	print(targetConfigString)
-	print(targetS)	
+	# print(targetConfigString)
+	# print(targetS)	
 	#############################
 
 	# return ans,minDistance

@@ -280,7 +280,7 @@ def drawTextboxMishandled(key,sourceFile,modifiedFile,count,CONFIG,aliasDict):
 	doc.save(modifiedFile,garbage=4, deflate=True, clean=False)
 	copyfile(modifiedFile,sourceFile)
 
-# def createListOfStringLineList(CONFIG,lineList,configString):
+# def createListOfStringLineList(CONFIG,lineList,configString,aliasFile):
 # 	l=len(lineList)
 # 	checked={}
 # 	ansList=[[configString[0]]]
@@ -343,11 +343,7 @@ def createListOfStringLineList(CONFIG,lineList,configString,aliasFile):
 
 	workbook = xlrd.open_workbook(aliasFile)
 	sheet = workbook.sheet_by_index(0)
-	# for i in range(1,sheet.nrows):
-	# 	tmp=sheet.row(i)[0].value
-	# 	if tmp in configString:
-	# 		for j in range(1,len(sheet.row(i))): 
-	# 			if sheet.row(i)[j].value!='': aliasDict[tmp].append(sheet.row(i)[j].value)
+
 	for i in range(1,sheet.nrows):
 		for j in range(0,len(sheet.row(i))): 
 			tmp=sheet.row(i)[j].value
@@ -355,9 +351,21 @@ def createListOfStringLineList(CONFIG,lineList,configString,aliasFile):
 				for k in range(0,len(sheet.row(i))):
 					if sheet.row(i)[k].value!='': aliasDict[tmp].append(sheet.row(i)[k].value)
 
-	# print(aliasDict)
-	# for key in aliasDict: print(aliasDict[key])
-	# exit()
+	delta=0
+	if ('HeaderDATA' in CONFIG):
+		headerLength=CONFIG['HeaderDATA']['row'][1]-CONFIG['HeaderDATA']['row'][0]
+		pivot=CONFIG['HeaderDATA']['endObject']['bottom']
+		pivotIndex=headerLength
+		if (pivot==-1): pivot=CONFIG[configString[0]]
+		for line in lineList:
+			if line.find(pivot)!=-1: 
+				pivotIndex=lineList.index(line)
+				break
+		delta=abs(headerLength-pivotIndex)
+
+	for key in CONFIG:
+		if (CONFIG[key]['row'][0]): CONFIG[key]['row'][0]-=delta
+		if (CONFIG[key]['row'][1]): CONFIG[key]['row'][1]-=delta
 
 	for i in range(l):
 		posDict={}
@@ -388,6 +396,7 @@ def createListOfStringLineList(CONFIG,lineList,configString,aliasFile):
 		for key in posDict: updateList.append(key)
 
 		l=len(updateList)
+
 		for j in range(l-1):
 			for k in range(j+1,l):
 				key0=updateList[j]
@@ -401,23 +410,11 @@ def createListOfStringLineList(CONFIG,lineList,configString,aliasFile):
 				d1=abs(r1-i)
 
 				if i0>i1:
-					# if d0>d1: posDict.pop(key0,None)
-					# else: posDict.pop(key1,None)
-					if d0>=2: posDict.pop(key0,None)
-					if d1>=2: posDict.pop(key1,None)
+					if d0>=2 and i<r0: posDict.pop(key0,None)
+					if d1>=2 and i<r1: posDict.pop(key1,None)
 				else:
-					if d0>=3 and i<r0: posDict.pop(key0,None)
-					if d1>=3 and i<r1: posDict.pop(key1,None)
-					
-
-		# for key in updateList:
-		# 	barPos=key.find('_')
-		# 	index=updateList.index(key)
-		# 	if barPos!=-1:
-		# 		commonContent=key[:barPos]
-		# 		for sameKey in updateList[index:]:
-		# 			if sameKey!=key:
-		# 				if sameKey.find(commonContent)!=-1: posDict.pop(sameKey,None)
+					if d0>=5.5 and i<r0: posDict.pop(key0,None)
+					if d1>=5.5 and i<r1: posDict.pop(key1,None)
 
 		# print('Final updating keys:',posDict.keys())
 		# for l in ansList: print(l)
