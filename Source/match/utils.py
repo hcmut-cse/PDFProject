@@ -448,11 +448,18 @@ def createListOfStringLineList(CONFIG,lineList,configString,aliasFile):
 def createData(PDF, keyword,CURR_KW):
 	workbook = xlrd.open_workbook('alias.xlsx')
 	sheet = workbook.sheet_by_index(0)
-	for i in range (sheet.nrows):
-		for j in range (sheet.ncols):
+	alias = {}
+	for i in range (1, sheet.nrows):
+		tempList = []
+		for j in range (1, sheet.ncols):
 			if (sheet.cell(i, j).value == ''):
 				continue
+			tempList.append(sheet.cell(i, j).value)
+			# alias for dictionary alias 
+			# CURR_KW for dictoinary kw from config
+			alias[sheet.cell(i, 0).value] = tempList
 			CURR_KW[sheet.cell(i, j).value] = 1
+	#print(alias)
 # Make data keyword for test template
 def currDataTemp(str_templateCheck, listCheck):
 	with open('../' + 'Template' + '/' + 'Merged' + '/' + str_templateCheck + '.json', 'r', encoding='utf8') as json_file:
@@ -475,6 +482,17 @@ def preProcessText(listPdf, fullPdf):
 	return listPdf
 # Check if keyword in data
 def detectInData(fullPdf, listCheck, CURR_KW, newKw,listPdf):
+	# for listLine in listPdf:
+	# 	for ele in listLine:
+	# 		ele = ele.replace(":","")
+	# 		ele = ele.strip()
+	# 		for key in CURR_KW:
+	# 			if (ele == key):
+	# 				if ele not in listCheck:
+	# 					listCheck.append(ele)
+	# 					newKw.append(ele)
+	# return newKw
+
 	for listLine in listPdf:
 		for ele in listLine:
 			if (":" in ele):
@@ -487,8 +505,11 @@ def detectInData(fullPdf, listCheck, CURR_KW, newKw,listPdf):
 							#listCheck.append(ele)
 							newKw.append(ele)
 	return newKw
-
 def proNewKey(newKw, CURR_KW, listCheck):
+	# for key in CURR_KW:
+	# 	print(key)
+	# for key in newKw:
+	# 	print(key)
 	newList = []
 	for new in newKw:
 		for key in CURR_KW:
@@ -517,8 +538,10 @@ def generateListNewKws(file,template,CURR_KW,jsonDir):
 	keyword = []
 	createData(PDF,keyword,CURR_KW)
 	listPdf = preProcessText(listPdf, fullPdf)
+	# for line in listPdf:
+	#     print(line)
 	newKw = detectInData(fullPdf, listCheck, CURR_KW, newKw,listPdf)
-	newKw = proNewKey(newKw, CURR_KW, listCheck)
+	#newKw = proNewKey(newKw, CURR_KW, listCheck)
 	return newKw
 
 def drawTextboxNewKws(key,sourceFile,modifiedFile,CONFIG):
