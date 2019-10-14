@@ -6,8 +6,8 @@
             "isFlex": 1,
             "endObject": {
                 "top": "same_left",
-                "bottom": "Sent:",
-                "left": "From:",
+                "bottom": "Sent",
+                "left": "From",
                 "right": -1
             }
         },
@@ -17,8 +17,8 @@
             "isFlex": 1,
             "endObject": {
                 "top": "same_left",
-                "bottom": "To:",
-                "left": "Sent:",
+                "bottom": "To",
+                "left": "Sent",
                 "right": -1
             }
         },
@@ -28,8 +28,8 @@
             "isFlex": 1,
             "endObject": {
                 "top": "same_left",
-                "bottom": "Cc:",
-                "left": "To:",
+                "bottom": "Cc",
+                "left": "To",
                 "right": -1
             }
         },
@@ -39,8 +39,8 @@
             "isFlex": 1,
             "endObject": {
                 "top": "same_left",
-                "bottom": "Subject:",
-                "left": "Cc:",
+                "bottom": "Subject",
+                "left": "Cc",
                 "right": -1
             }
         },
@@ -51,7 +51,7 @@
             "endObject": {
                 "top": "same_left",
                 "bottom": "Dear",
-                "left": "Subject:",
+                "left": "Subject",
                 "right": -1
             }
         },
@@ -61,8 +61,8 @@
             "isFlex": 1,
             "endObject": {
                 "top": "same_left",
-                "bottom": "Consignee:",
-                "left": "Shipper:",
+                "bottom": "Consignee",
+                "left": "Shipper",
                 "right": -1
             }
         },
@@ -72,8 +72,8 @@
             "isFlex": 1,
             "endObject": {
                 "top": "same_left",
-                "bottom": "Notify Party:",
-                "left": "Consignee:",
+                "bottom": "Notify Party",
+                "left": "Consignee",
                 "right": -1
             }
         },
@@ -83,8 +83,8 @@
             "isFlex": 1,
             "endObject": {
                 "top": "same_left",
-                "bottom": "Add:",
-                "left": "Notify Party:",
+                "bottom": "Add",
+                "left": "Notify Party",
                 "right": -1
             }
         },
@@ -95,7 +95,7 @@
             "endObject": {
                 "top": "same_left",
                 "bottom": "PLACE OF RECEIPT",
-                "left": "OCEAN VESSEL:",
+                "left": "OCEAN VESSEL",
                 "right": -1
             }
         },
@@ -105,8 +105,8 @@
             "isFlex": 1,
             "endObject": {
                 "top": "same_left",
-                "bottom": "PORT OF LOADING:",
-                "left": "PLACE OF RECEIPT :",
+                "bottom": "PORT OF LOADING",
+                "left": "PLACE OF RECEIPT",
                 "right": -1
             }
         },
@@ -117,7 +117,7 @@
             "endObject": {
                 "top": "same_left",
                 "bottom": "PORT OF DISCHARGE",
-                "left": "PORT OF LOADING:",
+                "left": "PORT OF LOADING",
                 "right": -1
             }
         },
@@ -127,8 +127,8 @@
             "isFlex": 1,
             "endObject": {
                 "top": "same_left",
-                "bottom": "PLACE OF DELIVERY:",
-                "left": "PORT OF DISCHARGE :",
+                "bottom": "PLACE OF DELIVERY",
+                "left": "PORT OF DISCHARGE",
                 "right": -1
             }
         },
@@ -138,8 +138,8 @@
             "isFlex": 1,
             "endObject": {
                 "top": "same_left",
-                "bottom": "DESCRIPTION OF GOODS:",
-                "left": "PLACE OF DELIVERY:",
+                "bottom": "DESCRIPTION OF GOODS",
+                "left": "PLACE OF DELIVERY",
                 "right": -1
             }
         },
@@ -148,7 +148,7 @@
             "column": [0, null],
             "isFlex": 1,
             "endObject": {
-                "top": "DESCRIPTION OF GOODS:",
+                "top": "DESCRIPTION OF GOODS",
                 "bottom": -1,
                 "left": -1,
                 "right": -1

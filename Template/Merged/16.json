@@ -1,35 +1,35 @@
 [
     {
-    		"Date :": {
+    		"Date": {
                 "row": [0, 1],
                 "column": [171, null],
                 "isFlex": 1,
                 "endObject": {
                     "top": "same_left",
-                    "bottom": "Attn :",
-                    "left": "Date :",
+                    "bottom": "Attn",
+                    "left": "Date",
                     "right": -1
                 }
             },
-            "To:": {
+            "To": {
                 "row": [1, 2],
                 "column": [90, 165],
                 "isFlex": 1,
                 "endObject": {
                     "top": "same_left",
                     "bottom": "Customers contact \\(name / tel / email\\) \\(for draft BL dispatching\\)",
-                    "left": "To:",
-                    "right": "Attn :"
+                    "left": "To",
+                    "right": "Attn"
                 }
             },
-            "Attn :": {
+            "Attn": {
                 "row": [1, 2],
                 "column": [171, null],
                 "isFlex": 1,
                 "endObject": {
                     "top": "same_left",
                     "bottom": "Customers contact \\(name / tel / email\\) \\(for draft BL dispatching\\)",
-                    "left": "Attn :",
+                    "left": "Attn",
                     "right": -1
                 }
             },
@@ -51,7 +51,7 @@
                 "endObject": {
                     "top": "same_left",
                     "bottom": "Booking No.",
-                    "left": "Customers contact \\(name / tel / email\\) \\(for draft BL dispatching\\) :",
+                    "left": "Customers contact \\(name / tel / email\\) \\(for draft BL dispatching\\)",
                     "right": -1
                 }
             },
@@ -62,7 +62,7 @@
                 "endObject": {
                     "top": "same_left",
                     "bottom": "B/L No.",
-                    "left": "Booking No.:",
+                    "left": "Booking No.",
                     "right": -1
                 }
             },
@@ -73,7 +73,7 @@
                 "endObject": {
                     "top": "same_left",
                     "bottom": "ORIGINAL",
-                    "left": "B/L No.:",
+                    "left": "B/L No.",
                     "right": -1
                 }
             },
@@ -118,26 +118,26 @@
                     "top": "Consignee \\(complete name and address\\)",
                     "bottom": "Notify Party \\(complete name and address\\)",
                     "left": -1,
-                    "right": "Place of issue :"
+                    "right": "Place of issue"
                 }
             },
-            "Place of issue :": {
+            "Place of issue": {
                 "row": [11, 13],
                 "column": [102, null],
                 "isFlex": 1,
                 "endObject": {
                     "top": "same_left",
-                    "bottom": "Other requests :",
-                    "left": "Place of issue :",
+                    "bottom": "Other requests",
+                    "left": "Place of issue",
                     "right": -1
                 }
             },
-            "Other requests :": {
+            "Other requests": {
                 "row": [14, 18],
                 "column": [86, null],
                 "isFlex": 1,
                 "endObject": {
-                    "top": "Other requests :",
+                    "top": "Other requests",
                     "bottom": "Also Notify Party \\(complete name and address\\)",
                     "left": "Consignee \\(complete name and address\\)",
                     "right": -1
@@ -260,8 +260,8 @@
                 "isFlex": 1,
                 "isCenter": 1,
                 "endObject": {
-                    "top": "HS CODE/ HTS/ NCM:",
-                    "bottom": "TOTAL:",
+                    "top": "HS CODE/ HTS/ NCM",
+                    "bottom": "TOTAL",
                     "left": "Shipping Marks",
                     "right": "Packages"
                 }
@@ -274,7 +274,7 @@
                 "isCenter": 1,
                 "endObject": {
                     "top": "Container/Seal No",
-                    "bottom": "TOTAL:",
+                    "bottom": "TOTAL",
                     "left": -1,
                     "right": "Size/ Type"
                 }
@@ -286,7 +286,7 @@
                 "isCenter": 1,
                 "endObject": {
                     "top": "Size/ Type",
-                    "bottom": "TOTAL:",
+                    "bottom": "TOTAL",
                     "left": "Container/Seal No",
                     "right": "Shipping Marks"
                 }
@@ -298,9 +298,9 @@
                 "isCenter": 1,
                 "endObject": {
                     "top": "Shipping Marks",
-                    "bottom": "TOTAL:",
+                    "bottom": "TOTAL",
                     "left": "Size/ Type",
-                    "right": "HS CODE/ HTS/ NCM:"
+                    "right": "HS CODE/ HTS/ NCM"
                 }
             },
             "Packages": {
@@ -310,8 +310,8 @@
                 "isCenter": 1,
                 "endObject": {
                     "top": "Packages",
-                    "bottom": "TOTAL:",
-                    "left": "HS CODE/ HTS/ NCM:",
+                    "bottom": "TOTAL",
+                    "left": "HS CODE/ HTS/ NCM",
                     "right": "\\(Kgs\\)"
                 }
             },
@@ -322,7 +322,7 @@
                 "isCenter": 1,
                 "endObject": {
                     "top": "(Kgs)",
-                    "bottom": "TOTAL:",
+                    "bottom": "TOTAL",
                     "left": "Packages",
                     "right": "\\(Cbm\\)"
                 }
@@ -334,12 +334,12 @@
                 "isCenter": 1,
                 "endObject": {
                     "top": "\\(Cbm\\)",
-                    "bottom": "TOTAL:",
+                    "bottom": "TOTAL",
                     "left": "\\(Kgs\\)",
                     "right": -1
                 }
             },
-            "TOTAL:": {
+            "TOTAL": {
                 "row": [34, 43],
                 "column": [136, null],
                 "isFlex": 1,

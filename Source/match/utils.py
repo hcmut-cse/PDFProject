@@ -164,7 +164,7 @@ def drawTextboxMissingKws(sourceFile,modifiedFile,key,configString,s,CONFIG,ans,
 			x1=targetPos[2]+len(key)*4	
 			y1=targetPos[3]+10
 			rect=fitz.Rect(x0,y0,x1,y1)
-			highlight=page.addFreetextAnnot(rect,key,fontsize=12, fontname="helv", color=(1,0,0), rotate=0)	
+			highlight=page.addFreetextAnnot(rect,key,fontsize=12, fontname="helv", fill_color=(1,0,0), rotate=0)	
 			break
 		index+=1
 
