@@ -1,170 +1,104 @@
 PERFORMANCE RECORDS
 
 ##################################################
-CLTV01095214_SGNV04598900_1_ocps_si@opussmtp.one-line.com_3(ocps20190109170806_3)_1.pdf
-Matching time: 0.21422934532165527 seconds
-Warning time: 0.022800683975219727 seconds
-Extracting time: 0.22731733322143555 seconds
+CLTV01161980_SGNV08843600_1_ocps_si@opussmtp.one-line.com_3(ocps20190116094200_3)_1.pdf
+Matching time: 0.17801713943481445 seconds
+Warning time: 0.023209095001220703 seconds
+Extracting time: 0.16419649124145508 seconds
 ##################################################
 ##################################################
-CLTV01172419_SGNV05683500_1_ocps_si@opussmtp.one-line.com_1(ocps20190117105338_1)_1.pdf
-Matching time: 0.224564790725708 seconds
-Warning time: 0.022931814193725586 seconds
-Extracting time: 0.22484207153320312 seconds
+VN103785_7.pdf
+Matching time: 0.16482973098754883 seconds
+Warning time: 0.015740394592285156 seconds
+Extracting time: 0.15571022033691406 seconds
 ##################################################
 ##################################################
-05111+SI.pdf
-Matching time: 0.17760610580444336 seconds
-Warning time: 0.009917736053466797 seconds
-Extracting time: 0.19240355491638184 seconds
+SI+BY+SEA.pdf
+Matching time: 0.16053128242492676 seconds
+Warning time: 0.04186129570007324 seconds
+Extracting time: 0.16298389434814453 seconds
 ##################################################
 ##################################################
-BEHAN00936_SI.pdf
-Matching time: 0.25487804412841797 seconds
-Warning time: 0.023609161376953125 seconds
-Extracting time: 0.22346711158752441 seconds
+VN103785_6.pdf
+Matching time: 0.16043305397033691 seconds
+Warning time: 0.04271268844604492 seconds
+Extracting time: 0.16083812713623047 seconds
 ##################################################
 ##################################################
-05114+SI.pdf
-Matching time: 0.184952974319458 seconds
-Warning time: 0.010241031646728516 seconds
-Extracting time: 0.20233535766601562 seconds
+CLTV01162295_SGNV08836800_1_ocps_si@opussmtp.one-line.com_1(ocps20190116103929_1)_1.pdf
+Matching time: 0.14719700813293457 seconds
+Warning time: 0.015754222869873047 seconds
+Extracting time: 0.15288186073303223 seconds
 ##################################################
 ##################################################
-HANV13243700_1_SI.pdf
-Matching time: 0.18419981002807617 seconds
-Warning time: 0.013262271881103516 seconds
-Extracting time: 0.18822073936462402 seconds
+CLTV01181659_SGNV08885500_1_ocps_si@opussmtp.one-line.com_2(ocps20190118123952_2)_1.pdf
+Matching time: 0.14548659324645996 seconds
+Warning time: 0.01569652557373047 seconds
+Extracting time: 0.1521437168121338 seconds
 ##################################################
 ##################################################
-CLTV01043891_HANV00089400_1_ocps_si@opussmtp.one-line.com_2(ocps20190104152640_2)_1.pdf
-Matching time: 0.21837139129638672 seconds
-Warning time: 0.025173187255859375 seconds
-Extracting time: 0.239548921585083 seconds
+VN103785_4.pdf
+Matching time: 0.14733672142028809 seconds
+Warning time: 0.01571488380432129 seconds
+Extracting time: 0.15584826469421387 seconds
 ##################################################
 ##################################################
-HANV11944600_2_SI.pdf
-Matching time: 0.1855452060699463 seconds
-Warning time: 0.01623249053955078 seconds
-Extracting time: 0.1988825798034668 seconds
+VN103785_2.pdf
+Matching time: 0.1412947177886963 seconds
+Warning time: 0.014825820922851562 seconds
+Extracting time: 0.14818906784057617 seconds
 ##################################################
 ##################################################
-CLTV01313280_SGNV12806700_1_ocps_si@opussmtp.one-line.com_1(ocps20190131120840_1)_1.pdf
-Matching time: 0.18280816078186035 seconds
-Warning time: 0.03217816352844238 seconds
-Extracting time: 0.2533226013183594 seconds
+SGNV08836800_6_Chi tiet Bill.pdf
+Matching time: 0.14590215682983398 seconds
+Warning time: 0.01586437225341797 seconds
+Extracting time: 0.15291523933410645 seconds
 ##################################################
 ##################################################
-CLTV03014630_HANV05695500_1_ocps_si@opussmtp.one-line.com_2(ocps20190301154655_2)_1.pdf
-Matching time: 0.013776779174804688 seconds
-Warning time: 0 seconds
-Extracting time: 0.19994211196899414 seconds
+VN103785_5.pdf
+Matching time: 0.14460325241088867 seconds
+Warning time: 0.05581998825073242 seconds
+Extracting time: 0.17487263679504395 seconds
 ##################################################
 ##################################################
-CLTV01102313_SGNV00095400_1_ocps_si@opussmtp.one-line.com_1(ocps20190110110324_1)_1.pdf
-Matching time: 0.22822833061218262 seconds
-Warning time: 0.0300447940826416 seconds
-Extracting time: 0.2270345687866211 seconds
+SGNV08883300_4_Chi tiet Bill.pdf
+Matching time: 0.14490485191345215 seconds
+Warning time: 0.015632152557373047 seconds
+Extracting time: 0.153914213180542 seconds
 ##################################################
 ##################################################
-CLTV01280942_SGNV10564600_1_ocps_si@opussmtp.one-line.com_3(ocps20190128114304_3)_1.pdf
-Matching time: 0.31868672370910645 seconds
-Warning time: 0.03903627395629883 seconds
-Extracting time: 0.2875354290008545 seconds
+VN103785_1.pdf
+Matching time: 0.14631128311157227 seconds
+Warning time: 0.015453577041625977 seconds
+Extracting time: 0.15146803855895996 seconds
 ##################################################
 ##################################################
-05085+SI.pdf
-Matching time: 0.18039536476135254 seconds
-Warning time: 0.009880542755126953 seconds
-Extracting time: 0.20249009132385254 seconds
+SGNV08885500_5_Chi tiet Bill.pdf
+Matching time: 0.14676547050476074 seconds
+Warning time: 0.015601396560668945 seconds
+Extracting time: 0.15740132331848145 seconds
 ##################################################
 ##################################################
-05106-SI+SGNV67342500.pdf
-Matching time: 0.2071058750152588 seconds
-Warning time: 0.025706768035888672 seconds
-Extracting time: 0.2113962173461914 seconds
+SGNV57088400_1_SI.pdf
+Matching time: 0.14307308197021484 seconds
+Warning time: 0.05625104904174805 seconds
+Extracting time: 0.17661142349243164 seconds
 ##################################################
 ##################################################
-CLTV01113180_HANV00643700_1_ocps_si@opussmtp.one-line.com_2(ocps20190111121314_2)_1.pdf
-Matching time: 0.21689844131469727 seconds
-Warning time: 0.02511119842529297 seconds
-Extracting time: 0.24308013916015625 seconds
+7.pdf
+Matching time: 0.16090989112854004 seconds
+Warning time: 0.023813247680664062 seconds
+Extracting time: 0.16332244873046875 seconds
 ##################################################
 ##################################################
-BEHCM03605_19.pdf
-Matching time: 0.2468860149383545 seconds
-Warning time: 0.06014895439147949 seconds
-Extracting time: 0.2725701332092285 seconds
+SGNV10438600_3_Chi tiet Bill.pdf
+Matching time: 0.1427602767944336 seconds
+Warning time: 0.014517068862915039 seconds
+Extracting time: 0.14571237564086914 seconds
 ##################################################
 ##################################################
-HANV09970500_6_SI.pdf
-Matching time: 0.1874990463256836 seconds
-Warning time: 0.016452789306640625 seconds
-Extracting time: 0.1914048194885254 seconds
-##################################################
-##################################################
-VN102484_6.pdf
-Matching time: 0.2632734775543213 seconds
-Warning time: 0.0444185733795166 seconds
-Extracting time: 0.25811147689819336 seconds
-##################################################
-##################################################
-CLTV01044864_HANV00100900_1_ocps_si@opussmtp.one-line.com_1(ocps20190104170419_1)_1.pdf
-Matching time: 0.226776123046875 seconds
-Warning time: 0.02730083465576172 seconds
-Extracting time: 0.2466907501220703 seconds
-##################################################
-##################################################
-CLTV01112859_SGNV02469400_1_ocps_si@opussmtp.one-line.com_2(ocps20190111112934_2)_1.pdf
-Matching time: 0.1875746250152588 seconds
-Warning time: 0.02345418930053711 seconds
-Extracting time: 0.19292879104614258 seconds
-##################################################
-##################################################
-CLTV03014917_HANV05896800_1_ocps_si@opussmtp.one-line.com_1(ocps20190301161515_1)_1.pdf
-Matching time: 0.018023014068603516 seconds
-Warning time: 0 seconds
-Extracting time: 0.2411799430847168 seconds
-##################################################
-##################################################
-2.pdf
-Matching time: 0.2214343547821045 seconds
-Warning time: 0.026265859603881836 seconds
-Extracting time: 0.24383211135864258 seconds
-##################################################
-##################################################
-6.pdf
-Matching time: 0.25731468200683594 seconds
-Warning time: 0.023698806762695312 seconds
-Extracting time: 0.21624159812927246 seconds
-##################################################
-##################################################
-CLTV01115744_HANV00334400_1_ocps_si@opussmtp.one-line.com_1(ocps20190111160903_1)_1.pdf
-Matching time: 0.24700713157653809 seconds
-Warning time: 0.02906513214111328 seconds
-Extracting time: 0.2710151672363281 seconds
-##################################################
-##################################################
-VN102484_1.pdf
-Matching time: 0.29536890983581543 seconds
-Warning time: 0.029613971710205078 seconds
-Extracting time: 0.28549885749816895 seconds
-##################################################
-##################################################
-CLTV01172213_SGNV03417500_1_ocps_si@opussmtp.one-line.com_1(ocps20190117102638_1)_1.pdf
-Matching time: 0.23695969581604004 seconds
-Warning time: 0.022873878479003906 seconds
-Extracting time: 0.2588837146759033 seconds
-##################################################
-##################################################
-12.pdf
-Matching time: 0.17622995376586914 seconds
-Warning time: 0.010015726089477539 seconds
-Extracting time: 0.19092535972595215 seconds
-##################################################
-##################################################
-CLTV01070393_SGNV00043400_1_ocps_si@opussmtp.one-line.com_1(ocps20190107102017_1)_1.pdf
-Matching time: 0.24702024459838867 seconds
-Warning time: 0.02416253089904785 seconds
-Extracting time: 0.21768879890441895 seconds
+VN103785_3.pdf
+Matching time: 0.16053533554077148 seconds
+Warning time: 0.0234072208404541 seconds
+Extracting time: 0.16245269775390625 seconds
 ##################################################

@@ -1,85 +1,54 @@
 ##################################################
 MATCHING
-05085+SI.pdf 2_6_12
-Warning: 05085+SI.pdf doesn't fully match the template
+7.pdf 7
+Warning: 7.pdf doesn't fully match the template
 ##################################################
-05106-SI+SGNV67342500.pdf 2_6_12
-Warning: 05106-SI+SGNV67342500.pdf doesn't fully match the template
+CLTV01161980_SGNV08843600_1_ocps_si@opussmtp.one-line.com_3(ocps20190116094200_3)_1.pdf 7
+Warning: CLTV01161980_SGNV08843600_1_ocps_si@opussmtp.one-line.com_3(ocps20190116094200_3)_1.pdf doesn't fully match the template
 ##################################################
-05111+SI.pdf 2_6_12
-Warning: 05111+SI.pdf doesn't fully match the template
+CLTV01162295_SGNV08836800_1_ocps_si@opussmtp.one-line.com_1(ocps20190116103929_1)_1.pdf 7
+Warning: CLTV01162295_SGNV08836800_1_ocps_si@opussmtp.one-line.com_1(ocps20190116103929_1)_1.pdf doesn't fully match the template
 ##################################################
-05114+SI.pdf 2_6_12
-Warning: 05114+SI.pdf doesn't fully match the template
+CLTV01181659_SGNV08885500_1_ocps_si@opussmtp.one-line.com_2(ocps20190118123952_2)_1.pdf 7
+Warning: CLTV01181659_SGNV08885500_1_ocps_si@opussmtp.one-line.com_2(ocps20190118123952_2)_1.pdf doesn't fully match the template
 ##################################################
-12.pdf 2_6_12
-Warning: 12.pdf doesn't fully match the template
+SGNV08836800_6_Chi tiet Bill.pdf 7
+Warning: SGNV08836800_6_Chi tiet Bill.pdf doesn't fully match the template
 ##################################################
-2.pdf 2_6_12
-Warning: 2.pdf doesn't fully match the template
+SGNV08883300_4_Chi tiet Bill.pdf 7
+Warning: SGNV08883300_4_Chi tiet Bill.pdf doesn't fully match the template
 ##################################################
-6.pdf 2_6_12
-Warning: 6.pdf doesn't fully match the template
+SGNV08885500_5_Chi tiet Bill.pdf 7
+Warning: SGNV08885500_5_Chi tiet Bill.pdf doesn't fully match the template
 ##################################################
-BEHAN00936_SI.pdf 2_6_12
-Warning: BEHAN00936_SI.pdf doesn't fully match the template
+SGNV10438600_3_Chi tiet Bill.pdf 7
+Warning: SGNV10438600_3_Chi tiet Bill.pdf doesn't fully match the template
 ##################################################
-BEHCM03605_19.pdf 2_6_12
-Warning: BEHCM03605_19.pdf doesn't fully match the template
+SGNV57088400_1_SI.pdf 7
+Warning: SGNV57088400_1_SI.pdf doesn't fully match the template
 ##################################################
-CLTV01043891_HANV00089400_1_ocps_si@opussmtp.one-line.com_2(ocps20190104152640_2)_1.pdf 2_6_12
-Warning: CLTV01043891_HANV00089400_1_ocps_si@opussmtp.one-line.com_2(ocps20190104152640_2)_1.pdf doesn't fully match the template
+SI+BY+SEA.pdf 7
+Warning: SI+BY+SEA.pdf doesn't fully match the template
 ##################################################
-CLTV01044864_HANV00100900_1_ocps_si@opussmtp.one-line.com_1(ocps20190104170419_1)_1.pdf 2_6_12
-Warning: CLTV01044864_HANV00100900_1_ocps_si@opussmtp.one-line.com_1(ocps20190104170419_1)_1.pdf doesn't fully match the template
+VN103785_1.pdf 7
+Warning: VN103785_1.pdf doesn't fully match the template
 ##################################################
-CLTV01070393_SGNV00043400_1_ocps_si@opussmtp.one-line.com_1(ocps20190107102017_1)_1.pdf 2_6_12
-Warning: CLTV01070393_SGNV00043400_1_ocps_si@opussmtp.one-line.com_1(ocps20190107102017_1)_1.pdf doesn't fully match the template
+VN103785_2.pdf 7
+Warning: VN103785_2.pdf doesn't fully match the template
 ##################################################
-CLTV01095214_SGNV04598900_1_ocps_si@opussmtp.one-line.com_3(ocps20190109170806_3)_1.pdf 2_6_12
-Warning: CLTV01095214_SGNV04598900_1_ocps_si@opussmtp.one-line.com_3(ocps20190109170806_3)_1.pdf doesn't fully match the template
+VN103785_3.pdf 7
+Warning: VN103785_3.pdf doesn't fully match the template
 ##################################################
-CLTV01102313_SGNV00095400_1_ocps_si@opussmtp.one-line.com_1(ocps20190110110324_1)_1.pdf 2_6_12
-Warning: CLTV01102313_SGNV00095400_1_ocps_si@opussmtp.one-line.com_1(ocps20190110110324_1)_1.pdf doesn't fully match the template
+VN103785_4.pdf 7
+Warning: VN103785_4.pdf doesn't fully match the template
 ##################################################
-CLTV01112859_SGNV02469400_1_ocps_si@opussmtp.one-line.com_2(ocps20190111112934_2)_1.pdf 2_6_12
-Warning: CLTV01112859_SGNV02469400_1_ocps_si@opussmtp.one-line.com_2(ocps20190111112934_2)_1.pdf doesn't fully match the template
+VN103785_5.pdf 7
+Warning: VN103785_5.pdf doesn't fully match the template
 ##################################################
-CLTV01113180_HANV00643700_1_ocps_si@opussmtp.one-line.com_2(ocps20190111121314_2)_1.pdf 2_6_12
-Warning: CLTV01113180_HANV00643700_1_ocps_si@opussmtp.one-line.com_2(ocps20190111121314_2)_1.pdf doesn't fully match the template
+VN103785_6.pdf 7
+Warning: VN103785_6.pdf doesn't fully match the template
 ##################################################
-CLTV01115744_HANV00334400_1_ocps_si@opussmtp.one-line.com_1(ocps20190111160903_1)_1.pdf 2_6_12
-Warning: CLTV01115744_HANV00334400_1_ocps_si@opussmtp.one-line.com_1(ocps20190111160903_1)_1.pdf doesn't fully match the template
-##################################################
-CLTV01172213_SGNV03417500_1_ocps_si@opussmtp.one-line.com_1(ocps20190117102638_1)_1.pdf 2_6_12
-Warning: CLTV01172213_SGNV03417500_1_ocps_si@opussmtp.one-line.com_1(ocps20190117102638_1)_1.pdf doesn't fully match the template
-##################################################
-CLTV01172419_SGNV05683500_1_ocps_si@opussmtp.one-line.com_1(ocps20190117105338_1)_1.pdf 2_6_12
-Warning: CLTV01172419_SGNV05683500_1_ocps_si@opussmtp.one-line.com_1(ocps20190117105338_1)_1.pdf doesn't fully match the template
-##################################################
-CLTV01280942_SGNV10564600_1_ocps_si@opussmtp.one-line.com_3(ocps20190128114304_3)_1.pdf 2_6_12
-Warning: CLTV01280942_SGNV10564600_1_ocps_si@opussmtp.one-line.com_3(ocps20190128114304_3)_1.pdf doesn't fully match the template
-##################################################
-CLTV01313280_SGNV12806700_1_ocps_si@opussmtp.one-line.com_1(ocps20190131120840_1)_1.pdf 2_6_12
-Warning: CLTV01313280_SGNV12806700_1_ocps_si@opussmtp.one-line.com_1(ocps20190131120840_1)_1.pdf doesn't fully match the template
-##################################################
-CLTV03014630_HANV05695500_1_ocps_si@opussmtp.one-line.com_2(ocps20190301154655_2)_1.pdf 2_6_12
-##################################################
-CLTV03014917_HANV05896800_1_ocps_si@opussmtp.one-line.com_1(ocps20190301161515_1)_1.pdf 2_6_12
-##################################################
-HANV09970500_6_SI.pdf 2_6_12
-Warning: HANV09970500_6_SI.pdf doesn't fully match the template
-##################################################
-HANV11944600_2_SI.pdf 2_6_12
-Warning: HANV11944600_2_SI.pdf doesn't fully match the template
-##################################################
-HANV13243700_1_SI.pdf 2_6_12
-Warning: HANV13243700_1_SI.pdf doesn't fully match the template
-##################################################
-VN102484_1.pdf 2_6_12
-Warning: VN102484_1.pdf doesn't fully match the template
-##################################################
-VN102484_6.pdf 2_6_12
-Warning: VN102484_6.pdf doesn't fully match the template
+VN103785_7.pdf 7
+Warning: VN103785_7.pdf doesn't fully match the template
 ##################################################
 ##################################################
