@@ -24,9 +24,6 @@ Warning: SGNV08885500_5_Chi tiet Bill.pdf doesn't fully match the template
 SGNV10438600_3_Chi tiet Bill.pdf 7
 Warning: SGNV10438600_3_Chi tiet Bill.pdf doesn't fully match the template
 ##################################################
-SGNV32099600.pdf 17
-Warning: SGNV32099600.pdf doesn't fully match the template
-##################################################
 SGNV57088400_1_SI.pdf 7
 Warning: SGNV57088400_1_SI.pdf doesn't fully match the template
 ##################################################
