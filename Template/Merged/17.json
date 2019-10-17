@@ -86,7 +86,14 @@
                 "bottom": "Add",
                 "left": "Notify Party",
                 "right": -1
-            }
+            },
+            "alias":
+    				{
+    					"alias_0":
+    					{
+    						"name": "NOTIFY PARTY:"
+    					}
+    				}
         },
         "OCEAN VESSEL": {
             "row": [15, 16],

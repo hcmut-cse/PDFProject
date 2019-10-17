@@ -75,7 +75,7 @@
 			},
 			"From": {
 				"row": [17, 18],
-				"column": [40, 90],
+				"column": [45, 90],
 				"isFlex": 1,
 				"endObject": {
 					"top": "From",
@@ -86,7 +86,7 @@
 			},
 			"Excess Value Declaration": {
 				"row": [16, 17],
-				"column": [85, null],
+				"column": [90, null],
 				"isFlex": 1,
 				"endObject": {
 					"top": "Excess Value Declaration",
@@ -139,7 +139,7 @@
 					"right": "Excess Value Declaration"
 				}
 			},
-			
+
 			"Marks and Nos; Container No": {
 				"row": [23, 29],
 				"column": [0, 43],
