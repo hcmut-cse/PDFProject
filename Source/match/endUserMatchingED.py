@@ -88,8 +88,8 @@ def triggerWarning(inputPath,resultPath,file,template,configString,s,CONFIG,line
 		# 	drawTextboxMishandled(key,sourceFile,modifiedFile,count,CONFIG,aliasDict)
 	if (len(newKwList)):
 		for key in newKwList: 
-			drawTextboxNewKws(key,sourceFile,modifiedFile,CONFIG)
-			numKeyProcessing+=1
+			tmp=drawTextboxNewKws(key,sourceFile,modifiedFile,CONFIG)
+			numKeyProcessing+=tmp
 	if (numKeyProcessing==0): os.remove(modifiedFile)
 
 

@@ -164,7 +164,7 @@ def drawTextboxMissingKws(sourceFile,modifiedFile,key,configString,s,CONFIG,ans,
 			x1=targetPos[2]+len(key)*4	
 			y1=targetPos[3]+10
 			rect=fitz.Rect(x0,y0,x1,y1)
-			highlight=page.addFreetextAnnot(rect,key,fontsize=12, fontname="helv", fill_color=(1,0,0), rotate=0)	
+			highlight=page.addFreetextAnnot(rect,key,fontsize=12, fontname="helv", color=(1,0,0), rotate=0)	
 			break
 		index+=1
 
@@ -479,17 +479,6 @@ def preProcessText(listPdf, fullPdf):
 	return listPdf
 # Check if keyword in data
 def detectInData(fullPdf, listCheck, CURR_KW, newKw,listPdf):
-	# for listLine in listPdf:
-	# 	for ele in listLine:
-	# 		ele = ele.replace(":","")
-	# 		ele = ele.strip()
-	# 		for key in CURR_KW:
-	# 			if (ele == key):
-	# 				if ele not in listCheck:
-	# 					listCheck.append(ele)
-	# 					newKw.append(ele)
-	# return newKw
-
 	for listLine in listPdf:
 		for ele in listLine:
 			if (":" in ele):
@@ -543,12 +532,15 @@ def generateListNewKws(file,template,CURR_KW,jsonDir):
 
 def drawTextboxNewKws(key,sourceFile,modifiedFile,CONFIG):
 	doc=fitz.open(sourceFile)
+	numKwProcessed=0
 	for page in doc:
 		text_instances=page.searchFor(key)
 		for inst in text_instances: 
 			highlight=page.addHighlightAnnot(inst)
 			highlight.setColors({"stroke": (1,0,1)})
-					
+			numKwProcessed+=0
 	doc.save(modifiedFile,garbage=4, deflate=True, clean=False)
 	copyfile(modifiedFile,sourceFile)
+	if (numKwProcessed): return 1
+	return 0
 
