@@ -166,3 +166,37 @@ def checkForCase(CONFIG, configS, targetS):
 		case = 3
 		key = -1
 	return case, CONFIG, key
+
+def replaceAliases(fullPdf, aliasD):
+	# for key in aliasD: print(key)
+	for key in aliasD:
+		keyFound = 0
+		for line in fullPdf:
+			if (line.find(key) != -1):
+				keyFound = 1
+				# print(key)
+				break
+		if not keyFound:
+			print(key)
+			print(aliasD[key])
+			aliList = []
+			for ali in aliasD[key]:
+				row = -1
+				for line in fullPdf:
+					row = row + 1
+					if (line.find(ali) != -1):
+						aliList.append((ali,row))
+						break
+			if (len(aliList) == 1):
+				print(aliList)
+				fullPdf[aliList[0][1]] = fullPdf[aliList[0][1]].replace(ali,key)
+			if (len(aliList) == 2):
+				print(aliList)
+				strA = aliList[0][0]
+				strB = aliList[1][0]
+				choose = aliList[0] if (strB in strA) else aliList[1]
+				print(choose)
+				fullPdf[choose[1]] = fullPdf[choose[1]].replace(choose[0],key)
+	# for line in fullPdf:
+	# 	print(line)
+	return fullPdf

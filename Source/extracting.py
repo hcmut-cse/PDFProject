@@ -9,7 +9,7 @@ from PdfExtractor.Source.posProcess import leftProcess, subfieldProcess
 from PdfExtractor.Source.connectContent import connectContent
 import pdftotext
 import copy
-from SwapKw import *
+from KeywordProcessing import *
 
 PDF_FOLDER = '../PdfToExtract/'
 TEMPLATE_FOLDER = '../Template/Merged/'
@@ -60,6 +60,8 @@ def extractProcess(fullPdf, CONFIG, removed, case, keynum, configS):
     # Run pos-processing
     extractedData = leftProcess(CONFIG, extractedData)
     extractedData = subfieldProcess(CONFIG, extractedData)
+    if (case == 1):
+        del extractedData[configS[keynum]]
     if (case == 2):
         keyA = keynum[0]
         keyB = keynum[1]
@@ -69,7 +71,7 @@ def extractProcess(fullPdf, CONFIG, removed, case, keynum, configS):
 
     return extractedData
 
-def extractingData(file, PDF_TYPE, configS, targetS):
+def extractingData(file, PDF_TYPE, configS, targetS, aliasD):
 
     with open(TEMPLATE_FOLDER + PDF_TYPE + '.json', 'r', encoding='utf8') as json_file:
         ORIGINAL_CONFIG = json.load(json_file)
@@ -114,10 +116,13 @@ def extractingData(file, PDF_TYPE, configS, targetS):
                 extractedData.update(extractProcess(pdfPage, config, removed, case, keynum, configS))
                 pageNumber += 1
     else:
+        #Replace alias with config
+        print("------------------------------------")
+        fullPdf = replaceAliases(fullPdf, aliasD)
+        print("------------------------------------")
         #Auto change CONFIG if missed/swapped
         case, CONFIG, keynum = checkForCase(CONFIG, configS, targetS)
         #then extract data
-        print(fullPdf)
         extractedData = extractProcess(fullPdf, CONFIG, removed, case, keynum, configS)
 
     print("- Connecting similar contents...")

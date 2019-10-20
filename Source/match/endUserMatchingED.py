@@ -137,7 +137,7 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 		if (minDistance==0): break
 	print('Min distance:',minDistance)
 
-	print(targetS)
+	# print(targetS)
 	# Calculate matching time
 	for i in range(50): print('#',end='')
 	print()
@@ -173,7 +173,12 @@ def findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CUR
 	#############################
 
 	# return ans,minDistance
-	return ans,minDistance,matchingTime,warningTime,targetConfigString,targetS
+
+	# print("==========current workflow==========")
+	# for key in targetAliasDict:
+	# 	print(key,"---",targetAliasDict[key])
+
+	return ans,minDistance,matchingTime,warningTime,targetConfigString,targetS,targetAliasDict
 
 def endUserSolve(resultFile,inputPath,resultPath,matchingFolder,jsonDir,standardFolder,aliasFile):
 	return_dict = {}
@@ -192,7 +197,7 @@ def endUserSolve(resultFile,inputPath,resultPath,matchingFolder,jsonDir,standard
 		pos=re.search(inputPath+'/',file).span()
 		performanceResults[file[pos[1]:]]=[]
 		startTime=time.time()
-		ans,minDistance,matchingTime,warningTime,configS,targetS=findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CURR_KW,startTime,aliasFile)
+		ans,minDistance,matchingTime,warningTime,configS,targetS,aliasD=findTemplateBetaVersion(inputPath,resultPath,file,jsonDir,standardFolder,CURR_KW,startTime,aliasFile)
 
 		# print(file[pos[1]:])
 		performanceResults[file[pos[1]:]].append(matchingTime)
@@ -213,7 +218,7 @@ def endUserSolve(resultFile,inputPath,resultPath,matchingFolder,jsonDir,standard
 
 		decorationPrint(resultFile,'#',50)
 
-	return return_dict,performanceResults,configS,targetS
+	return return_dict,performanceResults,configS,targetS,aliasD
 
 
 def templateMatch(inputPath,resultPath,jsonDir,standardFolder):
