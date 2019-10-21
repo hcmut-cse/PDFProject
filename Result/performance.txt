@@ -1,8 +1,0 @@
-PERFORMANCE RECORDS
-
-##################################################
-CLTV01083984_HPHV00219800_1_ocps_si@opussmtp.one-line.com_1(ocps20190108160626_1)_1.pdf
-Matching time: 0.1519334316253662 seconds
-Warning time: 0.10571670532226562 seconds
-Extracting time: 0.18985724449157715 seconds
-##################################################

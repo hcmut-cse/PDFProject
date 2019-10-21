@@ -188,10 +188,12 @@ def replaceAliases(fullPdf, aliasD):
 						aliList.append((ali,row))
 						break
 			if (len(aliList) == 1):
-				print(aliList)
-				fullPdf[aliList[0][1]] = fullPdf[aliList[0][1]].replace(ali,key)
+				# print(aliList)
+				print(fullPdf[aliList[0][1]])
+				fullPdf[aliList[0][1]] = fullPdf[aliList[0][1]].replace(aliList[0][0],key)
+				print(fullPdf[aliList[0][1]])
 			if (len(aliList) == 2):
-				print(aliList)
+				# print(aliList)
 				strA = aliList[0][0]
 				strB = aliList[1][0]
 				choose = aliList[0] if (strB in strA) else aliList[1]

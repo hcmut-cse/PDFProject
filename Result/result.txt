@@ -1,6 +1,0 @@
-##################################################
-MATCHING
-CLTV01083984_HPHV00219800_1_ocps_si@opussmtp.one-line.com_1(ocps20190108160626_1)_1.pdf 1
-Warning: CLTV01083984_HPHV00219800_1_ocps_si@opussmtp.one-line.com_1(ocps20190108160626_1)_1.pdf doesn't fully match the template
-##################################################
-##################################################
