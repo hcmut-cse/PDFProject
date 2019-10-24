@@ -11,7 +11,7 @@
             "right": -1
         }
     },
-    "Shipper": {
+    "SHIPPER": {
         "row": [3, 5],
         "column": [0, null],
         "isFlex": 1,
@@ -22,7 +22,7 @@
             "right": -1
         }
     },
-    "Consignee": {
+    "CONSIGNEEE": {
         "row": [6, 9],
         "column": [0, null],
         "isFlex": 1,
@@ -44,25 +44,25 @@
             "right": -1
         }
     },
-    "Port of Loading": {
+    "PORT OF LOADING": {
         "row": [13, 14],
         "column": [0, null],
         "isFlex": 1,
         "endObject": {
             "top": "same_left",
             "bottom": "PORT OF DISCHARGE",
-            "left": "PORT OF LOADING:",
+            "left": "PORT OF LOADING",
             "right": -1
         }
     },
-    "Port of Discharge": {
+    "PORT OF DISCHARGE": {
         "row": [14, 15],
         "column": [0, null],
         "isFlex": 1,
         "endObject": {
             "top": "same_left",
             "bottom": "TÊN HÀNG HÓA",
-            "left": "PORT OF DISCHARGE :",
+            "left": "PORT OF DISCHARGE",
             "right": -1
         }
     },
