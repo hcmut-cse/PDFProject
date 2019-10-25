@@ -1,8 +1,26 @@
 PERFORMANCE RECORDS
 
 ##################################################
-CLTV01173514_SGNV06815300_1_ocps_si@opussmtp.one-line.com_1_1.pdf
-Matching time: 0.4359245300292969 seconds
-Warning time: 0.024483680725097656 seconds
-Extracting time: 0.45592403411865234 seconds
+SGNV54411500.pdf
+Matching time: 0.16884636878967285 seconds
+Warning time: 0.018907546997070312 seconds
+Extracting time: 0.16306185722351074 seconds
+##################################################
+##################################################
+SGNV54912400.pdf
+Matching time: 0.16779255867004395 seconds
+Warning time: 0.07042837142944336 seconds
+Extracting time: 0.20394062995910645 seconds
+##################################################
+##################################################
+SGNV32099600.pdf
+Matching time: 0.26628565788269043 seconds
+Warning time: 0.11777758598327637 seconds
+Extracting time: 0.21784591674804688 seconds
+##################################################
+##################################################
+SGNV65274700.pdf
+Matching time: 0.1584172248840332 seconds
+Warning time: 0.020737409591674805 seconds
+Extracting time: 0.17036890983581543 seconds
 ##################################################

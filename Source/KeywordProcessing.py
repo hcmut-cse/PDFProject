@@ -74,6 +74,12 @@ def missKeywordColumn(CONFIG, A,X,B):
 		CONFIG[B]['endObject']['top'] = A
 	return CONFIG
 
+def make_hash(d):
+    check = ''
+    for key in d:
+        check += str(d[key])
+    return hash(check)
+
 # The codes below is for determining which case can be auto adjust
 # 
 
@@ -94,8 +100,9 @@ def missKeyword(CONFIG, configS, targetS):
 	if (keyX == -1):
 		return missed, CONFIG, -1
 	print("Miss key: auto adjust CONFIG")
+	print("Key \"",configS[keyX], "\" will be removed later on")
 	missed = 1
-	print(configS[keyX-1], configS[keyX], configS[keyX+1])
+	# print(configS[keyX-1], configS[keyX], configS[keyX+1])
 	# print(CONFIG)
 	if (CONFIG[configS[keyX-1]]['row'][0] == CONFIG[configS[keyX+1]]['row'][0]):
 		CONFIG = missKeywordRow(CONFIG, configS[keyX-1], configS[keyX], configS[keyX+1])
@@ -124,18 +131,20 @@ def swapKeyword(CONFIG, configS, targetS):
         print("Swap key: auto adjust CONFIG")
         swapped = 2
         print(configS[keyA], configS[keyB])
-        # print("Before:")
         # print(configS[keyA],": ",CONFIG[configS[keyA]])
         # print(configS[keyB],": ",CONFIG[configS[keyB]])
+        checksum = make_hash(CONFIG[configS[keyA]]['endObject'])
         if (CONFIG[configS[keyA]]['row'][0] == CONFIG[configS[keyB]]['row'][0]):
             # print(configS[keyA], configS[keyB])
             CONFIG = swapKeywordRow(CONFIG, configS[keyA-1], configS[keyA], configS[keyB], configS[keyB+1])
-            
         elif (CONFIG[configS[keyA]]['column'][0] == CONFIG[configS[keyB]]['column'][0]):
             CONFIG = swapKeywordColumn(CONFIG, configS[keyA-1], configS[keyA], configS[keyB], configS[keyB+1])
         # print("After:")
         # print(configS[keyA],": ",CONFIG[configS[keyA]])
         # print(configS[keyB],": ",CONFIG[configS[keyB]])
+        if (checksum == make_hash(CONFIG[configS[keyA]]['endObject'])):
+        	print("No change in CONFIG")
+        	return 0, CONFIG, [keyA, keyB]
         return swapped, CONFIG, [keyA, keyB]
     return swapped, CONFIG, -1
 
@@ -151,9 +160,9 @@ def checkForCase(CONFIG, configS, targetS):
 	# print(len(configS) > len(targetS))
 	if (len(configS) > len(targetS)):
 		# print("Miss key")
-		print(len(configS), len(targetS))
-		print(configS)
-		print(targetS)
+		# print(len(configS), len(targetS))
+		# print(configS)
+		# print(targetS)
 		# print(CONFIG)
 		case, CONFIG, key = missKeyword(CONFIG, configS, targetS)
 	elif (len(configS) == len(targetS)):
@@ -170,6 +179,8 @@ def checkForCase(CONFIG, configS, targetS):
 def replaceAliases(fullPdf, aliasD):
 	# for key in aliasD: print(key)
 	for key in aliasD:
+		# print(key[-1])
+		if key[-1].isdigit(): continue
 		keyFound = 0
 		for line in fullPdf:
 			if (line.find(key) != -1):
@@ -177,8 +188,8 @@ def replaceAliases(fullPdf, aliasD):
 				# print(key)
 				break
 		if not keyFound:
-			print(key)
-			print(aliasD[key])
+			# print(key)
+			# print(aliasD[key])
 			aliList = []
 			for ali in aliasD[key]:
 				row = -1
@@ -189,15 +200,15 @@ def replaceAliases(fullPdf, aliasD):
 						break
 			if (len(aliList) == 1):
 				# print(aliList)
-				print(fullPdf[aliList[0][1]])
+				# print(fullPdf[aliList[0][1]])
 				fullPdf[aliList[0][1]] = fullPdf[aliList[0][1]].replace(aliList[0][0],key)
-				print(fullPdf[aliList[0][1]])
+				# print(fullPdf[aliList[0][1]])
 			if (len(aliList) == 2):
 				# print(aliList)
 				strA = aliList[0][0]
 				strB = aliList[1][0]
 				choose = aliList[0] if (strB in strA) else aliList[1]
-				print(choose)
+				# print(choose)
 				fullPdf[choose[1]] = fullPdf[choose[1]].replace(choose[0],key)
 	# for line in fullPdf:
 	# 	print(line)
